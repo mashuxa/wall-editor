@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Photo Gallary</title>
+
+
+    <script defer src="components/cropper/cropper.js"></script>
+
+    <script defer src="components/mobile-menu/js/mobile-menu.js"></script>
+    <link rel="stylesheet" href="components/mobile-menu/css/mobile-menu.css">
+
+    <link rel="stylesheet" href="common/common.css">
+    <link rel="stylesheet" href="fonts/font-icon/icon.css">
+    <script defer src="common/common.js"></script>
+</head>
+<body>
+<input type="checkbox" id="js-mobile-menu-toggle">
+<header class="header flex">
+    <a href="#" class="logo">
+        <i class="icon-logo"></i>
+        <span>Photo Walls</span>
+    </a>
+    <label class="js-mobile-menu-toggle" for="js-mobile-menu-toggle"><i class="icon-menu"></i><span>Menu</span></label>
+</header>
+<nav class="nav js-mobile-menu">
+    <a class="nav__item">
+        <i class="icon-logo"></i>
+        <span>Photo Walls</span>
+    </a>
+    <a class="nav__item">Photo Gallary</a>
+    <a class="nav__item nav__item_active">Photo Editor</a>
+    <a class="nav__item">Wall Gallary</a>
+    <a class="nav__item">Wall Editor</a>
+    <a class="nav__item">On the Wall</a>
+    <a class="nav__item">Feedback</a>
+</nav>
+<main class="main">
+    <div class="status-bar flex">
+            <span class="status-bar__info">
+                Photo Editor
+            </span>
+
+        <button class="btn btn_download" type="button"><i class="icon-download"></i>Downlod this photo!</button>
+        <input type="file" id="fileImage" accept="image/jpeg,image/png">
+    </div>
+    <div class="main__content flex">
+        <form class="tools" name="tools">
+            <div class="tools__zoom">
+                <h6>
+                    <i class="icon-zoom"></i> Zoom
+                </h6>
+                <div class="flex">
+                    <button class="btn btn_zoom btn_plus" type="button">
+                        +
+                    </button>
+                    <button class="btn btn_zoom btn_minus" type="button">
+                        -
+                    </button>
+                    <button class="btn btn_zoom btn_reset" type="button">
+                        <i class="icon-reset"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="tools__crop">
+
+                <h6>
+                    <i class="icon-crop"></i> Crop
+                </h6>
+
+                <div class="flex">
+                    <button class="btn btn_crop btn_1-1" type="button">
+                        1:1
+                    </button>
+                    <button class="btn btn_crop btn_4-3" type="button">
+                        4:3
+                    </button>
+                    <button class="btn btn_crop btn_16-9" type="button">
+                        16:9
+                    </button>
+                </div>
+                <small>Enter aspect ratio:</small>
+                <div class="flex">
+                    <input class="" type="number" min="0">
+                    <span>:</span>
+                    <input class="" type="number" min="0">
+                </div>
+            </div>
+            <div class="tools__filter">
+
+                <h6>
+                    <i class="icon-filter"></i> Filter
+                </h6>
+                <div class="">
+                    <label class="flex">
+                        <span>Brightness, %</span>
+                        <input class="" type="number" min="0">
+                    </label>
+                    <label class="flex">
+                        <span>Contrast, %</span>
+                        <input class="" type="number" min="0">
+                    </label>
+                    <label class="flex">
+                        <span>Hue-rotate, °</span>
+                        <input class="" type="number" min="0">
+                    </label>
+                    <label class="flex">
+                        <span>Saturate, %</span>
+                        <input class="" type="number" min="0">
+                    </label>
+                    <label class="flex">
+                        <span>Grayscale, %</span>
+                        <input class="" type="number" min="0">
+                    </label>
+                    <label class="flex">
+                        <span>Sepia, %</span>
+                        <input class="" type="number" min="0">
+                    </label>
+                    <label class="flex">
+                        <span>Invert, %</span>
+                        <input class="" type="number" min="0">
+                    </label>
+                    <label class="flex">
+                        <span>Blur, px</span>
+                        <input class="" type="number" min="0">
+                    </label>
+
+
+                </div>
+            </div>
+            <div class="tools__btns-wrapper flex">
+                <button class="btn btn_inv btn_reset" type="reset">Reset</button>
+                <button class="btn btn_apply" type="button">Apply</button>
+            </div>
+        </form>
+        <div class="editor-preview flex flex_column">
+            <label class="canvas-wrapper" for="fileImage">
+                <!--<div class="border"></div>-->
+                <!--<div class="border-background"></div>-->
+                <canvas class="editor-preview__img-wrapper" id="currentImg" title="Add new image">
+                </canvas>
+
+            </label>
+            <div class="editor-preview__btns-wrapper">
+                <button class="btn btn_inv btn_cancel" type="button">Cancel</button>
+                <button class="btn btn_save" type="button">Save</button>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+</body>
+
+</html>

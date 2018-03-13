@@ -41,7 +41,7 @@
             <span class="status-bar__info">
                 Photo Editor
             </span>
-
+        <label class="btn"  for="fileImage">Upload</label>
         <button class="btn btn_download" type="button"><i class="icon-download"></i>Downlod this photo!</button>
         <input type="file" id="fileImage" accept="image/jpeg,image/png">
     </div>
@@ -135,13 +135,15 @@
             </div>
         </form>
         <div class="editor-preview flex flex_column">
-            <label class="canvas-wrapper" for="fileImage">
+            <div class="canvas-wrapper">
                 <!--<div class="border"></div>-->
                 <!--<div class="border-background"></div>-->
                 <canvas class="editor-preview__img-wrapper" id="currentImg" title="Add new image">
                 </canvas>
+                <canvas class="editor-preview__cropper-border editor-preview__cropper-border_active"  id="cropperBorder">
+                </canvas>
 
-            </label>
+            </div>
             <div class="editor-preview__btns-wrapper">
                 <button class="btn btn_inv btn_cancel" type="button">Cancel</button>
                 <button class="btn btn_save" type="button">Save</button>

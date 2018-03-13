@@ -144,7 +144,7 @@ body {
     padding: 10px 0;
     flex-shrink: 0;
     border-bottom: 2px solid @white-color;
-    box-shadow: 0 1px 0px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 1px 0 0 rgba(0,0,0,0.2);
 } 
 .tools {  
     position: absolute;
@@ -166,6 +166,8 @@ body {
     align-self: stretch;
     overflow-y: auto;
     &__img-wrapper {
+        position: relative;
+        z-index: 1;
         cursor: pointer;
         background-image: url("../img/ui/add-new-img.svg");
         background-size: 15%;
@@ -176,12 +178,11 @@ body {
         width: 100%;
         height: auto;
         border: 2px dotted @main-color;
-        align-self: stretch;
-        margin: auto;
+        align-self: stretch; 
     }
     &__btns-wrapper {
     padding: 10px;
-}
+} 
 } 
  
   
@@ -238,12 +239,14 @@ body {
 //*************
 .canvas-wrapper {
     flex-shrink: 1;
-    flex-grow: 1;
+    flex-grow: 0;
     align-self: stretch;
     display: flex;
     flex-direction: column;
     overflow: auto;
-//    position: relative;
+    position: relative;
+    padding: 0;
+    margin: auto;
 }
 
 
@@ -270,3 +273,22 @@ body {
 //    //border-color: rgba(0,0,0,0.5);
 //
 //}
+.editor-preview__cropper-border{
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    &_active-x{
+        cursor:  url("../img/ui/arrows-left-right.svg"), pointer;
+    }
+    &_active-y{
+        cursor: url("../img/ui/arrows-top-bottom.svg"), pointer;
+    }
+    &_active-top-left-bottom-right{
+        cursor: url("../img/ui/arrows-left-top-bottom-right.svg"), pointer;
+    }
+    &_active-bottom-left-top-right{
+        cursor: url("../img/ui/arrows-left-bottom-top-right.svg"), pointer;
+    }
+}

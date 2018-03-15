@@ -7,6 +7,8 @@ let fileInput = document.getElementById("fileImage");
 let imgWidth, imgHeight;
 
 let borderPositionLeft, borderPositionRight, borderPositionTop, borderPositionBottom;
+let borderWidth;
+let borderHeight;
 let cursorPositionX, cursorPositionY;
 let animationId;
 let isMouseDown = false;
@@ -56,8 +58,8 @@ function drawBorder() {
     borderPositionBottom = borderPositionBottom || borderPositionTop + imgHeight / 2;
 
 
-    let borderWidth = borderPositionRight - borderPositionLeft;
-    let borderHeight = borderPositionBottom - borderPositionTop;
+    borderWidth = borderPositionRight - borderPositionLeft;
+    borderHeight = borderPositionBottom - borderPositionTop;
 
     borderCanvas.width = imgWidth;
     borderCanvas.height = imgHeight;
@@ -85,11 +87,6 @@ function drawBorder() {
 // &_active-bottom-left-top-right{
 // }
 
-
-// let animationId = window.requestAnimationFrame(drawBorder, this);
-// window.cancelAnimationFrame(animationId);
-
-
 function isLeftButton(e) {
     let button = e.which ? e.which : e.button;
     return button < 2;
@@ -106,50 +103,48 @@ borderCanvas.addEventListener("mousemove", function (e) {
     let scaleK = borderCanvas.width / borderCanvas.offsetWidth;
     cursorPositionX = e.offsetX * scaleK;
     cursorPositionY = e.offsetY * scaleK;
-    if (
-        (cursorPositionX < borderPositionLeft + 5 && cursorPositionX > borderPositionLeft - 5 && cursorPositionY < borderPositionTop + 5 && cursorPositionY > borderPositionTop - 5) ||
-        (cursorPositionX < borderPositionRight + 5 && cursorPositionX > borderPositionRight - 5 && cursorPositionY < borderPositionBottom + 5 && cursorPositionY > borderPositionBottom - 5)
-    ) {
-        console.log("верх лево или низ право");
-        if (isMouseDown) {
-            borderPositionLeft = cursorPositionX;
-            animationId = window.requestAnimationFrame(drawBorder);
-        }
-    } else if (
-        (cursorPositionX < borderPositionLeft + 5 && cursorPositionX > borderPositionLeft - 5 && cursorPositionY < borderPositionBottom + 5 && cursorPositionY > borderPositionBottom - 5) ||
-        (cursorPositionX < borderPositionRight + 5 && cursorPositionX > borderPositionRight - 5 && cursorPositionY < borderPositionTop + 5 && cursorPositionY > borderPositionTop - 5)
-    ) {
-        if (isMouseDown) {
-            borderPositionLeft = cursorPositionX;
-            animationId = window.requestAnimationFrame(drawBorder);
-        } else if (cursorPositionX < borderPositionLeft + 10 && cursorPositionX > borderPositionLeft - 10 && cursorPositionY > borderPositionTop + 10 && cursorPositionY < borderPositionBottom - 10) {
-            // borderCanvas.classList.toggle("active");
-            if (isMouseDown) {
-                borderPositionLeft = cursorPositionX;
-                animationId = window.requestAnimationFrame(drawBorder);
-            }
-        } else if (cursorPositionX < borderPositionRight + 10 && cursorPositionX > borderPositionRight - 10 && cursorPositionY > borderPositionTop + 10 && cursorPositionY < borderPositionBottom - 10) {
-            if (isMouseDown) {
-                borderPositionRight = cursorPositionX;
-                animationId = window.requestAnimationFrame(drawBorder);
-            }
-        } else if (cursorPositionY < borderPositionTop + 10 && cursorPositionY > borderPositionTop - 10 && cursorPositionX > borderPositionLeft + 10 && cursorPositionX < borderPositionRight - 10) {
-            if (isMouseDown) {
-                borderPositionTop = cursorPositionY;
-                animationId = window.requestAnimationFrame(drawBorder);
-            }
-        } else if (cursorPositionY < borderPositionBottom + 10 && cursorPositionY > borderPositionBottom - 10 && cursorPositionX > borderPositionLeft + 10 && cursorPositionX < borderPositionRight - 10) {
-            if (isMouseDown) {
-                borderPositionBottom = cursorPositionY;
-                animationId = window.requestAnimationFrame(drawBorder);
-            }
-        }
-        // console.log(borderPositionLeft);
-
+    if (isMouseDown) {
+        animationId = window.requestAnimationFrame(drawBorder);
     }
-);
-
-
+    if (cursorPositionX < borderPositionLeft + 25 && cursorPositionX > borderPositionLeft - 25 && cursorPositionY < borderPositionTop + 25 && cursorPositionY > borderPositionTop - 25){
+        if (isMouseDown) {
+            borderPositionLeft = cursorPositionX;
+            borderPositionTop = cursorPositionY;
+        }
+    } else if (cursorPositionX < borderPositionRight + 25 && cursorPositionX > borderPositionRight - 25 && cursorPositionY < borderPositionTop + 25 && cursorPositionY > borderPositionTop - 25) {
+        if (isMouseDown) {
+            borderPositionRight = cursorPositionX;
+            borderPositionTop = cursorPositionY;
+        }
+        } else if (cursorPositionX < borderPositionRight + 25 && cursorPositionX > borderPositionRight - 25 && cursorPositionY < borderPositionBottom + 25 && cursorPositionY > borderPositionBottom - 25) {
+        if (isMouseDown) {
+            borderPositionRight = cursorPositionX;
+            borderPositionBottom = cursorPositionY;
+        }
+    } else if (cursorPositionX < borderPositionLeft + 25 && cursorPositionX > borderPositionLeft - 25 && cursorPositionY < borderPositionBottom + 25 && cursorPositionY > borderPositionBottom - 25) {
+        if (isMouseDown) {
+            borderPositionLeft = cursorPositionX;
+            borderPositionBottom = cursorPositionY;
+        }
+    }
+    else if (cursorPositionX < borderPositionLeft + 25 && cursorPositionX > borderPositionLeft - 25 && cursorPositionY > borderPositionTop + 25 && cursorPositionY < borderPositionBottom - 25) {
+        if (isMouseDown) {
+            borderPositionLeft = cursorPositionX;
+        }
+    } else if (cursorPositionX < borderPositionRight + 25 && cursorPositionX > borderPositionRight - 25 && cursorPositionY > borderPositionTop + 25 && cursorPositionY < borderPositionBottom - 25) {
+        if (isMouseDown) {
+            borderPositionRight = cursorPositionX;
+        }
+    } else if (cursorPositionY < borderPositionTop + 25 && cursorPositionY > borderPositionTop - 25 && cursorPositionX > borderPositionLeft + 25 && cursorPositionX < borderPositionRight - 25) {
+        if (isMouseDown) {
+            borderPositionTop = cursorPositionY;
+        }
+    } else if (cursorPositionY < borderPositionBottom + 25 && cursorPositionY > borderPositionBottom - 25 && cursorPositionX > borderPositionLeft + 25 && cursorPositionX < borderPositionRight - 25) {
+        if (isMouseDown) {
+            borderPositionBottom = cursorPositionY;
+        }
+    }
+});
 borderCanvas.addEventListener("mouseup", function (e) {
     if (isLeftButton(e)) {
         isMouseDown = false;
@@ -158,6 +153,26 @@ borderCanvas.addEventListener("mouseup", function (e) {
 });
 
 
-function crop() {
+document.querySelector(".btn_crop").addEventListener("click", function(){
+    let ctx = imgCanvas.getContext("2d");
+    let dataUrl = imgCanvas.toDataURL();
+    imgWidth = borderWidth;
+    imgHeight = borderHeight;
 
-}
+
+    new Promise(resolve => {
+        let newImg = new Image();
+        newImg.onload = () => resolve(newImg);
+        newImg.src = dataUrl;
+    }).then(newImg => {
+
+        ctx.clearRect(0, 0, imgWidth, imgWidth);
+        // imgCanvas.height = imgHeight;
+        // imgCanvas.width = imgWidth;
+        ctx.drawImage(newImg, 0, 0);
+        drawBorder();
+    });
+
+
+
+});

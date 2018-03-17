@@ -120,16 +120,21 @@ body {
   top: 10px;
   left: 0;
   bottom: 0;
-  overflow-y: auto;
   width: 100%;
-  max-width: 200px;
-  padding-right: 10px;
+  max-width: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }
 .tools input {
   width: 75px;
 }
 .tools__btns-wrapper {
   padding: 20px 0;
+}
+.tools-wrapper {
+  padding-right: 10px;
+  overflow-y: auto;
 }
 .editor-preview {
   flex-grow: 1;
@@ -216,14 +221,17 @@ body {
   width: 100%;
 }
 .editor-preview__cropper-border_active-x {
-  cursor: url("../img/ui/arrows-left-right.svg"), pointer;
+  cursor: url("../img/ui/active-x.svg"), pointer;
 }
 .editor-preview__cropper-border_active-y {
-  cursor: url("../img/ui/arrows-top-bottom.svg"), pointer;
+  cursor: url("../img/ui/active-y.svg"), pointer;
 }
 .editor-preview__cropper-border_active-top-left-bottom-right {
-  cursor: url("../img/ui/arrows-left-top-bottom-right.svg"), pointer;
+  cursor: url("../img/ui/top-left-bottom-right.svg"), pointer;
 }
 .editor-preview__cropper-border_active-bottom-left-top-right {
-  cursor: url("../img/ui/arrows-left-bottom-top-right.svg"), pointer;
+  cursor: url("../img/ui/bottom-left-top-right.svg"), pointer;
+}
+.editor-preview__cropper-border_active-move {
+  cursor: url("../img/ui/move.svg"), pointer;
 }

@@ -48,6 +48,7 @@
     </div>
     <div class="main__content flex">
         <form class="tools" name="tools">
+            <div class="tools-wrapper">
             <div class="tools__zoom">
                 <h6>
                     <i class="icon-zoom"></i> Zoom
@@ -130,6 +131,7 @@
 
                 </div>
             </div>
+            </div>
             <div class="tools__btns-wrapper flex">
                 <button class="btn btn_inv btn_reset" type="reset">Reset</button>
                 <button class="btn btn_apply" type="button">Apply</button>
@@ -137,13 +139,10 @@
         </form>
         <div class="editor-preview flex flex_column">
             <div class="canvas-wrapper">
-                <!--<div class="border"></div>-->
-                <!--<div class="border-background"></div>-->
                 <canvas class="editor-preview__img-wrapper" id="currentImg" title="Add new image">
                 </canvas>
-                <canvas class="editor-preview__cropper-border editor-preview__cropper-border_active"  id="cropperBorder">
+                <canvas class="editor-preview__cropper-border"  id="cropperBorder">
                 </canvas>
-
             </div>
             <div class="editor-preview__btns-wrapper">
                 <button class="btn btn_inv btn_cancel" type="button">Cancel</button>

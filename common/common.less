@@ -151,13 +151,19 @@ body {
     top: 10px;
     left: 0;
     bottom: 0;
-    overflow-y: auto; 
     width: 100%;
-    max-width: 200px; 
-    padding-right: 10px; 
+    //padding-right: 10px;
+    max-width: 220px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
     input {width: 75px;}
     &__btns-wrapper {
         padding: 20px 0;
+    }
+    &-wrapper {
+        padding-right: 10px;
+        overflow-y: auto;
     }
 } 
 .editor-preview {
@@ -273,22 +279,25 @@ body {
 //    //border-color: rgba(0,0,0,0.5);
 //
 //}
-.editor-preview__cropper-border{
+.editor-preview__cropper-border {
     z-index: 2;
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     &_active-x{
-        cursor:  url("../img/ui/arrows-left-right.svg"), pointer;
+        cursor:  url("../img/ui/active-x.svg"), pointer;
     }
     &_active-y{
-        cursor: url("../img/ui/arrows-top-bottom.svg"), pointer;
+        cursor: url("../img/ui/active-y.svg"), pointer;
     }
     &_active-top-left-bottom-right{
-        cursor: url("../img/ui/arrows-left-top-bottom-right.svg"), pointer;
+        cursor: url("../img/ui/top-left-bottom-right.svg"), pointer;
     }
     &_active-bottom-left-top-right{
-        cursor: url("../img/ui/arrows-left-bottom-top-right.svg"), pointer;
+        cursor: url("../img/ui/bottom-left-top-right.svg"), pointer;
+    }
+    &_active-move {
+        cursor: url("../img/ui/move.svg"), pointer;
     }
 }

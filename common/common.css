@@ -142,7 +142,7 @@ body {
   align-self: stretch;
   overflow-y: auto;
 }
-.editor-preview__img-wrapper {
+.editor-preview__canvas {
   position: relative;
   z-index: 1;
   cursor: pointer;
@@ -213,25 +213,18 @@ body {
   padding: 0;
   margin: auto;
 }
-.editor-preview__cropper-border {
-  z-index: 2;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-}
-.editor-preview__cropper-border_active-x {
+.editor-preview__canvas_active-x {
   cursor: url("../img/ui/active-x.svg"), pointer;
 }
-.editor-preview__cropper-border_active-y {
+.editor-preview__canvas_active-y {
   cursor: url("../img/ui/active-y.svg"), pointer;
 }
-.editor-preview__cropper-border_active-top-left-bottom-right {
+.editor-preview__canvas_active-top-left-bottom-right {
   cursor: url("../img/ui/top-left-bottom-right.svg"), pointer;
 }
-.editor-preview__cropper-border_active-bottom-left-top-right {
+.editor-preview__canvas_active-bottom-left-top-right {
   cursor: url("../img/ui/bottom-left-top-right.svg"), pointer;
 }
-.editor-preview__cropper-border_active-move {
+.editor-preview__canvas_active-move {
   cursor: url("../img/ui/move.svg"), pointer;
 }

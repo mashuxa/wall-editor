@@ -1,213 +1,164 @@
 "use strict";
+const LIMIT_VAR = 25;
 
-let imgCanvas = document.getElementById("currentImg");
-let borderCanvas = document.getElementById("cropperBorder");
-let fileInput = document.getElementById("fileImage");
+// for reset
+let originalImg;
 
-let imgWidth, imgHeight;
-let borderPositionLeft, borderPositionRight, borderPositionTop, borderPositionBottom;
-let borderWidth, borderHeight;
+// work variables
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+let fileInput = document.getElementById("fileInput");
+let canvasImg, canvasImgWidth, canvasImgHeight;
+let borderPosition = {
+    x1: 50,
+    y1: 50
+};
 let cursorPositionX, cursorPositionY;
-let animationId;
-let isMouseDown = false;
-let x2, x1, y2, y1, deltaX, deltaY;
 
+let animationId;
+let scaleK;
+let x1, x2, y1, y2;
+
+// Получаем ссылку из blob объекта для картинки и загружаем её
 function blobToImg(blob) {
     return new Promise(resolve => {
         let img = new Image();
         img.onload = () => resolve(img);
         img.src = URL.createObjectURL(blob);
+    }, reject => {
+        alert("Error!");
     });
 }
-function drawBorder() {
-    borderPositionLeft = borderPositionLeft || imgWidth / 4;
-    borderPositionTop = borderPositionTop || imgHeight / 4;
-    borderPositionRight = borderPositionRight || borderPositionLeft + imgWidth / 2;
-    borderPositionBottom = borderPositionBottom || borderPositionTop + imgHeight / 2;
 
-
-    borderWidth = borderPositionRight - borderPositionLeft;
-    borderHeight = borderPositionBottom - borderPositionTop;
-
-    borderCanvas.width = imgWidth;
-    borderCanvas.height = imgHeight;
-    let ctx = borderCanvas.getContext("2d");
-    // очищаем
-    ctx.clearRect(0, 0, imgWidth, imgWidth);
-    // заливаем черным 50% alfa
+// перерисовка канваса
+function drawCanvas() {
+    console.log(animationId);
+    ctx.clearRect(0, 0, canvasImgWidth, canvasImgHeight);
+    ctx.drawImage(canvasImg, 0, 0);
     ctx.fillStyle = 'rgba(0,0,0,0.5)';
-    ctx.fillRect(0, 0, imgWidth, imgHeight);
+    ctx.beginPath();
+    ctx.lineTo(0, 0);
+    ctx.lineTo(canvasImgWidth, 0);
+    ctx.lineTo(canvasImgWidth, canvasImgHeight);
+    ctx.lineTo(0, canvasImgHeight);
+    ctx.lineTo(0, 0);
+    ctx.lineTo(borderPosition.x1, borderPosition.y1);
+    ctx.lineTo(borderPosition.x1, borderPosition.y2);
+    ctx.lineTo(borderPosition.x2, borderPosition.y2);
+    ctx.lineTo(borderPosition.x2, borderPosition.y1);
+    ctx.lineTo(borderPosition.x1, borderPosition.y1);
+    ctx.closePath();
+    ctx.fill();
     ctx.lineWidth = 5;
-    // рисуем рамку
-    ctx.strokeRect(borderPositionLeft, borderPositionTop, borderWidth, borderHeight);
-    // вырезаем рамку
-    ctx.clearRect(borderPositionLeft, borderPositionTop, borderWidth, borderHeight);
+    ctx.strokeRect(borderPosition.x1, borderPosition.y1, borderPosition.x2 - borderPosition.x1, borderPosition.y2 - borderPosition.y1);
+    animationId = requestAnimationFrame(drawCanvas);
 }
-function isLeftButton(e) {
-    let button = e.which ? e.which : e.button;
-    return button < 2;
+
+//меняем координаты при движении мышки
+function borderResize(e) {
+    cursorPositionX = e.offsetX * scaleK;
+    cursorPositionY = e.offsetY * scaleK;
+
+    if (y1) {
+        borderPosition.y1 = cursorPositionY;
+    }
+    if (y2) {
+        borderPosition.y2 = cursorPositionY;
+    }
+    if (x1) {
+        borderPosition.x1 = cursorPositionX;
+    }
+    if (x2) {
+        borderPosition.x2 = cursorPositionX;
+    }
+}
+
+// кропнуть картинку
+function cropImg() {
+    let dataUrl = canvas.toDataURL();
+    canvasImgWidth = borderPosition.x2 - borderPosition.x1;
+    canvasImgHeight = borderPosition.y2 - borderPosition.y1;
+
+    new Promise(resolve => {
+        let newImg = new Image();
+        newImg.onload = () => resolve(newImg);
+        newImg.src = dataUrl;
+    }).then(newImg => {
+        canvas.width = canvasImgWidth;
+        canvas.height = canvasImgHeight;
+        ctx.clearRect(0, 0, canvasImgWidth, canvasImgHeight);
+
+        ctx.drawImage(newImg, borderPosition.x1, borderPosition.y1, canvasImgWidth, canvasImgHeight, 0, 0, canvasImgWidth, canvasImgHeight);
+        borderPosition.x1 = borderPosition.y1 = 20;
+        borderPosition.y2 = canvasImgHeight - borderPosition.y1;
+        borderPosition.x2 = canvasImgWidth -borderPosition.x1;
+    });
+}
+
+//скачать картинку
+function downloadImg() {
+    imgCanvas.toBlob(blob => {
+        let url = URL.createObjectURL(blob);
+        let a = document.createElement("a");
+        a.href = url;
+        a.download = "image.png";
+        a.dispatchEvent(new MouseEvent("click"));
+    });
 }
 
 
 fileInput.addEventListener("change", () => {
     if (fileInput.files[0]) {
+        // вызываем функццию для получения img и передаем blob объект полученный из fileInput.
         blobToImg(fileInput.files[0]).then(img => {
-            let ctx = imgCanvas.getContext("2d");
-            imgWidth = img.width;
-            imgHeight = img.height;
+            originalImg = img;
+            canvasImg = img;
+            canvasImgWidth = canvasImg.width;
+            canvasImgHeight = canvasImg.height;
+            canvas.width = canvasImgWidth;
+            canvas.height = canvasImgHeight;
+            borderPosition.x2 = canvasImgWidth - borderPosition.x1;
+            borderPosition.y2 = canvasImgHeight - borderPosition.y1;
 
-            imgCanvas.height = imgHeight;
-            imgCanvas.width = imgWidth;
-            ctx.drawImage(img, 0, 0);
-            drawBorder();
-
-
-            document.querySelector(".btn_download").addEventListener("click", () => {
-                imgCanvas.toBlob(blob => {
-                    let url = URL.createObjectURL(blob);
-                    let a = document.createElement("a");
-                    a.href = url;
-                    a.download = "image.png";
-                    a.dispatchEvent(new MouseEvent("click"));
-                });
-            });
+            // requestAnimationFrame(drawCanvas);
+            drawCanvas();
+            document.querySelector(".btn_download").addEventListener("click", downloadImg);
+            document.querySelector(".btn_cut-off").addEventListener("click", cropImg);
         });
-
     }
 });
-
-
-
-
-//Добавит эти классы
-// &_active-x{
-// }
-// &_active-y{
-// }
-// &_active-top-left-bottom-right{
-// }
-// &_active-bottom-left-top-right{
-// }
-
-
-
-// editor-preview__cropper-border_active-bottom-left-top-right
-
-borderCanvas.addEventListener("mousedown", function (e) {
-    x1 = x2 = e.offsetX;
-    y1 = y2 = e.offsetY;
-    if (isLeftButton(e)) {
-        isMouseDown = true;
-    }
-});
-
-borderCanvas.addEventListener("mousemove", function (e) {
-    let scaleK = borderCanvas.width / borderCanvas.offsetWidth;
+canvas.addEventListener("mousedown", function (e) {
+    scaleK = canvas.width / canvas.offsetWidth;
     cursorPositionX = e.offsetX * scaleK;
     cursorPositionY = e.offsetY * scaleK;
-    if (isMouseDown) {
-        x2 = e.offsetX;
-        y2 = e.offsetY;
-        deltaX = x2 - x1;
-        deltaY = y2 - y1;
+// ПЕРЕДЕЛАТЬ НА СВИТЧКЕЙС
+    if (cursorPositionX < borderPosition.x1 + LIMIT_VAR && cursorPositionX > borderPosition.x1 - LIMIT_VAR && cursorPositionY < borderPosition.y1 + LIMIT_VAR && cursorPositionY > borderPosition.y1 - LIMIT_VAR) {
+        x1 = y1 = 1;
+    } else if (cursorPositionX < borderPosition.x2 + LIMIT_VAR && cursorPositionX > borderPosition.x2 - LIMIT_VAR && cursorPositionY < borderPosition.y1 + LIMIT_VAR && cursorPositionY > borderPosition.y1 - LIMIT_VAR) {
+        x2 = y1 = 1;
+    } else if (cursorPositionX < borderPosition.x2 + LIMIT_VAR && cursorPositionX > borderPosition.x2 - LIMIT_VAR && cursorPositionY < borderPosition.y2 + LIMIT_VAR && cursorPositionY > borderPosition.y2 - LIMIT_VAR) {
+        x2 = y2 = 1;
+    } else if (cursorPositionX < borderPosition.x1 + LIMIT_VAR && cursorPositionX > borderPosition.x1 - LIMIT_VAR && cursorPositionY < borderPosition.y2 + LIMIT_VAR && cursorPositionY > borderPosition.y2 - LIMIT_VAR) {
+        x1 = y2 = 1;
+    } else if (cursorPositionX > borderPosition.x1 + LIMIT_VAR && cursorPositionX < borderPosition.x2 - LIMIT_VAR && cursorPositionY > borderPosition.y1 + LIMIT_VAR && cursorPositionY < borderPosition.y2 - LIMIT_VAR) {
+        // borderPosition.x1 = borderPosition.x1 + deltaX;
+        // borderPosition.y1 = borderPosition.y1 + deltaY;
+        // borderPosition.x2 = borderPosition.x2 + deltaX;
+        // borderPosition.y2 = borderPosition.y2 + deltaY;
+    } else if (cursorPositionX < borderPosition.x1 + LIMIT_VAR && cursorPositionX > borderPosition.x1 - LIMIT_VAR && cursorPositionY > borderPosition.y1 + LIMIT_VAR && cursorPositionY < borderPosition.y2 - LIMIT_VAR) {
+        x1 = 1;
+    } else if (cursorPositionX < borderPosition.x2 + LIMIT_VAR && cursorPositionX > borderPosition.x2 - LIMIT_VAR && cursorPositionY > borderPosition.y1 + LIMIT_VAR && cursorPositionY < borderPosition.y2 - LIMIT_VAR) {
+        x2 = 1;
+    } else if (cursorPositionY < borderPosition.y1 + LIMIT_VAR && cursorPositionY > borderPosition.y1 - LIMIT_VAR && cursorPositionX > borderPosition.x1 + LIMIT_VAR && cursorPositionX < borderPosition.x2 - LIMIT_VAR) {
+        y1 = 1;
+    } else if (cursorPositionY < borderPosition.y2 + LIMIT_VAR && cursorPositionY > borderPosition.y2 - LIMIT_VAR && cursorPositionX > borderPosition.x1 + LIMIT_VAR && cursorPositionX < borderPosition.x2 - LIMIT_VAR) {
+        y2 = 1;
+    } else {
     }
-        if (cursorPositionX < borderPositionLeft + 25 && cursorPositionX > borderPositionLeft - 25 && cursorPositionY < borderPositionTop + 25 && cursorPositionY > borderPositionTop - 25) {
-            if (isMouseDown) {
-                borderPositionLeft = cursorPositionX;
-                borderPositionTop = cursorPositionY;
-            }
-            this.className = "editor-preview__cropper-border editor-preview__cropper-border_active-top-left-bottom-right";
-        } else if (cursorPositionX < borderPositionRight + 25 && cursorPositionX > borderPositionRight - 25 && cursorPositionY < borderPositionTop + 25 && cursorPositionY > borderPositionTop - 25) {
-            if (isMouseDown) {
-                borderPositionRight = cursorPositionX;
-                borderPositionTop = cursorPositionY;
-            }
-            this.className = "editor-preview__cropper-border editor-preview__cropper-border_active-bottom-left-top-right";
-        } else if (cursorPositionX < borderPositionRight + 25 && cursorPositionX > borderPositionRight - 25 && cursorPositionY < borderPositionBottom + 25 && cursorPositionY > borderPositionBottom - 25) {
-            if (isMouseDown) {
-                borderPositionRight = cursorPositionX;
-                borderPositionBottom = cursorPositionY;
-            }
-            this.className = "editor-preview__cropper-border editor-preview__cropper-border_active-top-left-bottom-right";
-        } else if (cursorPositionX < borderPositionLeft + 25 && cursorPositionX > borderPositionLeft - 25 && cursorPositionY < borderPositionBottom + 25 && cursorPositionY > borderPositionBottom - 25) {
-            if (isMouseDown) {
-                borderPositionLeft = cursorPositionX;
-                borderPositionBottom = cursorPositionY;
-            }
-            this.className = "editor-preview__cropper-border editor-preview__cropper-border_active-bottom-left-top-right";
-        } else if (cursorPositionX > borderPositionLeft + 25 && cursorPositionX < borderPositionRight - 25 && cursorPositionY > borderPositionTop + 25 && cursorPositionY < borderPositionBottom - 25) {
-            if (isMouseDown) {
-                borderPositionLeft = borderPositionLeft + deltaX;
-                borderPositionTop = borderPositionTop + deltaY;
-                borderPositionRight = borderPositionRight + deltaX;
-                borderPositionBottom = borderPositionBottom + deltaY;
-            }
-            this.className = "editor-preview__cropper-border editor-preview__cropper-border_active-move";
-        } else if (cursorPositionX < borderPositionLeft + 25 && cursorPositionX > borderPositionLeft - 25 && cursorPositionY > borderPositionTop + 25 && cursorPositionY < borderPositionBottom - 25) {
-            if (isMouseDown) {
-                borderPositionLeft = cursorPositionX;
-            }
-            this.className = "editor-preview__cropper-border editor-preview__cropper-border_active-x";
-        } else if (cursorPositionX < borderPositionRight + 25 && cursorPositionX > borderPositionRight - 25 && cursorPositionY > borderPositionTop + 25 && cursorPositionY < borderPositionBottom - 25) {
-            if (isMouseDown) {
-                borderPositionRight = cursorPositionX;
-            }
-            this.className = "editor-preview__cropper-border editor-preview__cropper-border_active-x";
-        } else if (cursorPositionY < borderPositionTop + 25 && cursorPositionY > borderPositionTop - 25 && cursorPositionX > borderPositionLeft + 25 && cursorPositionX < borderPositionRight - 25) {
-            if (isMouseDown) {
-                borderPositionTop = cursorPositionY;
-            }
-            this.className = "editor-preview__cropper-border editor-preview__cropper-border_active-y";
-        } else if (cursorPositionY < borderPositionBottom + 25 && cursorPositionY > borderPositionBottom - 25 && cursorPositionX > borderPositionLeft + 25 && cursorPositionX < borderPositionRight - 25) {
-            if (isMouseDown) {
-                borderPositionBottom = cursorPositionY;
-            }
-            this.className = "editor-preview__cropper-border editor-preview__cropper-border_active-y";
-        } else {
-            this.className = "editor-preview__cropper-border";
-        }
-
-    if (isMouseDown) {
-        animationId = window.requestAnimationFrame(drawBorder);
-        x1 = x2;
-        y1 = y2;
-    }
-
+    canvas.addEventListener("mousemove", borderResize);
 });
-
-borderCanvas.addEventListener("mouseup", function (e) {
-    this.className = "editor-preview__cropper-border";
-    if (isLeftButton(e)) {
-        isMouseDown = false;
-    }
-    window.cancelAnimationFrame(animationId);
-});
-
-
-document.querySelector(".btn_crop").addEventListener("click", function(){
-
-
-
-
-    // let ctx = imgCanvas.getContext("2d");
-    // let dataUrl = imgCanvas.toDataURL();
-    // imgWidth = borderWidth;
-    // imgHeight = borderHeight;
-    //
-    //
-    // new Promise(resolve => {
-    //     let newImg = new Image();
-    //     newImg.onload = () => resolve(newImg);
-    //     newImg.src = dataUrl;
-    // }).then(newImg => {
-    //
-    //     ctx.clearRect(0, 0, imgWidth, imgWidth);
-    //     // imgCanvas.height = imgHeight;
-    //     // imgCanvas.width = imgWidth;
-    //     ctx.drawImage(newImg, 0, 0);
-    //     drawBorder();
-    // });
-
-
-
+canvas.addEventListener("mouseup", function (e) {
+    canvas.removeEventListener("mousemove", borderResize);
+    x1 = x2 = y1 = y2 = 0;
+    cancelAnimationFrame(animationId);
 });

@@ -171,7 +171,7 @@ body {
     flex-shrink: 1;
     align-self: stretch;
     overflow-y: auto;
-    &__img-wrapper {
+    &__canvas {
         position: relative;
         z-index: 1;
         cursor: pointer;
@@ -191,7 +191,7 @@ body {
 } 
 } 
  
-  
+
  
 
 
@@ -279,12 +279,7 @@ body {
 //    //border-color: rgba(0,0,0,0.5);
 //
 //}
-.editor-preview__cropper-border {
-    z-index: 2;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
+.editor-preview__canvas {
     &_active-x{
         cursor:  url("../img/ui/active-x.svg"), pointer;
     }

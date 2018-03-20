@@ -38,14 +38,16 @@
 </nav>
 <main class="main">
     <div class="status-bar flex">
-            <span class="status-bar__info">
+       <span class="status-bar__info">
                 Photo Editor
-            </span>
-        <label class="btn"  for="fileImage">Upload</label>
-        <button class="btn btn_crop" type="button">Crop</button>
+        </span>
+        <div>
+        <label class="btn"  for="fileInput">Upload</label>
+        <button class="btn btn_cut-off" type="button">Crop</button>
         <button class="btn btn_download" type="button"><i class="icon-download"></i>Downlod this photo!</button>
-        <input type="file" id="fileImage" accept="image/jpeg,image/png">
-    </div>
+        <input type="file" id="fileInput" accept="image/jpeg,image/png">
+        </div>
+        </div>
     <div class="main__content flex">
         <form class="tools" name="tools">
             <div class="tools-wrapper">
@@ -139,9 +141,7 @@
         </form>
         <div class="editor-preview flex flex_column">
             <div class="canvas-wrapper">
-                <canvas class="editor-preview__img-wrapper" id="currentImg" title="Add new image">
-                </canvas>
-                <canvas class="editor-preview__cropper-border"  id="cropperBorder">
+                <canvas class="editor-preview__canvas" id="canvas" title="Add new image">
                 </canvas>
             </div>
             <div class="editor-preview__btns-wrapper">

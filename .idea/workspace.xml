@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="887c85cd-a9ec-4b19-9acc-363f613d5e3c" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Canvas2/.idea/codeStyles/codeStyleConfig.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/Canvas2/.idea/inspectionProfiles/Project_Default.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/common/common.css" afterPath="$PROJECT_DIR$/common/common.css" />
-      <change beforePath="$PROJECT_DIR$/common/common.less" afterPath="$PROJECT_DIR$/common/common.less" />
+      <change beforePath="$PROJECT_DIR$/Canvas2/.idea/workspace.xml" afterPath="$PROJECT_DIR$/Canvas2/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Canvas2/app.js" afterPath="$PROJECT_DIR$/Canvas2/app.js" />
       <change beforePath="$PROJECT_DIR$/components/cropper/cropper.js" afterPath="$PROJECT_DIR$/components/cropper/cropper.js" />
-      <change beforePath="$PROJECT_DIR$/img/ui/active-x.svg" afterPath="$PROJECT_DIR$/img/ui/active-x.svg" />
-      <change beforePath="$PROJECT_DIR$/img/ui/active-y.svg" afterPath="$PROJECT_DIR$/img/ui/active-y.svg" />
-      <change beforePath="$PROJECT_DIR$/img/ui/bottom-left-top-right.svg" afterPath="$PROJECT_DIR$/img/ui/bottom-left-top-right.svg" />
-      <change beforePath="$PROJECT_DIR$/img/ui/move.svg" afterPath="$PROJECT_DIR$/img/ui/move.svg" />
-      <change beforePath="$PROJECT_DIR$/img/ui/top-left-bottom-right.svg" afterPath="$PROJECT_DIR$/img/ui/top-left-bottom-right.svg" />
       <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -30,9 +23,21 @@
       <file leaf-file-name="cropper.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/cropper/cropper.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="646">
+              <caret line="175" column="11" lean-forward="false" selection-start-line="175" selection-start-column="11" selection-end-line="175" selection-end-column="11" />
+              <folding>
+                <element signature="e#375#401#0" expanded="false" />
+                <element signature="n#!!block;n#blobToImg#0" expanded="false" />
+                <element signature="n#!!block;n#drawCanvas#0" expanded="false" />
+                <element signature="n#!!block;n#animation#0" expanded="false" />
+                <element signature="n#!!block;n#borderResize#0" expanded="false" />
+                <element signature="n#!!block;n#cropImg#0" expanded="false" />
+                <element signature="n#!!block;n#downloadImg#0" expanded="false" />
+                <element signature="e#3802#4779#0" expanded="false" />
+                <element signature="e#4832#7302#0" expanded="false" />
+                <element signature="e#7353#7481#0" expanded="false" />
+                <element signature="e#7533#7634#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,11 +45,10 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="92" column="18" lean-forward="true" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
+            <state relative-caret-position="216">
+              <caret line="84" column="29" lean-forward="true" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
               <folding>
                 <element signature="n#div#0;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#2;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
@@ -55,8 +59,8 @@
       <file leaf-file-name="common.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/common.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="678">
-              <caret line="298" column="0" lean-forward="true" selection-start-line="298" selection-start-column="0" selection-end-line="298" selection-end-column="0" />
+            <state relative-caret-position="5066">
+              <caret line="298" column="0" lean-forward="false" selection-start-line="298" selection-start-column="0" selection-end-line="298" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -81,6 +85,10 @@
       <find>crop</find>
       <find>drawCanvas()</find>
       <find>cancelAnimation</find>
+      <find>drawCanvas</find>
+      <find>draw</find>
+      <find>anima</find>
+      <find>toBlob</find>
     </findStrings>
     <replaceStrings>
       <replace>borderPositionTop</replace>
@@ -97,10 +105,10 @@
       <list>
         <option value="$PROJECT_DIR$/common.less" />
         <option value="$PROJECT_DIR$/main.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/common/common.less" />
         <option value="$PROJECT_DIR$/components/cropper/cropper — копия.js" />
         <option value="$PROJECT_DIR$/components/cropper/cropper.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -162,6 +170,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -200,7 +209,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -252,17 +260,18 @@
       <workItem from="1521277915185" duration="8500000" />
       <workItem from="1521294372399" duration="7128000" />
       <workItem from="1521565939898" duration="20773000" />
+      <workItem from="1521741615075" duration="10021000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77755000" />
+    <option name="totallyTimeSpent" value="87776000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06743941" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06691254" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -315,7 +324,59 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#375#401#0" expanded="false" />
+            <element signature="n#!!block;n#blobToImg#0" expanded="false" />
+            <element signature="n#!!block;n#drawCanvas#0" expanded="false" />
+            <element signature="n#!!block;n#animation#0" expanded="false" />
+            <element signature="n#!!block;n#borderResize#0" expanded="false" />
+            <element signature="n#!!block;n#cropImg#0" expanded="false" />
+            <element signature="n#!!block;n#downloadImg#0" expanded="false" />
+            <element signature="e#3802#4779#0" expanded="false" />
+            <element signature="e#4832#7302#0" expanded="false" />
+            <element signature="e#7353#7481#0" expanded="false" />
+            <element signature="e#7533#7634#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="92" column="18" lean-forward="true" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/common.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5066">
+          <caret line="298" column="0" lean-forward="true" selection-start-line="298" selection-start-column="0" selection-end-line="298" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/cropper/cropper.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#375#401#0" expanded="false" />
+            <element signature="n#!!block;n#blobToImg#0" expanded="false" />
+            <element signature="n#!!block;n#drawCanvas#0" expanded="false" />
+            <element signature="n#!!block;n#animation#0" expanded="false" />
+            <element signature="n#!!block;n#borderResize#0" expanded="false" />
+            <element signature="n#!!block;n#cropImg#0" expanded="false" />
+            <element signature="n#!!block;n#downloadImg#0" expanded="false" />
+            <element signature="e#3802#4779#0" expanded="false" />
+            <element signature="e#4832#7302#0" expanded="false" />
+            <element signature="e#7353#7481#0" expanded="false" />
+            <element signature="e#7533#7634#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -325,7 +386,6 @@
           <caret line="38" column="19" lean-forward="true" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="19" />
           <folding>
             <element signature="n#div#0;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
@@ -344,7 +404,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#375#401#0" expanded="false" />
+            <element signature="n#!!block;n#blobToImg#0" expanded="false" />
+            <element signature="n#!!block;n#drawCanvas#0" expanded="false" />
+            <element signature="n#!!block;n#animation#0" expanded="false" />
+            <element signature="n#!!block;n#borderResize#0" expanded="false" />
+            <element signature="n#!!block;n#cropImg#0" expanded="false" />
+            <element signature="n#!!block;n#downloadImg#0" expanded="false" />
+            <element signature="e#3802#4779#0" expanded="false" />
+            <element signature="e#4832#7302#0" expanded="false" />
+            <element signature="e#7353#7481#0" expanded="false" />
+            <element signature="e#7533#7634#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -354,7 +426,6 @@
           <caret line="143" column="31" lean-forward="true" selection-start-line="143" selection-start-column="31" selection-end-line="143" selection-end-column="61" />
           <folding>
             <element signature="n#div#0;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
@@ -373,7 +444,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#375#401#0" expanded="false" />
+            <element signature="n#!!block;n#blobToImg#0" expanded="false" />
+            <element signature="n#!!block;n#drawCanvas#0" expanded="false" />
+            <element signature="n#!!block;n#animation#0" expanded="false" />
+            <element signature="n#!!block;n#borderResize#0" expanded="false" />
+            <element signature="n#!!block;n#cropImg#0" expanded="false" />
+            <element signature="n#!!block;n#downloadImg#0" expanded="false" />
+            <element signature="e#3802#4779#0" expanded="false" />
+            <element signature="e#4832#7302#0" expanded="false" />
+            <element signature="e#7353#7481#0" expanded="false" />
+            <element signature="e#7533#7634#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -383,7 +466,6 @@
           <caret line="44" column="49" lean-forward="false" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="49" />
           <folding>
             <element signature="n#div#0;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
@@ -394,7 +476,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#375#401#0" expanded="false" />
+            <element signature="n#!!block;n#blobToImg#0" expanded="false" />
+            <element signature="n#!!block;n#drawCanvas#0" expanded="false" />
+            <element signature="n#!!block;n#animation#0" expanded="false" />
+            <element signature="n#!!block;n#borderResize#0" expanded="false" />
+            <element signature="n#!!block;n#cropImg#0" expanded="false" />
+            <element signature="n#!!block;n#downloadImg#0" expanded="false" />
+            <element signature="e#3802#4779#0" expanded="false" />
+            <element signature="e#4832#7302#0" expanded="false" />
+            <element signature="e#7353#7481#0" expanded="false" />
+            <element signature="e#7533#7634#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -404,7 +498,6 @@
           <caret line="44" column="49" lean-forward="false" selection-start-line="44" selection-start-column="49" selection-end-line="44" selection-end-column="49" />
           <folding>
             <element signature="n#div#0;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
@@ -415,7 +508,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#375#401#0" expanded="false" />
+            <element signature="n#!!block;n#blobToImg#0" expanded="false" />
+            <element signature="n#!!block;n#drawCanvas#0" expanded="false" />
+            <element signature="n#!!block;n#animation#0" expanded="false" />
+            <element signature="n#!!block;n#borderResize#0" expanded="false" />
+            <element signature="n#!!block;n#cropImg#0" expanded="false" />
+            <element signature="n#!!block;n#downloadImg#0" expanded="false" />
+            <element signature="e#3802#4779#0" expanded="false" />
+            <element signature="e#4832#7302#0" expanded="false" />
+            <element signature="e#7353#7481#0" expanded="false" />
+            <element signature="e#7533#7634#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -432,7 +537,6 @@
           <caret line="66" column="0" lean-forward="true" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding>
             <element signature="n#div#0;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
@@ -443,7 +547,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#375#401#0" expanded="false" />
+            <element signature="n#!!block;n#blobToImg#0" expanded="false" />
+            <element signature="n#!!block;n#drawCanvas#0" expanded="false" />
+            <element signature="n#!!block;n#animation#0" expanded="false" />
+            <element signature="n#!!block;n#borderResize#0" expanded="false" />
+            <element signature="n#!!block;n#cropImg#0" expanded="false" />
+            <element signature="n#!!block;n#downloadImg#0" expanded="false" />
+            <element signature="e#3802#4779#0" expanded="false" />
+            <element signature="e#4832#7302#0" expanded="false" />
+            <element signature="e#7353#7481#0" expanded="false" />
+            <element signature="e#7533#7634#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -451,7 +567,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#375#401#0" expanded="false" />
+            <element signature="n#!!block;n#blobToImg#0" expanded="false" />
+            <element signature="n#!!block;n#drawCanvas#0" expanded="false" />
+            <element signature="n#!!block;n#animation#0" expanded="false" />
+            <element signature="n#!!block;n#borderResize#0" expanded="false" />
+            <element signature="n#!!block;n#cropImg#0" expanded="false" />
+            <element signature="n#!!block;n#downloadImg#0" expanded="false" />
+            <element signature="e#3802#4779#0" expanded="false" />
+            <element signature="e#4832#7302#0" expanded="false" />
+            <element signature="e#7353#7481#0" expanded="false" />
+            <element signature="e#7533#7634#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -459,7 +587,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#375#401#0" expanded="false" />
+            <element signature="n#!!block;n#blobToImg#0" expanded="false" />
+            <element signature="n#!!block;n#drawCanvas#0" expanded="false" />
+            <element signature="n#!!block;n#animation#0" expanded="false" />
+            <element signature="n#!!block;n#borderResize#0" expanded="false" />
+            <element signature="n#!!block;n#cropImg#0" expanded="false" />
+            <element signature="n#!!block;n#downloadImg#0" expanded="false" />
+            <element signature="e#3802#4779#0" expanded="false" />
+            <element signature="e#4832#7302#0" expanded="false" />
+            <element signature="e#7353#7481#0" expanded="false" />
+            <element signature="e#7533#7634#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -488,7 +628,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#375#401#0" expanded="false" />
+            <element signature="n#!!block;n#blobToImg#0" expanded="false" />
+            <element signature="n#!!block;n#drawCanvas#0" expanded="false" />
+            <element signature="n#!!block;n#animation#0" expanded="false" />
+            <element signature="n#!!block;n#borderResize#0" expanded="false" />
+            <element signature="n#!!block;n#cropImg#0" expanded="false" />
+            <element signature="n#!!block;n#downloadImg#0" expanded="false" />
+            <element signature="e#3802#4779#0" expanded="false" />
+            <element signature="e#4832#7302#0" expanded="false" />
+            <element signature="e#7353#7481#0" expanded="false" />
+            <element signature="e#7533#7634#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -528,14 +680,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common/common.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="678">
-          <caret line="298" column="0" lean-forward="true" selection-start-line="298" selection-start-column="0" selection-end-line="298" selection-end-column="0" />
+        <state relative-caret-position="5066">
+          <caret line="298" column="0" lean-forward="false" selection-start-line="298" selection-start-column="0" selection-end-line="298" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -550,11 +701,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="92" column="18" lean-forward="true" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
+        <state relative-caret-position="216">
+          <caret line="84" column="29" lean-forward="true" selection-start-line="84" selection-start-column="29" selection-end-line="84" selection-end-column="29" />
           <folding>
             <element signature="n#div#0;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#2;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
@@ -563,9 +713,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/cropper/cropper.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="55" column="0" lean-forward="true" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="646">
+          <caret line="175" column="11" lean-forward="false" selection-start-line="175" selection-start-column="11" selection-end-line="175" selection-end-column="11" />
+          <folding>
+            <element signature="e#375#401#0" expanded="false" />
+            <element signature="n#!!block;n#blobToImg#0" expanded="false" />
+            <element signature="n#!!block;n#drawCanvas#0" expanded="false" />
+            <element signature="n#!!block;n#animation#0" expanded="false" />
+            <element signature="n#!!block;n#borderResize#0" expanded="false" />
+            <element signature="n#!!block;n#cropImg#0" expanded="false" />
+            <element signature="n#!!block;n#downloadImg#0" expanded="false" />
+            <element signature="e#3802#4779#0" expanded="false" />
+            <element signature="e#4832#7302#0" expanded="false" />
+            <element signature="e#7353#7481#0" expanded="false" />
+            <element signature="e#7533#7634#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

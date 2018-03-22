@@ -28,6 +28,7 @@
                     };
                 removeListeners = bindListeners(previewCanvas, position);
                 animate(() => {
+                    console.log(frameRequest);
                     renderOverlay(position.x, position.y, position.r);
                     makePreview(previewContext, img, overlayCanvas);
                 });

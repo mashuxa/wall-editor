@@ -1,6 +1,7 @@
 "use strict";
 const APP_NAME = "Photo Walls";
 const LIMIT_VAR = 25;
+const POSITION_START_BORDERS = 50;
 const NEW_IMG_NAME = "photo_walls_editor_image.png";
 // for reset
 let originalImg;
@@ -9,15 +10,14 @@ let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let fileInput = document.getElementById("fileInput");
 let canvasImg, canvasImgWidth, canvasImgHeight;
-let borderPosition = {
-    x1: 50,
-    y1: 50
-};
 let cursorPositionX, cursorPositionY;
-
 let animationId;
 let scaleK;
 let x1, x2, y1, y2;
+let borderPosition = {
+    x1: POSITION_START_BORDERS,
+    y1: POSITION_START_BORDERS
+};
 //<<<<<<< MAIN >>>>>>>//
 // Получаем ссылку из blob объекта для картинки и загружаем её
 function blobToImg(blob) {
@@ -172,5 +172,67 @@ canvas.addEventListener("mouseout", function (e) {
 
 //<<<<<<< end MAIN >>>>>>>/
 
+//<<<<<<< ZOOM >>>>>>>/
+let plusIntervalId;
 
-//<<<<<<< MAIN >>>>>>>/
+document.forms.tools.btnPlus.addEventListener("mousedown", ()=>{
+    let offsetWidth = canvas.offsetWidth;
+    plusIntervalId = setInterval(function( ){
+        offsetWidth = offsetWidth + 1;
+        canvas.style.width = offsetWidth + "px;"; 
+    } , 20);
+});
+document.forms.tools.btnPlus.addEventListener("mouseup", ()=>{
+    clearInterval(plusIntervalId);
+});
+
+document.forms.tools.btnMinus.addEventListener("click", ()=>{
+
+});
+document.forms.tools.btnReset.addEventListener("click", ()=>{
+
+});
+
+//<<<<<<< end ZOOM >>>>>>>/
+
+
+
+//<<<<<<< PROPORTIONS for crop >>>>>>>/
+function drawByProportions(propWidth, propHeight) {
+    let borderWidth = canvasImgWidth;
+    let borderHeight = (canvasImgWidth /propWidth) * propHeight;
+
+        if(borderHeight > canvasImgHeight) {
+           borderHeight = canvasImgHeight;
+           borderWidth = (borderHeight / propHeight) * propWidth;
+        }
+    borderPosition.x1= (canvasImgWidth - borderWidth)/2;
+    borderPosition.x2= borderPosition.x1 + borderWidth;
+    borderPosition.y1= (canvasImgHeight - borderHeight)/2;
+    borderPosition.y2= borderPosition.y1 + borderHeight;
+    drawCanvas();
+}
+document.forms.tools.btn1x1.addEventListener("click", ()=>{
+    drawByProportions(1, 1);
+});
+document.forms.tools.btn4x3.addEventListener("click", ()=>{
+    drawByProportions(4, 3);
+});
+document.forms.tools.btn16x9.addEventListener("click", ()=>{
+    drawByProportions(16, 9);
+});
+document.forms.tools.proportionsWidth.addEventListener("keyup", ()=>{
+    let valWidth = document.forms.tools.proportionsWidth.value;
+    let valHeight = document.forms.tools.proportionsHeight.value;
+    if(valWidth && valHeight){
+        drawByProportions(valWidth, valHeight);
+    }
+ });
+document.forms.tools.proportionsHeight.addEventListener("keyup", ()=>{
+    let valWidth = document.forms.tools.proportionsWidth.value;
+    let valHeight = document.forms.tools.proportionsHeight.value;
+    if(valWidth && valHeight){
+        drawByProportions(valWidth, valHeight);
+    }
+ });
+//<<<<<<< end PROPORTIONS for crop >>>>>>>/

@@ -56,13 +56,13 @@
                     <i class="icon-zoom"></i> Zoom
                 </h6>
                 <div class="flex">
-                    <button class="btn btn_zoom btn_plus" type="button">
+                    <button class="btn btn_zoom" id="btnPlus" type="button">
                         +
                     </button>
-                    <button class="btn btn_zoom btn_minus" type="button">
+                    <button class="btn btn_zoom" id="btnMinus" type="button">
                         -
                     </button>
-                    <button class="btn btn_zoom btn_reset" type="button">
+                    <button class="btn btn_zoom" id="btnReset" type="button">
                         <i class="icon-reset"></i>
                     </button>
                 </div>
@@ -74,21 +74,21 @@
                 </h6>
 
                 <div class="flex">
-                    <button class="btn btn_crop btn_1-1" type="button">
+                    <button class="btn btn_crop" id="btn1x1" type="button">
                         1:1
                     </button>
-                    <button class="btn btn_crop btn_4-3" type="button">
+                    <button class="btn btn_crop" id="btn4x3" type="button">
                         4:3
                     </button>
-                    <button class="btn btn_crop btn_16-9" type="button">
+                    <button class="btn btn_crop" id="btn16x9" type="button">
                         16:9
                     </button>
                 </div>
                 <small>Proportions:</small>
                 <div class="flex">
-                    <input class="" type="number" min="0">
+                    <input id="proportionsWidth" type="number" min="0">
                     <span>:</span>
-                    <input class="" type="number" min="0">
+                    <input id="proportionsHeight" type="number" min="0">
                 </div>
             </div>
             <div class="tools__filter">

@@ -15,15 +15,15 @@ let animationId;
 let scaleK;
 let x1, x2, y1, y2;
 let imgSettings = {
-    filterBrightness: 0,
-    filterContrast: 0,
+    filterBrightness: 1,
+    filterContrast: 1,
     filterHueRotate: 0,
-    filterSaturate: 0,
+    filterSaturate: 1,
     filterGrayscale: 0,
     filterSepia: 0,
     filterInvert: 0,
     filterBlur: 0,
-    filterOpacity: 0,
+    filterOpacity: 1,
     x1: POSITION_START_BORDERS,
     y1: POSITION_START_BORDERS
 };
@@ -50,7 +50,14 @@ function loadImg() {
             drawCanvas();
 
             document.querySelector(".btn_download").addEventListener("click", downloadImg);
-            document.querySelector(".btn_apply").addEventListener("click", cropImg);
+            document.querySelector(".btn_apply").addEventListener("click", ()=>{
+
+                cropImg();
+                // ДОБАВИТЬ ФУНКЦИЮ КОТОРОЯ ПРИМЕНИТ ФИЛЬРЫ К ОРИГИНАЛЬНОМУ СКАЧИВАЕМОМУ ИЗОБРАЖЕНИЮ
+                applyFilters();
+            });
+
+            canvas.style.backgroundImage = "none";
         });
     }
 }
@@ -66,29 +73,20 @@ function blobToImg(blob) {
     });
 }
 
+//фильтры
+function applyFilters(ctx) {
+    ctx.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")";
+}
+
 // перерисовка канваса
 function drawCanvas() {
-
 
 
     ctx.clearRect(0, 0, canvasImgWidth, canvasImgHeight);
     ctx.drawImage(canvasImg, 0, 0);
 
 
-
-    ctx.filter = "brightness(" + imgSettings.filterBrightness + "%)";
-    ctx.filter = "contrast(" + imgSettings.filterContrast + "%)";
-    ctx.filter = "hue-rotate(" + imgSettings.filterHueRotate + ")";
-    ctx.filter = "saturate(" + imgSettings.filterSaturate + "%)";
-    ctx.filter = "grayscale(" + imgSettings.filterGrayscale + "%)";
-    ctx.filter = "sepia(" + imgSettings.filterSepia + "%)";
-    ctx.filter = "invert(" + imgSettings.filterInvert + "%)";
-    ctx.filter = "blur(" + imgSettings.filterBlur + "px)";
-    ctx.filter = "opacity(" + imgSettings.filterOpacity + "px)";
-
-    // let df = "brightness(" + imgSettings.filterBrightness + "%) " + "contrast(" + imgSettings.filterContrast + "%) " + "hue-rotate(" + imgSettings.filterHueRotate + "deg) " + "saturate(" + imgSettings.filterSaturate + "%) " + "grayscale(" + imgSettings.filterGrayscale + "%) " + "sepia(" + imgSettings.filterSepia + "%) " + "invert(" + imgSettings.filterInvert + "%) " + "blur(" + imgSettings.filterBlur + "px) " + "opacity(" + imgSettings.filterOpacity + "px)";
-// console.log(df);
-//     ctx.filter = df;
+    applyFilters(ctx);
     ctx.fillStyle = 'rgba(0,0,0,0.5)';
     ctx.beginPath();
     ctx.lineTo(0, 0);
@@ -105,6 +103,7 @@ function drawCanvas() {
     ctx.fill();
     ctx.lineWidth = 5;
     ctx.strokeRect(imgSettings.x1, imgSettings.y1, imgSettings.x2 - imgSettings.x1, imgSettings.y2 - imgSettings.y1);
+
 }
 
 // вызов плавной анимации
@@ -161,6 +160,7 @@ function cropImg() {
         drawCanvas();
     });
 }
+
 
 //скачать картинку
 function downloadImg() {
@@ -245,6 +245,7 @@ document.forms.tools.btnReset.addEventListener("mousedown", () => {
         canvas.style.maxWidth = "100%";
         canvas.style.width = canvasImgWidth + "px";
     }
+    drawCanvas();
 });
 
 //<<<<<<< end ZOOM >>>>>>>/
@@ -297,27 +298,26 @@ document.forms.tools.proportionsHeight.addEventListener("keyup", () => {
 document.forms.tools.filterBrightness.addEventListener("click", () => {
 });
 document.forms.tools.querySelectorAll("input[type='range']").forEach((el) => {
+    el.addEventListener("click", () => {
+        imgSettings[el.id] = Number(el.value);
+        drawCanvas();
+    });
     el.addEventListener("mousedown", () => {
         if (canvasImg) {
-            console.log("+");
-            // el.disabled = false;
+
+
             animationId = requestAnimationFrame(animation);
-            // imgSettings[el.id] = Number(el.value);
-            // console.log(imgSettings);
         } else {
-            // el.setAttribute("disabled", "true");
+
         }
     });
-    el.addEventListener("mousemove", ()=>{
+    el.addEventListener("mousemove", () => {
         if (canvasImg) {
             imgSettings[el.id] = Number(el.value);
-            // console.log(imgSettings);
         }
     });
     el.addEventListener("mouseup", () => {
-
         cancelAnimationFrame(animationId);
-        console.log(imgSettings);
     });
 });
 //<<<<<<< end FILTERS >>>>>>>/

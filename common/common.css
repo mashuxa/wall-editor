@@ -197,12 +197,21 @@ input[type=range]::-webkit-slider-thumb {
   padding: 20px 0;
 }
 .tools-wrapper {
+  width: 200px;
   overflow-y: auto;
   padding-right: 10px;
   padding-bottom: 10px;
 }
 .tools .filter-name {
   padding-right: 10px;
+}
+.filters label {
+  display: block;
+}
+.filters input[type="range"] {
+  display: block;
+  width: 100%;
+  margin: 15px 0 0;
 }
 .editor-preview {
   flex-grow: 1;
@@ -211,6 +220,7 @@ input[type=range]::-webkit-slider-thumb {
   overflow: auto;
 }
 .editor-preview__canvas {
+  margin: auto;
   max-width: 100%;
   cursor: pointer;
   background-size: contain;
@@ -238,6 +248,7 @@ input[type=range]::-webkit-slider-thumb {
   padding: 20px;
 }
 .canvas-wrapper {
+  display: flex;
   border: 1px dotted silver;
   position: relative;
   overflow: auto;

@@ -50,16 +50,14 @@ function loadImg() {
             drawCanvas();
 
             document.querySelector(".btn_download").addEventListener("click", downloadImg);
-            document.querySelector(".btn_apply").addEventListener("click", ()=>{
-
-                cropImg();
-                // ДОБАВИТЬ ФУНКЦИЮ КОТОРОЯ ПРИМЕНИТ ФИЛЬРЫ К ОРИГИНАЛЬНОМУ СКАЧИВАЕМОМУ ИЗОБРАЖЕНИЮ
-                applyFilters();
-            });
+            document.querySelector(".btn_apply").addEventListener("click", applyAll);
 
             canvas.style.backgroundImage = "none";
         });
     }
+    document.body.querySelectorAll('[type="range"]').forEach((el) => {
+        el.disabled = false;
+    });
 }
 
 // Получаем ссылку из blob объекта для картинки и загружаем её
@@ -74,21 +72,26 @@ function blobToImg(blob) {
 }
 
 //фильтры
-function applyFilters(ctx) {
+function applyFilters() {
+//     return new Promise(function(resolve) {
+//         ctx.clearRect(0, 0, canvasImgWidth, canvasImgHeight);
+//         ctx.drawImage(canvasImg, 0, 0);
+//         resolve(ctx.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")");
+//     });
+
     ctx.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")";
 }
 
 // перерисовка канваса
 function drawCanvas() {
-
-
+    // КАК дождаться прорисовки канваса?
+    // applyFilters(ctx).then(result => {
     ctx.clearRect(0, 0, canvasImgWidth, canvasImgHeight);
     ctx.drawImage(canvasImg, 0, 0);
 
-
     applyFilters(ctx);
-    ctx.fillStyle = 'rgba(0,0,0,0.5)';
     ctx.beginPath();
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
     ctx.lineTo(0, 0);
     ctx.lineTo(canvasImgWidth, 0);
     ctx.lineTo(canvasImgWidth, canvasImgHeight);
@@ -103,7 +106,7 @@ function drawCanvas() {
     ctx.fill();
     ctx.lineWidth = 5;
     ctx.strokeRect(imgSettings.x1, imgSettings.y1, imgSettings.x2 - imgSettings.x1, imgSettings.y2 - imgSettings.y1);
-
+    // });
 }
 
 // вызов плавной анимации
@@ -137,22 +140,29 @@ function borderResize(e) {
     }
 }
 
+
+
 // кропнуть картинку
-function cropImg() {
+function applyAll() {
+
     canvasImgWidth = imgSettings.x2 - imgSettings.x1;
     canvasImgHeight = imgSettings.y2 - imgSettings.y1;
     canvas.width = canvasImgWidth;
     canvas.height = canvasImgHeight;
     ctx.clearRect(0, 0, canvasImgWidth, canvasImgHeight);
     ctx.drawImage(canvasImg, imgSettings.x1, imgSettings.y1, canvasImgWidth, canvasImgHeight, 0, 0, canvasImgWidth, canvasImgHeight);
+    ctx.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")";
+
     new Promise(resolve => {
-        let dataUrl = canvas.toDataURL();
-        let newImg = new Image();
-        newImg.onload = () => resolve(newImg);
-        newImg.src = dataUrl;
+            let dataUrl = canvas.toDataURL();
+            let newImg = new Image();
+            newImg.onload = () => resolve(newImg);
+            newImg.src = dataUrl;
+            document.body.appendChild(newImg);
     }, reject => {
         alert("Error!");
     }).then(newImg => {
+
         canvasImg = newImg;
         imgSettings.x1 = imgSettings.y1 = 20;
         imgSettings.y2 = canvasImgHeight - imgSettings.y1;
@@ -160,8 +170,12 @@ function cropImg() {
         drawCanvas();
     });
 }
-
-
+// let tempCanvas = document.createElement("canvas");
+// tempCanvas.width = canvasImgWidth;
+// tempCanvas.height = canvasImgHeight;
+// let ctxTempCanvas = tempCanvas.getContext("2d");
+// ctxTempCanvas.drawImage(canvasImg, 0, 0);
+// ctxTempCanvas
 //скачать картинку
 function downloadImg() {
     let a = document.createElement("a");
@@ -218,7 +232,6 @@ canvas.addEventListener("mouseout", function (e) {
 //<<<<<<< ZOOM >>>>>>>/
 
 document.forms.tools.btnPlus.addEventListener("mousedown", () => {
-
     if (canvasImg) {
         canvas.style.width = canvas.offsetWidth + 5 + "px";
         canvas.style.maxWidth = "none";
@@ -228,6 +241,9 @@ document.forms.tools.btnPlus.addEventListener("mousedown", () => {
     }
 });
 document.forms.tools.btnPlus.addEventListener("mouseup", () => {
+    clearInterval(plusIntervalId);
+});
+document.forms.tools.btnPlus.addEventListener("mouseout", () => {
     clearInterval(plusIntervalId);
 });
 document.forms.tools.btnMinus.addEventListener("mousedown", () => {
@@ -240,12 +256,15 @@ document.forms.tools.btnMinus.addEventListener("mousedown", () => {
 document.forms.tools.btnMinus.addEventListener("mouseup", () => {
     clearInterval(minusIntervalId);
 });
+document.forms.tools.btnMinus.addEventListener("mouseout", () => {
+    clearInterval(minusIntervalId);
+});
 document.forms.tools.btnReset.addEventListener("mousedown", () => {
     if (canvasImg) {
         canvas.style.maxWidth = "100%";
         canvas.style.width = canvasImgWidth + "px";
     }
-    drawCanvas();
+    // drawCanvas();
 });
 
 //<<<<<<< end ZOOM >>>>>>>/
@@ -295,20 +314,14 @@ document.forms.tools.proportionsHeight.addEventListener("keyup", () => {
 
 //<<<<<<< FILTERS >>>>>>>/
 
-document.forms.tools.filterBrightness.addEventListener("click", () => {
-});
 document.forms.tools.querySelectorAll("input[type='range']").forEach((el) => {
     el.addEventListener("click", () => {
         imgSettings[el.id] = Number(el.value);
         drawCanvas();
     });
-    el.addEventListener("mousedown", () => {
+    el.addEventListener("mouseover", () => {
         if (canvasImg) {
-
-
             animationId = requestAnimationFrame(animation);
-        } else {
-
         }
     });
     el.addEventListener("mousemove", () => {
@@ -316,7 +329,8 @@ document.forms.tools.querySelectorAll("input[type='range']").forEach((el) => {
             imgSettings[el.id] = Number(el.value);
         }
     });
-    el.addEventListener("mouseup", () => {
+    el.addEventListener("mouseout", () => {
+        drawCanvas();
         cancelAnimationFrame(animationId);
     });
 });

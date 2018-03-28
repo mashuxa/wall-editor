@@ -3,8 +3,6 @@ const APP_NAME = "Photo Walls";
 const LIMIT_VAR = 25;
 const POSITION_START_BORDERS = 50;
 const NEW_IMG_NAME = "photo_walls_editor_image.png";
-// for reset
-let originalImg;
 // work variables
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
@@ -30,15 +28,24 @@ let imgSettings = {
 let plusIntervalId, minusIntervalId;
 
 //<<<<<<< MAIN >>>>>>>//
+function showPreloader(){
+    let preloader = document.createElement("img");
+    preloader.id = "preloader";
+    preloader.src = "img/ui/preloader.svg";
+    document.querySelector(".canvas-wrapper").appendChild(preloader);
+}
+function hidePreloader() {
+    document.getElementById("preloader").remove();
+}
 function loadImg() {
     let isContinueChange = true;
     if (canvasImg) {
         isContinueChange = confirm("The current image will be overwritten. Are you sure you want to continue?");
     }
     if (isContinueChange && fileInput.files[0]) {
+        showPreloader();
         // вызываем функццию для получения img и передаем blob объект полученный из fileInput.
         blobToImg(fileInput.files[0]).then(img => {
-            originalImg = img;
             canvasImg = img;
             canvasImgWidth = canvasImg.width;
             canvasImgHeight = canvasImg.height;
@@ -46,20 +53,18 @@ function loadImg() {
             canvas.height = canvasImgHeight;
             imgSettings.x2 = canvasImgWidth - imgSettings.x1;
             imgSettings.y2 = canvasImgHeight - imgSettings.y1;
-
             drawCanvas();
-
             document.querySelector(".btn_download").addEventListener("click", downloadImg);
             document.querySelector(".btn_apply").addEventListener("click", applyAll);
-
+            document.querySelector(".btn_reset").addEventListener("click", resetCssFilters);
             canvas.style.backgroundImage = "none";
+            hidePreloader();
+        });
+        document.body.querySelectorAll('[type="range"]').forEach((el) => {
+            el.disabled = false;
         });
     }
-    document.body.querySelectorAll('[type="range"]').forEach((el) => {
-        el.disabled = false;
-    });
 }
-
 // Получаем ссылку из blob объекта для картинки и загружаем её
 function blobToImg(blob) {
     return new Promise(resolve => {
@@ -70,26 +75,11 @@ function blobToImg(blob) {
         alert("Error!");
     });
 }
-
-//фильтры
-function applyFilters() {
-//     return new Promise(function(resolve) {
-//         ctx.clearRect(0, 0, canvasImgWidth, canvasImgHeight);
-//         ctx.drawImage(canvasImg, 0, 0);
-//         resolve(ctx.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")");
-//     });
-
-    ctx.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")";
-}
-
 // перерисовка канваса
 function drawCanvas() {
-    // КАК дождаться прорисовки канваса?
-    // applyFilters(ctx).then(result => {
     ctx.clearRect(0, 0, canvasImgWidth, canvasImgHeight);
     ctx.drawImage(canvasImg, 0, 0);
-
-    applyFilters(ctx);
+    applyCssFilters();
     ctx.beginPath();
     ctx.fillStyle = 'rgba(0,0,0,0.5)';
     ctx.lineTo(0, 0);
@@ -106,76 +96,12 @@ function drawCanvas() {
     ctx.fill();
     ctx.lineWidth = 5;
     ctx.strokeRect(imgSettings.x1, imgSettings.y1, imgSettings.x2 - imgSettings.x1, imgSettings.y2 - imgSettings.y1);
-    // });
 }
-
 // вызов плавной анимации
 function animation() {
     animationId = requestAnimationFrame(animation);
     drawCanvas();
 }
-
-//меняем координаты при движении мышки
-function borderResize(e) {
-    cursorPositionX = e.offsetX * scaleK;
-    cursorPositionY = e.offsetY * scaleK;
-    if (x1 && x2 && y1 && y2) {
-        imgSettings.x1 = Math.max((imgSettings.x1 + e.movementX), 0);
-        imgSettings.x2 = Math.min((imgSettings.x2 + e.movementX), canvasImgWidth);
-        imgSettings.y1 = Math.max((imgSettings.y1 + e.movementY), 0);
-        imgSettings.y2 = Math.min((imgSettings.y2 + e.movementY), canvasImgHeight);
-        return;
-    }
-    if (y1) {
-        imgSettings.y1 = Math.max(cursorPositionY, 0);
-    }
-    if (y2) {
-        imgSettings.y2 = Math.min(cursorPositionY, canvasImgHeight);
-    }
-    if (x1) {
-        imgSettings.x1 = Math.max(cursorPositionX, 0);
-    }
-    if (x2) {
-        imgSettings.x2 = Math.min(cursorPositionX, canvasImgWidth);
-    }
-}
-
-
-
-// кропнуть картинку
-function applyAll() {
-
-    canvasImgWidth = imgSettings.x2 - imgSettings.x1;
-    canvasImgHeight = imgSettings.y2 - imgSettings.y1;
-    canvas.width = canvasImgWidth;
-    canvas.height = canvasImgHeight;
-    ctx.clearRect(0, 0, canvasImgWidth, canvasImgHeight);
-    ctx.drawImage(canvasImg, imgSettings.x1, imgSettings.y1, canvasImgWidth, canvasImgHeight, 0, 0, canvasImgWidth, canvasImgHeight);
-    ctx.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")";
-
-    new Promise(resolve => {
-            let dataUrl = canvas.toDataURL();
-            let newImg = new Image();
-            newImg.onload = () => resolve(newImg);
-            newImg.src = dataUrl;
-            document.body.appendChild(newImg);
-    }, reject => {
-        alert("Error!");
-    }).then(newImg => {
-
-        canvasImg = newImg;
-        imgSettings.x1 = imgSettings.y1 = 20;
-        imgSettings.y2 = canvasImgHeight - imgSettings.y1;
-        imgSettings.x2 = canvasImgWidth - imgSettings.x1;
-        drawCanvas();
-    });
-}
-// let tempCanvas = document.createElement("canvas");
-// tempCanvas.width = canvasImgWidth;
-// tempCanvas.height = canvasImgHeight;
-// let ctxTempCanvas = tempCanvas.getContext("2d");
-// ctxTempCanvas.drawImage(canvasImg, 0, 0);
-// ctxTempCanvas
 //скачать картинку
 function downloadImg() {
     let a = document.createElement("a");
@@ -183,8 +109,55 @@ function downloadImg() {
     a.download = NEW_IMG_NAME;
     a.dispatchEvent(new MouseEvent("click"));
 }
-
 fileInput.addEventListener("change", loadImg);
+//<<<<<<< end MAIN >>>>>>>/
+
+
+//<<<<<<< ZOOM >>>>>>>/
+document.forms.tools.btnPlus.addEventListener("mousedown", () => {
+    if (canvasImg) {
+        canvas.style.width = canvas.offsetWidth + 5 + "px";
+        canvas.style.maxWidth = "none";
+        plusIntervalId = setInterval(function () {
+            canvas.style.width = canvas.offsetWidth + 5 + "px";
+        }, 20);
+    }
+});
+document.forms.tools.btnPlus.addEventListener("mouseup", () => {
+    clearInterval(plusIntervalId);
+});
+document.forms.tools.btnPlus.addEventListener("mouseout", () => {
+    clearInterval(plusIntervalId);
+});
+document.forms.tools.btnMinus.addEventListener("mousedown", () => {
+    if (canvasImg) {
+        minusIntervalId = setInterval(function () {
+            canvas.style.width = canvas.offsetWidth - 5 + "px";
+        }, 20);
+    }
+});
+document.forms.tools.btnMinus.addEventListener("mouseup", () => {
+    clearInterval(minusIntervalId);
+});
+document.forms.tools.btnMinus.addEventListener("mouseout", () => {
+    clearInterval(minusIntervalId);
+});
+document.forms.tools.btnReset.addEventListener("mousedown", () => {
+    if (canvasImg) {
+        canvas.style.maxWidth = "100%";
+        canvas.style.width = canvasImgWidth + "px";
+    }
+    // drawCanvas();
+});
+//<<<<<<< end ZOOM >>>>>>>/
+
+
+
+
+
+
+
+//<<<<<<<BORDERS & PROPORTIONS for crop >>>>>>>/
 canvas.addEventListener("mousedown", function (e) {
     if (canvasImg) {
         animationId = requestAnimationFrame(animation);
@@ -225,56 +198,33 @@ canvas.addEventListener("mouseout", function (e) {
     cancelAnimationFrame(animationId);
     canvas.removeEventListener("mousemove", borderResize);
 });
-
-//<<<<<<< end MAIN >>>>>>>/
-
-
-//<<<<<<< ZOOM >>>>>>>/
-
-document.forms.tools.btnPlus.addEventListener("mousedown", () => {
-    if (canvasImg) {
-        canvas.style.width = canvas.offsetWidth + 5 + "px";
-        canvas.style.maxWidth = "none";
-        plusIntervalId = setInterval(function () {
-            canvas.style.width = canvas.offsetWidth + 5 + "px";
-        }, 20);
+//меняем координаты при движении мышки
+function borderResize(e) {
+    cursorPositionX = e.offsetX * scaleK;
+    cursorPositionY = e.offsetY * scaleK;
+    if (x1 && x2 && y1 && y2) {
+        imgSettings.x1 = Math.max((imgSettings.x1 + e.movementX), 0);
+        imgSettings.x2 = Math.min((imgSettings.x2 + e.movementX), canvasImgWidth);
+        imgSettings.y1 = Math.max((imgSettings.y1 + e.movementY), 0);
+        imgSettings.y2 = Math.min((imgSettings.y2 + e.movementY), canvasImgHeight);
+        return;
     }
-});
-document.forms.tools.btnPlus.addEventListener("mouseup", () => {
-    clearInterval(plusIntervalId);
-});
-document.forms.tools.btnPlus.addEventListener("mouseout", () => {
-    clearInterval(plusIntervalId);
-});
-document.forms.tools.btnMinus.addEventListener("mousedown", () => {
-    if (canvasImg) {
-        minusIntervalId = setInterval(function () {
-            canvas.style.width = canvas.offsetWidth - 5 + "px";
-        }, 20);
+    if (y1) {
+        imgSettings.y1 = Math.max(cursorPositionY, 0);
     }
-});
-document.forms.tools.btnMinus.addEventListener("mouseup", () => {
-    clearInterval(minusIntervalId);
-});
-document.forms.tools.btnMinus.addEventListener("mouseout", () => {
-    clearInterval(minusIntervalId);
-});
-document.forms.tools.btnReset.addEventListener("mousedown", () => {
-    if (canvasImg) {
-        canvas.style.maxWidth = "100%";
-        canvas.style.width = canvasImgWidth + "px";
+    if (y2) {
+        imgSettings.y2 = Math.min(cursorPositionY, canvasImgHeight);
     }
-    // drawCanvas();
-});
-
-//<<<<<<< end ZOOM >>>>>>>/
-
-
-//<<<<<<< PROPORTIONS for crop >>>>>>>/
+    if (x1) {
+        imgSettings.x1 = Math.max(cursorPositionX, 0);
+    }
+    if (x2) {
+        imgSettings.x2 = Math.min(cursorPositionX, canvasImgWidth);
+    }
+}
 function drawByProportions(propWidth, propHeight) {
     let borderWidth = canvasImgWidth;
     let borderHeight = (canvasImgWidth / propWidth) * propHeight;
-
     if (borderHeight > canvasImgHeight) {
         borderHeight = canvasImgHeight;
         borderWidth = (borderHeight / propHeight) * propWidth;
@@ -285,7 +235,6 @@ function drawByProportions(propWidth, propHeight) {
     imgSettings.y2 = imgSettings.y1 + borderHeight;
     drawCanvas();
 }
-
 document.forms.tools.btn1x1.addEventListener("click", () => {
     drawByProportions(1, 1);
 });
@@ -313,13 +262,76 @@ document.forms.tools.proportionsHeight.addEventListener("keyup", () => {
 
 
 //<<<<<<< FILTERS >>>>>>>/
+function applyCssFilters() {
+    canvas.style.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")";
+}
+function resetCssFilters(){
+    imgSettings.filterBrightness = 1;
+    imgSettings.filterContrast = 1;
+    imgSettings.filterHueRotate = 0;
+    imgSettings.filterSaturate = 1;
+    imgSettings.filterGrayscale = 0;
+    imgSettings.filterSepia = 0;
+    imgSettings.filterInvert = 0;
+    imgSettings.filterBlur = 0;
+    imgSettings.filterOpacity = 1;
+    document.getElementById("filterBrightness").value = 1;
+    document.getElementById("filterContrast").value = 1;
+    document.getElementById("filterHueRotate").value = 0;
+    document.getElementById("filterSaturate").value = 1;
+    document.getElementById("filterGrayscale").value = 0;
+    document.getElementById("filterSepia").value = 0;
+    document.getElementById("filterInvert").value = 0;
+    document.getElementById("filterBlur").value = 0;
+    document.getElementById("filterOpacity").value = 1; 
+}
 
+//применяем ВСЕ фильтры
+//фильтры
+function applyJsFilters() {
+    ctx.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")";
+}
+function resetJsFilters() {
+    ctx.filter = "brightness(1) contrast(1) hue-rotate(0) saturate(1) grayscale(0) sepia(0) invert(0) blur(0) opacity(1)";
+}
+
+
+function applyAll() {
+    new Promise(resolve => {
+        showPreloader();
+        canvasImgWidth = imgSettings.x2 - imgSettings.x1;
+        canvasImgHeight = imgSettings.y2 - imgSettings.y1;
+        canvas.width = canvasImgWidth;
+        canvas.height = canvasImgHeight;
+        ctx.clearRect(0, 0, canvasImgWidth, canvasImgHeight);
+        applyJsFilters();
+        ctx.drawImage(canvasImg, imgSettings.x1, imgSettings.y1, canvasImgWidth, canvasImgHeight, 0, 0, canvasImgWidth, canvasImgHeight);
+        let dataUrl = canvas.toDataURL();
+        let newImg = new Image();
+        newImg.onload = () => resolve(newImg);
+        newImg.src = dataUrl;
+    }, reject => {
+        alert("Error!");
+    }).then(newImg => {
+        canvasImg = newImg;
+
+        imgSettings.x1 = imgSettings.y1 = 20;
+        imgSettings.y2 = canvasImgHeight - imgSettings.y1;
+        imgSettings.x2 = canvasImgWidth - imgSettings.x1;
+
+
+        resetCssFilters();
+        resetJsFilters();
+        drawCanvas();
+        hidePreloader();
+    });
+}
 document.forms.tools.querySelectorAll("input[type='range']").forEach((el) => {
     el.addEventListener("click", () => {
         imgSettings[el.id] = Number(el.value);
         drawCanvas();
     });
-    el.addEventListener("mouseover", () => {
+    el.addEventListener("mousedown", () => {
         if (canvasImg) {
             animationId = requestAnimationFrame(animation);
         }
@@ -329,7 +341,7 @@ document.forms.tools.querySelectorAll("input[type='range']").forEach((el) => {
             imgSettings[el.id] = Number(el.value);
         }
     });
-    el.addEventListener("mouseout", () => {
+    el.addEventListener("mouseup", () => {
         drawCanvas();
         cancelAnimationFrame(animationId);
     });

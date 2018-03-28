@@ -34,6 +34,21 @@
   src: local('Lato Black'), local('Lato-Black'), url('../fonts/lato/lato-v14-latin-ext_latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/lato/lato-v14-latin-ext_latin-900.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/lato/lato-v14-latin-ext_latin-900.woff') format('woff'), /* Modern Browsers */ url('../fonts/lato/lato-v14-latin-ext_latin-900.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/lato/lato-v14-latin-ext_latin-900.svg#Lato') format('svg');
   /* Legacy iOS */
 }
+@-moz-keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 * {
   box-sizing: border-box;
 }
@@ -49,6 +64,14 @@ input[type="number"] {
 }
 input[type="file"] {
   display: none;
+}
+#preloader {
+  position: absolute;
+  top: calc(50% - 16px);
+  left: calc(50% - 16px);
+  z-index: 1100000;
+  background-color: transparent;
+  animation: 1s ease-in-out infinite spin;
 }
 html {
   font-family: 'Lato', sans-serif;

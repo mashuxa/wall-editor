@@ -1,9 +1,8 @@
 "use strict";
-const APP_NAME = "Photo Walls";
+const APP_NAME = "PhotoWalls";
 const LIMIT_VAR = 25;
 const POSITION_START_BORDERS = 50;
 const NEW_IMG_NAME = "photo_walls_editor_image.png";
-// work variables
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let fileInput = document.getElementById("fileInput");
@@ -28,15 +27,19 @@ let imgSettings = {
 let plusIntervalId, minusIntervalId;
 
 //<<<<<<< MAIN >>>>>>>//
-function showPreloader(){
+function showPreloader() {
     let preloader = document.createElement("img");
     preloader.id = "preloader";
     preloader.src = "img/ui/preloader.svg";
     document.querySelector(".canvas-wrapper").appendChild(preloader);
 }
+
 function hidePreloader() {
     document.getElementById("preloader").remove();
 }
+
+
+//загрузить картинку
 function loadImg() {
     let isContinueChange = true;
     if (canvasImg) {
@@ -65,6 +68,7 @@ function loadImg() {
         });
     }
 }
+
 // Получаем ссылку из blob объекта для картинки и загружаем её
 function blobToImg(blob) {
     return new Promise(resolve => {
@@ -75,6 +79,9 @@ function blobToImg(blob) {
         alert("Error!");
     });
 }
+
+fileInput.addEventListener("change", loadImg);
+
 // перерисовка канваса
 function drawCanvas() {
     ctx.clearRect(0, 0, canvasImgWidth, canvasImgHeight);
@@ -97,11 +104,13 @@ function drawCanvas() {
     ctx.lineWidth = 5;
     ctx.strokeRect(imgSettings.x1, imgSettings.y1, imgSettings.x2 - imgSettings.x1, imgSettings.y2 - imgSettings.y1);
 }
+
 // вызов плавной анимации
 function animation() {
     animationId = requestAnimationFrame(animation);
     drawCanvas();
 }
+
 //скачать картинку
 function downloadImg() {
     let a = document.createElement("a");
@@ -109,11 +118,12 @@ function downloadImg() {
     a.download = NEW_IMG_NAME;
     a.dispatchEvent(new MouseEvent("click"));
 }
-fileInput.addEventListener("change", loadImg);
+
 //<<<<<<< end MAIN >>>>>>>/
 
 
 //<<<<<<< ZOOM >>>>>>>/
+//ДОРАБОТАТЬ по ТАЧ СОБЫТИЯМ
 document.forms.tools.btnPlus.addEventListener("mousedown", () => {
     if (canvasImg) {
         canvas.style.width = canvas.offsetWidth + 5 + "px";
@@ -126,20 +136,15 @@ document.forms.tools.btnPlus.addEventListener("mousedown", () => {
 document.forms.tools.btnPlus.addEventListener("mouseup", () => {
     clearInterval(plusIntervalId);
 });
-document.forms.tools.btnPlus.addEventListener("mouseout", () => {
-    clearInterval(plusIntervalId);
-});
 document.forms.tools.btnMinus.addEventListener("mousedown", () => {
     if (canvasImg) {
+        canvas.style.width = canvas.offsetWidth - 5 + "px";
         minusIntervalId = setInterval(function () {
             canvas.style.width = canvas.offsetWidth - 5 + "px";
         }, 20);
     }
 });
 document.forms.tools.btnMinus.addEventListener("mouseup", () => {
-    clearInterval(minusIntervalId);
-});
-document.forms.tools.btnMinus.addEventListener("mouseout", () => {
     clearInterval(minusIntervalId);
 });
 document.forms.tools.btnReset.addEventListener("mousedown", () => {
@@ -150,12 +155,6 @@ document.forms.tools.btnReset.addEventListener("mousedown", () => {
     // drawCanvas();
 });
 //<<<<<<< end ZOOM >>>>>>>/
-
-
-
-
-
-
 
 //<<<<<<<BORDERS & PROPORTIONS for crop >>>>>>>/
 canvas.addEventListener("mousedown", function (e) {
@@ -198,6 +197,7 @@ canvas.addEventListener("mouseout", function (e) {
     cancelAnimationFrame(animationId);
     canvas.removeEventListener("mousemove", borderResize);
 });
+
 //меняем координаты при движении мышки
 function borderResize(e) {
     cursorPositionX = e.offsetX * scaleK;
@@ -222,6 +222,7 @@ function borderResize(e) {
         imgSettings.x2 = Math.min(cursorPositionX, canvasImgWidth);
     }
 }
+
 function drawByProportions(propWidth, propHeight) {
     let borderWidth = canvasImgWidth;
     let borderHeight = (canvasImgWidth / propWidth) * propHeight;
@@ -235,6 +236,7 @@ function drawByProportions(propWidth, propHeight) {
     imgSettings.y2 = imgSettings.y1 + borderHeight;
     drawCanvas();
 }
+
 document.forms.tools.btn1x1.addEventListener("click", () => {
     drawByProportions(1, 1);
 });
@@ -265,7 +267,8 @@ document.forms.tools.proportionsHeight.addEventListener("keyup", () => {
 function applyCssFilters() {
     canvas.style.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")";
 }
-function resetCssFilters(){
+
+function resetCssFilters() {
     imgSettings.filterBrightness = 1;
     imgSettings.filterContrast = 1;
     imgSettings.filterHueRotate = 0;
@@ -283,18 +286,17 @@ function resetCssFilters(){
     document.getElementById("filterSepia").value = 0;
     document.getElementById("filterInvert").value = 0;
     document.getElementById("filterBlur").value = 0;
-    document.getElementById("filterOpacity").value = 1; 
+    document.getElementById("filterOpacity").value = 1;
 }
 
-//применяем ВСЕ фильтры
-//фильтры
+//применяем фильтры
 function applyJsFilters() {
     ctx.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")";
 }
+
 function resetJsFilters() {
     ctx.filter = "brightness(1) contrast(1) hue-rotate(0) saturate(1) grayscale(0) sepia(0) invert(0) blur(0) opacity(1)";
 }
-
 
 function applyAll() {
     new Promise(resolve => {
@@ -326,6 +328,7 @@ function applyAll() {
         hidePreloader();
     });
 }
+
 document.forms.tools.querySelectorAll("input[type='range']").forEach((el) => {
     el.addEventListener("click", () => {
         imgSettings[el.id] = Number(el.value);
@@ -347,3 +350,41 @@ document.forms.tools.querySelectorAll("input[type='range']").forEach((el) => {
     });
 });
 //<<<<<<< end FILTERS >>>>>>>/
+
+
+//<<<<<<< IndexedDB >>>>>>>/
+
+// На всякий случай проверка
+let indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
+let IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+
+let db = "photoWall";
+let storeName = "myGallary"
+
+// function dbInfo() {
+//     let request = indexedDB.open(db);
+//     //-- Если база данных не создана
+//     request.onupgradeneeded = request.onsuccess = function (event) {
+//         //-- Чтение
+//         let db = event.target.result,
+//         storeNames = db.objectStoreNames,
+//         version = db.version;
+//         db.close();
+//     };
+// }
+// открыла базу данных
+let request = window.indexedDB.open(db, 1);
+
+request.onerror = function(event) {
+    // Сделать что-то при ошибке request.errorCode!
+    alert("Error: " + event.target.errorCode);
+};
+
+request.onsuccess = function(event) {
+    // Записываем db в переменную
+    db = event.target.result;
+};
+// onupgradeneeded добавить потом
+
+let objectStore = db.createObjectStore("name", { keyPath: "myKey" });
+//<<<<<<< end IndexedDB >>>>>>>/

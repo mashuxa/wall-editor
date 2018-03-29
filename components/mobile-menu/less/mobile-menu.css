@@ -1,6 +1,6 @@
 .nav {
   visibility: hidden;
-  z-index: 100;
+  z-index: 10001;
   transition-duration: 0.3s;
   position: fixed;
   left: -240px;

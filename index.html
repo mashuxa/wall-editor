@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="components/cropper/cropper.js"></script>
     <script defer src="components/mobile-menu/js/mobile-menu.js"></script>
-    <link rel="stylesheet" href="components/mobile-menu/css/mobile-menu.css"> 
+    <link rel="stylesheet" href="components/mobile-menu/less/mobile-menu.css">
     <link rel="stylesheet" href="common/common.css">
     <link rel="stylesheet" href="fonts/font-icon/icon.css">
     <script defer src="common/common.js"></script>
@@ -22,13 +22,7 @@
     <label class="js-mobile-menu-toggle" for="js-mobile-menu-toggle"><i class="icon-menu"></i><span>Menu</span></label>
 </header>
 <nav class="nav js-mobile-menu">
-    <!--<a class="nav__item">-->
-        <!--<i class="icon-logo"></i>-->
-        <!--<span>Photo Walls</span>-->
-    <!--</a>-->
-    <!--<a class="nav__item">Photo Gallary</a>-->
     <a class="nav__item nav__item_active">Photo Editor</a>
-    <!--<a class="nav__item">Wall Gallary</a>-->
     <a class="nav__item">Wall Editor</a>
     <a class="nav__item">On the Wall</a>
     <a class="nav__item">Feedback</a>
@@ -45,6 +39,12 @@
         </div>
         </div>
     <div class="main__content flex">
+        <input type="checkbox" id="toolsToggle">
+        <label class="btn" for="toolsToggle">
+            <span class="show">Hide tools</span>
+            <span class="hide">Show tools</span>
+        </label>
+
         <form class="tools flex flex_column" name="tools">
             <div class="tools-wrapper">
             <div class="tools__zoom">
@@ -144,7 +144,6 @@
                     </canvas>
             </div>
             <div class="editor-preview__btns-wrapper">
-                <!--<button class="btn btn_inv btn_cancel" type="button">Cancel</button>-->
                 <button class="btn btn_save" type="button">+ Add to wall</button>
             </div>
         </div>

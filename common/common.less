@@ -37,12 +37,25 @@
     src: local('Lato Black'), local('Lato-Black'), url('../fonts/lato/lato-v14-latin-ext_latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../fonts/lato/lato-v14-latin-ext_latin-900.woff2') format('woff2'), /* Super Modern Browsers */ url('../fonts/lato/lato-v14-latin-ext_latin-900.woff') format('woff'), /* Modern Browsers */ url('../fonts/lato/lato-v14-latin-ext_latin-900.ttf') format('truetype'), /* Safari, Android, iOS */ url('../fonts/lato/lato-v14-latin-ext_latin-900.svg#Lato') format('svg');
     /* Legacy iOS */
 }
+
 @-moz-keyframes spin {
-    to { transform: rotate(360deg); }  }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 @-o-keyframes spin {
-    to { transform: rotate(360deg); }  }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 @keyframes spin {
-    to { transform: rotate(360deg); }  }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 * {
     box-sizing: border-box;
 }
@@ -63,6 +76,7 @@ input[type="number"] {
 input[type="file"] {
     display: none;
 }
+
 #preloader {
     position: absolute;
     top: ~"calc(50% - 16px)";
@@ -71,6 +85,7 @@ input[type="file"] {
     background-color: transparent;
     animation: 1s ease-in-out infinite spin;
 }
+
 @bg-color: #f2f2f2;
 @gray-color: #8c8c8c;
 @darkgray-color: #272727;
@@ -192,6 +207,8 @@ body {
     display: flex;
     flex-direction: column;
     &__content {
+        flex-grow: 1;
+        position: relative;
         padding-top: 10px;
         align-items: stretch !important;
     }
@@ -252,14 +269,17 @@ input[type=range]::-webkit-slider-thumb {
         padding-right: 10px;
     }
 }
+
 .filters label {
     display: block;
 }
+
 .filters input[type="range"] {
     display: block;
     width: 100%;
     margin: 15px 0 0;
 }
+
 .editor-preview {
     flex-grow: 1;
     flex-shrink: 1;
@@ -302,4 +322,54 @@ input[type=range]::-webkit-slider-thumb {
     overflow: auto;
     flex-shrink: 1;
     flex-grow: 1;
+}
+
+/////////
+#toolsToggle {
+    display: none;
+}
+@media all and (min-width: 769px) {
+    [for="toolsToggle"] {
+        display: none;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .tools {
+        padding: 20px 10px;
+        z-index: 1;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: -100%;
+        padding-right: 0;
+        width: 0;
+        opacity: 0;
+        background-color: rgba(242,242,242,0.5);
+    }
+    [for="toolsToggle"] {
+        transition-duration: 0.3s;
+        z-index: 10000;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        right: auto;
+        padding: 10px;
+    }
+    #toolsToggle:checked ~ [for="toolsToggle"] {
+        left: auto;
+        right: 0;
+    }
+    #toolsToggle ~ [for="toolsToggle"] .show,
+    #toolsToggle:checked ~ [for="toolsToggle"] .hide {
+        display: none;
+    }
+    #toolsToggle:checked ~ [for="toolsToggle"] .show {
+        display: block;
+    }
+    #toolsToggle:checked ~ .tools {
+        left: 0;
+        opacity: 1;
+        width: auto;
+    }
 }

@@ -1,3 +1,4 @@
+
 function initializeMobileMenu() {
     document.body.addEventListener("mouseup", function (e) {
         if (

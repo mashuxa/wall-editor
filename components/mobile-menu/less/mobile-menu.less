@@ -5,12 +5,11 @@
 @white-color: #ffffff;
 @main-color: #006464;
 
-   
 .nav {
     visibility: hidden;
-    z-index: 100;
+    z-index: 10001;
     transition-duration: 0.3s;
-    position: fixed; 
+    position: fixed;
     left: -240px;
     top: 0;
     bottom: 0;
@@ -18,8 +17,8 @@
     width: 240px;
     max-width: 100%;
     overflow-y: auto;
-    background-color: @white-color; 
-    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.2);
+    background-color: @white-color;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
     opacity: 0;
     &__item {
         transition-duration: 0.1s;
@@ -39,7 +38,7 @@
             background-color: @main-color;
         }
     }
-}    
+}
 
 .js-mobile-menu-toggle {
     cursor: pointer;
@@ -47,9 +46,15 @@
     font-size: 20px;
     font-weight: 700;
     color: @darkgray-color;
-    i:before {padding-right: 10px;}
+    i:before {
+        padding-right: 10px;
+    }
 }
-#js-mobile-menu-toggle {display: none;}
+
+#js-mobile-menu-toggle {
+    display: none;
+}
+
 #js-mobile-menu-toggle:checked ~ .nav,
 #js-mobile-menu-toggle:checked .nav {
     left: 0;

@@ -1,141 +1,131 @@
-"use strict";
-const APP_NAME = "PhotoWalls";
-const LIMIT_VAR = 25;
-const POSITION_START_BORDERS = 50;
-const NEW_IMG_NAME = "photo_walls_editor_image.png";
-const DB_NAME = "photoWall";
-const DB_VERSION = 1;
-const STORE_NAME = "myGallary";
-
-let canvas = document.getElementById("canvas");
-let ctx = canvas.getContext("2d");
-let fileInput = document.getElementById("fileInput");
-let canvasImg, canvasImgWidth, canvasImgHeight;
-let cursorPositionX, cursorPositionY;
-let animationId;
-let scaleK;
-let x1, x2, y1, y2;
-let imgSettings = {
-    filterBrightness: 1,
-    filterContrast: 1,
-    filterHueRotate: 0,
-    filterSaturate: 1,
-    filterGrayscale: 0,
-    filterSepia: 0,
-    filterInvert: 0,
-    filterBlur: 0,
-    filterOpacity: 1,
-    x1: POSITION_START_BORDERS,
-    y1: POSITION_START_BORDERS
-};
-let plusIntervalId, minusIntervalId;
-let indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
-let db;
-let imgBlobBuffer;
-
-
-//<<<<<<< MAIN >>>>>>>//
-class Photo {
-    constructor(img) {
-        this.id = Date.now();
-        this.blob = imgBlobBuffer;
-        this.x1 = 0;
-        this.y1 = 0;
-        this.x2 = this.x1 + img.width;
-        this.y2 = this.y1 + img.height;
-    }
-}
-
-function showPreloader() {
-    let preloader = document.createElement("img");
-    preloader.id = "preloader";
-    preloader.src = "img/ui/preloader.svg";
-    document.querySelector(".canvas-wrapper").appendChild(preloader);
-}
-function hidePreloader() {
-    document.getElementById("preloader").remove();
-}
-//загрузить картинку
-function loadImg() {
-    let isContinueChange = true;
-    if (canvasImg) {
-        isContinueChange = confirm("The current image will be overwritten. Are you sure you want to continue?");
-    }
-    if (isContinueChange && fileInput.files[0]) {
-        showPreloader();
-        // вызываем функццию для получения img и передаем blob объект полученный из fileInput.
-        blobToImg(fileInput.files[0]).then(img => {
-            canvasImg = img;
-            canvasImgWidth = canvasImg.width;
-            canvasImgHeight = canvasImg.height;
-            canvas.width = canvasImgWidth;
-            canvas.height = canvasImgHeight;
-            imgSettings.x2 = canvasImgWidth - imgSettings.x1;
-            imgSettings.y2 = canvasImgHeight - imgSettings.y1;
-            drawCanvas();
-            document.querySelector(".btn_download").addEventListener("click", downloadImg);
-            document.querySelector(".btn_apply").addEventListener("click", applyAll);
-            document.querySelector(".btn_reset").addEventListener("click", resetCssFilters);
-            canvas.style.backgroundImage = "none";
-            hidePreloader();
-        });
-        document.body.querySelectorAll('[type="range"]').forEach((el) => {
-            el.disabled = false;
-        });
-    }
-}
-// Получаем ссылку из blob объекта для картинки и загружаем её
-function blobToImg(blob) {
-    imgBlobBuffer = blob;
-    return new Promise(resolve => {
-        let img = new Image();
-        img.onload = () => resolve(img);
-        img.src = URL.createObjectURL(blob);
-    }, reject => {
-        alert("Error!");
-    });
-}
-// перерисовка канваса
-function drawCanvas() {
-    ctx.clearRect(0, 0, canvasImgWidth, canvasImgHeight);
-    ctx.drawImage(canvasImg, 0, 0);
-    applyCssFilters();
-    ctx.beginPath();
-    ctx.fillStyle = 'rgba(0,0,0,0.5)';
-    ctx.lineTo(0, 0);
-    ctx.lineTo(canvasImgWidth, 0);
-    ctx.lineTo(canvasImgWidth, canvasImgHeight);
-    ctx.lineTo(0, canvasImgHeight);
-    ctx.lineTo(0, 0);
-    ctx.lineTo(imgSettings.x1, imgSettings.y1);
-    ctx.lineTo(imgSettings.x1, imgSettings.y2);
-    ctx.lineTo(imgSettings.x2, imgSettings.y2);
-    ctx.lineTo(imgSettings.x2, imgSettings.y1);
-    ctx.lineTo(imgSettings.x1, imgSettings.y1);
-    ctx.closePath();
-    ctx.fill();
-    ctx.lineWidth = 5;
-    ctx.strokeRect(imgSettings.x1, imgSettings.y1, imgSettings.x2 - imgSettings.x1, imgSettings.y2 - imgSettings.y1);
-}
-// вызов плавной анимации
-function animation() {
-    animationId = requestAnimationFrame(animation);
-    drawCanvas();
-}
-//скачать картинку
-function downloadImg() {
-    let a = document.createElement("a");
-    a.href = canvasImg.src;
-    a.download = NEW_IMG_NAME;
-    a.dispatchEvent(new MouseEvent("click"));
-}
-
-fileInput.addEventListener("change", loadImg);
-//<<<<<<< end MAIN >>>>>>>/
-
-
-//<<<<<<< ZOOM >>>>>>>/
 (function () {
+    "use strict";
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
+    let fileInput = document.getElementById("fileInput");
+    let canvasImg, canvasImgWidth, canvasImgHeight;
+    let cursorPositionX, cursorPositionY;
+    let animationId;
+    let scaleK;
+    let x1, x2, y1, y2;
+    let imgSettings = {
+        filterBrightness: 1,
+        filterContrast: 1,
+        filterHueRotate: 0,
+        filterSaturate: 1,
+        filterGrayscale: 0,
+        filterSepia: 0,
+        filterInvert: 0,
+        filterBlur: 0,
+        filterOpacity: 1,
+        x1: POSITION_START_BORDERS,
+        y1: POSITION_START_BORDERS
+    };
+    let plusIntervalId, minusIntervalId;
+
+
+    let imgBlobBuffer;
+    let imgDataUrl;
+    //<<<<<<< MAIN >>>>>>>//
+    class Photo {
+        constructor(img) {
+            this.id = Date.now();
+            this.blob = imgBlobBuffer;
+            this.x1 = 0;
+            this.y1 = 0;
+            this.x2 = this.x1 + img.width;
+            this.y2 = this.y1 + img.height;
+        }
+    }
+
+    function showPreloader() {
+        let preloader = document.createElement("img");
+        preloader.id = "preloader";
+        preloader.src = "img/ui/preloader.svg";
+        document.querySelector(".canvas-wrapper").appendChild(preloader);
+    }
+
+    function hidePreloader() {
+        document.getElementById("preloader").remove();
+    }
+    //загрузить картинку
+    function loadImg() {
+        let isContinueChange = true;
+        if (canvasImg) {
+            isContinueChange = confirm("The current image will be overwritten. Are you sure you want to continue?");
+        }
+        if (isContinueChange && fileInput.files[0]) {
+            showPreloader();
+            // вызываем функццию для получения img и передаем blob объект полученный из fileInput.
+            blobToImg(fileInput.files[0]).then(img => {
+                canvasImg = img;
+                canvasImgWidth = canvasImg.width;
+                canvasImgHeight = canvasImg.height;
+                canvas.width = canvasImgWidth;
+                canvas.height = canvasImgHeight;
+                imgSettings.x2 = canvasImgWidth - imgSettings.x1;
+                imgSettings.y2 = canvasImgHeight - imgSettings.y1;
+                drawCanvas();
+                document.querySelector(".btn_download").addEventListener("click", downloadImg);
+                document.querySelector(".btn_apply").addEventListener("click", applyAll);
+                document.querySelector(".btn_reset").addEventListener("click", resetCssFilters);
+                canvas.style.backgroundImage = "none";
+                hidePreloader();
+            });
+            document.body.querySelectorAll('[type="range"]').forEach((el) => {
+                el.disabled = false;
+            });
+        }
+    }
+    // Получаем ссылку из blob объекта для картинки и загружаем её
+    function blobToImg(blob) {
+        imgBlobBuffer = blob;
+        return new Promise(resolve => {
+            let img = new Image();
+            img.onload = () => resolve(img);
+            img.src = URL.createObjectURL(blob);
+        }, reject => {
+            alert("Error!");
+        });
+    }
+    // перерисовка канваса
+    function drawCanvas() {
+        ctx.clearRect(0, 0, canvasImgWidth, canvasImgHeight);
+        ctx.drawImage(canvasImg, 0, 0);
+        applyCssFilters();
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.lineTo(0, 0);
+        ctx.lineTo(canvasImgWidth, 0);
+        ctx.lineTo(canvasImgWidth, canvasImgHeight);
+        ctx.lineTo(0, canvasImgHeight);
+        ctx.lineTo(0, 0);
+        ctx.lineTo(imgSettings.x1, imgSettings.y1);
+        ctx.lineTo(imgSettings.x1, imgSettings.y2);
+        ctx.lineTo(imgSettings.x2, imgSettings.y2);
+        ctx.lineTo(imgSettings.x2, imgSettings.y1);
+        ctx.lineTo(imgSettings.x1, imgSettings.y1);
+        ctx.closePath();
+        ctx.fill();
+        ctx.lineWidth = 5;
+        ctx.strokeRect(imgSettings.x1, imgSettings.y1, imgSettings.x2 - imgSettings.x1, imgSettings.y2 - imgSettings.y1);
+    }
+    // вызов плавной анимации
+    function animation() {
+        animationId = requestAnimationFrame(animation);
+        drawCanvas();
+    }
+    //скачать картинку
+    function downloadImg() {
+        this.href = URL.createObjectURL(imgBlobBuffer);
+    }
+
+    fileInput.addEventListener("change", loadImg);
+    //<<<<<<< end MAIN >>>>>>>/
+
+
+    //<<<<<<< ZOOM >>>>>>>/
+
     function scalePlus() {
         if (canvasImg) {
             canvas.style.width = canvas.offsetWidth + 5 + "px";
@@ -182,19 +172,18 @@ fileInput.addEventListener("change", loadImg);
 
     document.forms.tools.btnReset.addEventListener("mousedown", scaleReset);
     document.forms.tools.btnReset.addEventListener("touchstart", scaleReset);
-}());
-//<<<<<<< end ZOOM >>>>>>>/
 
-//<<<<<<<BORDERS & PROPORTIONS for crop >>>>>>>/
-(function () {
+    //<<<<<<< end ZOOM >>>>>>>/
+
+    //<<<<<<<BORDERS & PROPORTIONS for crop >>>>>>>/
+
     // Определяем куда был клик и какие стороны меняем
     function defineSide(e) {
         scaleK = canvas.width / canvas.offsetWidth;
 
         if (e.type === "touchstart") {
-            console.log("+");
             cursorPositionX = (e.changedTouches[0].pageX - canvas.getBoundingClientRect().left - pageXOffset) * scaleK;
-            cursorPositionY =  (e.changedTouches[0].pageY - canvas.getBoundingClientRect().top - pageYOffset) * scaleK;
+            cursorPositionY = (e.changedTouches[0].pageY - canvas.getBoundingClientRect().top - pageYOffset) * scaleK;
         } else {
 
             cursorPositionX = e.offsetX * scaleK;
@@ -221,6 +210,7 @@ fileInput.addEventListener("change", loadImg);
             x1 = y1 = x2 = y2 = true;
         }
     }
+
     function startDraw(e) {
         if (canvasImg) {
             animationId = requestAnimationFrame(animation);
@@ -234,11 +224,11 @@ fileInput.addEventListener("change", loadImg);
             document.getElementById("fileInput").dispatchEvent(new MouseEvent("click"));
         }
     }
-//меняем координаты при движении мышки
+    //меняем координаты при движении мышки
     function borderResize(e) {
         if (e.type === "touchmove") {
             cursorPositionX = (e.changedTouches[0].pageX - canvas.getBoundingClientRect().left - pageXOffset) * scaleK;
-            cursorPositionY =  (e.changedTouches[0].pageY - canvas.getBoundingClientRect().top - pageYOffset) * scaleK;
+            cursorPositionY = (e.changedTouches[0].pageY - canvas.getBoundingClientRect().top - pageYOffset) * scaleK;
         } else {
             cursorPositionX = e.offsetX * scaleK;
             cursorPositionY = e.offsetY * scaleK;
@@ -264,6 +254,7 @@ fileInput.addEventListener("change", loadImg);
         }
 
     }
+
     function drawByProportions(propWidth, propHeight) {
         let borderWidth = canvasImgWidth;
         let borderHeight = (canvasImgWidth / propWidth) * propHeight;
@@ -280,68 +271,74 @@ fileInput.addEventListener("change", loadImg);
 
     canvas.addEventListener("mousedown", (e) => {
         startDraw(e);
-        console.log("+");
     });
     canvas.addEventListener("touchstart", (e) => {
         startDraw(e);
-        console.log("+");
     });
     canvas.addEventListener("mouseup", (e) => {
         cancelAnimationFrame(animationId);
         canvas.removeEventListener("mousemove", borderResize);
         x1 = x2 = y1 = y2 = false;
-        console.log("+");
     });
     canvas.addEventListener("touchend", (e) => {
         cancelAnimationFrame(animationId);
         canvas.removeEventListener("touchmove", borderResize);
         x1 = x2 = y1 = y2 = false;
-        console.log("+");
     });
     canvas.addEventListener("mouseout", (e) => {
         cancelAnimationFrame(animationId);
         canvas.removeEventListener("mousemove", borderResize);
         x1 = x2 = y1 = y2 = false;
-        console.log("+");
     });
     canvas.addEventListener("touchcancel", (e) => {
         cancelAnimationFrame(animationId);
         canvas.removeEventListener("touchmove", borderResize);
         x1 = x2 = y1 = y2 = false;
-        console.log("+");
     });
 
     document.forms.tools.btn1x1.addEventListener("click", () => {
-        drawByProportions(1, 1);
+        if(canvasImg){
+            drawByProportions(1, 1);
+        }
     });
     document.forms.tools.btn4x3.addEventListener("click", () => {
-        drawByProportions(4, 3);
+        if(canvasImg){
+            drawByProportions(4, 3);
+        }
     });
     document.forms.tools.btn16x9.addEventListener("click", () => {
-        drawByProportions(16, 9);
+        if(canvasImg){
+            drawByProportions(16, 9);
+        }
+
     });
     document.forms.tools.proportionsWidth.addEventListener("keyup", () => {
-        let valWidth = document.forms.tools.proportionsWidth.value;
-        let valHeight = document.forms.tools.proportionsHeight.value;
-        if (valWidth && valHeight) {
-            drawByProportions(valWidth, valHeight);
-        }
+       if(canvasImg){
+           let valWidth = document.forms.tools.proportionsWidth.value;
+           let valHeight = document.forms.tools.proportionsHeight.value;
+           if (valWidth && valHeight) {
+               drawByProportions(valWidth, valHeight);
+           }
+       }
     });
     document.forms.tools.proportionsHeight.addEventListener("keyup", () => {
-        let valWidth = document.forms.tools.proportionsWidth.value;
-        let valHeight = document.forms.tools.proportionsHeight.value;
-        if (valWidth && valHeight) {
-            drawByProportions(valWidth, valHeight);
+        if(canvasImg){
+            let valWidth = document.forms.tools.proportionsWidth.value;
+            let valHeight = document.forms.tools.proportionsHeight.value;
+            if (valWidth && valHeight) {
+                drawByProportions(valWidth, valHeight);
+            }
         }
     });
-}());
-//<<<<<<< end PROPORTIONS for crop >>>>>>>/
 
-//<<<<<<< FILTERS >>>>>>>/
+    //<<<<<<< end PROPORTIONS for crop >>>>>>>/
+
+    //<<<<<<< FILTERS >>>>>>>/
 
     function applyCssFilters() {
         canvas.style.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")";
     }
+
     function resetCssFilters() {
         imgSettings.filterBrightness = 1;
         imgSettings.filterContrast = 1;
@@ -362,16 +359,18 @@ fileInput.addEventListener("change", loadImg);
         document.getElementById("filterBlur").value = 0;
         document.getElementById("filterOpacity").value = 1;
     }
-//применяем фильтры
+    //применяем фильтры
     function applyJsFilters() {
         ctx.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")";
     }
+
     function resetJsFilters() {
         ctx.filter = "brightness(1) contrast(1) hue-rotate(0) saturate(1) grayscale(0) sepia(0) invert(0) blur(0) opacity(1)";
     }
+
     function applyAll() {
+        showPreloader();
         new Promise(resolve => {
-            showPreloader();
             canvasImgWidth = imgSettings.x2 - imgSettings.x1;
             canvasImgHeight = imgSettings.y2 - imgSettings.y1;
             canvas.width = canvasImgWidth;
@@ -383,7 +382,7 @@ fileInput.addEventListener("change", loadImg);
             canvas.toBlob((blob) => {
                 imgBlobBuffer = blob;
             });
-            let imgDataUrl = canvas.toDataURL();
+            imgDataUrl = canvas.toDataURL();
             let newImg = new Image();
             newImg.onload = () => resolve(newImg);
             newImg.src = imgDataUrl;
@@ -396,13 +395,11 @@ fileInput.addEventListener("change", loadImg);
             imgSettings.y2 = canvasImgHeight - imgSettings.y1;
             imgSettings.x2 = canvasImgWidth - imgSettings.x1;
 
-
             resetCssFilters();
             resetJsFilters();
             drawCanvas();
             hidePreloader();
 
-            //
         });
     }
     document.forms.tools.querySelectorAll("input[type='range']").forEach((el) => {
@@ -440,53 +437,26 @@ fileInput.addEventListener("change", loadImg);
             cancelAnimationFrame(animationId);
         });
     });
-document.querySelector(".btn_reset").addEventListener("click", ()=>{
-    resetCssFilters();
-    drawCanvas();
-});
-//<<<<<<< end FILTERS >>>>>>>/
+    document.querySelector(".btn_reset").addEventListener("click", () => {
+        resetCssFilters();
+        drawCanvas();
+    });
+    //<<<<<<< end FILTERS >>>>>>>/
 
 
-//<<<<<<< IndexedDB >>>>>>>/
-(function(){
-    // На всякий случай проверка
-    if (!window.indexedDB) {
-        window.alert("Sorry, but your browser doesn't support saving images. You can update it and repeat again, or save this image on your PC.");
-    }
-    function openDB(dbName, dbVersion, objectStoreName) {
-
-        let request = indexedDB.open(dbName, dbVersion);
-
-        request.onupgradeneeded = function (event) {
-            console.log("upgradeneeded");
-            db = event.target.result;
-            if (!db.objectStoreNames.contains(objectStoreName)) {
-                db.createObjectStore(STORE_NAME, {keyPath: "id"});
-            }
-        };
-
-        request.onsuccess = function (event) {
-            db = event.target.result;
-        };
-
-        request.onerror = function (event) {
-            alert("Error: " + event.target.errorCode);
-        };
-
-    }
-    openDB(DB_NAME, DB_VERSION, STORE_NAME);
-// Пуш картинки в db
+    //<<<<<<< IndexedDB >>>>>>>/
+    // Пуш картинки в db
     document.getElementById("btnSaveImg").addEventListener("click", () => {
         if (canvasImg) {
-
             let photo = new Photo(canvasImg);
-
             let transaction = db.transaction([STORE_NAME], "readwrite");
             let objectStore = transaction.objectStore(STORE_NAME);
             objectStore.add(photo);
-
+            if (confirm("Photo added in your gallary. Do you want to go to Wall editor?")) {
+                document.getElementById("wallEditor").dispatchEvent(new MouseEvent("click"));
+            }
         }
     });
 
+    //<<<<<<< end IndexedDB >>>>>>>/
 }());
-//<<<<<<< end IndexedDB >>>>>>>/

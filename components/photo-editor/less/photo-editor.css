@@ -1,0 +1,106 @@
+.tools {
+  padding-right: 20px;
+}
+.tools input {
+  width: 75px;
+}
+.tools__btns-wrapper {
+  align-self: stretch;
+  padding: 20px 0;
+}
+.tools-wrapper {
+  width: 200px;
+  overflow-y: auto;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+.tools .filter-name {
+  padding-right: 10px;
+}
+.filters label {
+  display: block;
+}
+.filters input[type="range"] {
+  display: block;
+  width: 100%;
+  margin: 15px 0 0;
+}
+.editor-preview__canvas {
+  margin: auto;
+  max-width: 100%;
+  cursor: pointer;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("../../../img/ui/add-new-img.svg");
+}
+.editor-preview__canvas_active-x {
+  cursor: url("../../../img/ui/active-x.svg"), pointer;
+}
+.editor-preview__canvas_active-y {
+  cursor: url("../../../img/ui/active-y.svg"), pointer;
+}
+.editor-preview__canvas_active-top-left-bottom-right {
+  cursor: url("../../../img/ui/top-left-bottom-right.svg"), pointer;
+}
+.editor-preview__canvas_active-bottom-left-top-right {
+  cursor: url("../../../img/ui/bottom-left-top-right.svg"), pointer;
+}
+.editor-preview__canvas_active-move {
+  cursor: url("../../../img/ui/move.svg"), pointer;
+}
+.canvas-wrapper {
+  display: flex;
+  border: 1px dotted silver;
+  position: relative;
+  overflow: auto;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+#toolsToggle {
+  display: none;
+}
+@media all and (min-width: 769px) {
+  [for="toolsToggle"] {
+    display: none;
+  }
+}
+@media all and (max-width: 768px) {
+  .tools {
+    padding: 20px 10px;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -100%;
+    padding-right: 0;
+    width: 0;
+    opacity: 0;
+    background-color: rgba(242, 242, 242, 0.5);
+  }
+  [for="toolsToggle"] {
+    transition-duration: 0.3s;
+    z-index: 10000;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: auto;
+    padding: 10px;
+  }
+  #toolsToggle:checked ~ [for="toolsToggle"] {
+    left: auto;
+    right: 0;
+  }
+  #toolsToggle ~ [for="toolsToggle"] .show,
+  #toolsToggle:checked ~ [for="toolsToggle"] .hide {
+    display: none;
+  }
+  #toolsToggle:checked ~ [for="toolsToggle"] .show {
+    display: block;
+  }
+  #toolsToggle:checked ~ .tools {
+    left: 0;
+    opacity: 1;
+    width: auto;
+  }
+}

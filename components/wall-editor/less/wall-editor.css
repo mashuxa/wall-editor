@@ -1,0 +1,4 @@
+.wall {
+  border: 1px dotted #272727;
+  flex-grow: 1;
+}

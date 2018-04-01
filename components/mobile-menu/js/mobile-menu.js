@@ -1,4 +1,5 @@
-
+(function(){
+    "use strict";
 function initializeMobileMenu() {
     document.body.addEventListener("mouseup", function (e) {
         if (
@@ -24,3 +25,8 @@ function initializeMobileMenu() {
         document.getElementById("js-mobile-menu-toggle").checked = false;
     }
 }
+document.addEventListener('DOMContentLoaded', function(){
+    initializeMobileMenu();
+});
+    
+    }());

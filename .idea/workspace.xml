@@ -2,25 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="887c85cd-a9ec-4b19-9acc-363f613d5e3c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Canvas2/.idea/Canvas2.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Canvas2/.idea/codeStyles/codeStyleConfig.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Canvas2/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Canvas2/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Canvas2/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Canvas2/.idea/watcherTasks.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Canvas2/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Canvas2/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Canvas2/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/prosche.by-восстановлено-assets/checked.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/prosche.by-восстановлено-assets/close.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/prosche.by-восстановлено-assets/errors.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/prosche.by-восстановлено-assets/important.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/prosche.by-восстановлено-assets/logo.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/prosche.by-восстановлено-assets/phone.svg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common/common.js" afterPath="$PROJECT_DIR$/common/common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/photo-editor/js/photo-editor.js" afterPath="$PROJECT_DIR$/components/photo-editor/js/photo-editor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/wall-editor/js/wall-editor.js" afterPath="$PROJECT_DIR$/components/wall-editor/js/wall-editor.js" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/common/common.css" afterPath="$PROJECT_DIR$/common/common.css" />
+      <change beforePath="$PROJECT_DIR$/common/common.less" afterPath="$PROJECT_DIR$/common/common.less" />
+      <change beforePath="$PROJECT_DIR$/components/mobile-menu/less/mobile-menu.css" afterPath="$PROJECT_DIR$/components/mobile-menu/less/mobile-menu.css" />
+      <change beforePath="$PROJECT_DIR$/components/photo-editor/js/photo-editor.js" afterPath="$PROJECT_DIR$/components/photo-editor/js/photo-editor.js" />
+      <change beforePath="$PROJECT_DIR$/components/photo-editor/less/photo-editor.css" afterPath="$PROJECT_DIR$/components/photo-editor/less/photo-editor.css" />
+      <change beforePath="$PROJECT_DIR$/components/wall-editor/js/wall-editor.js" afterPath="$PROJECT_DIR$/components/wall-editor/js/wall-editor.js" />
+      <change beforePath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.css" afterPath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.css" />
+      <change beforePath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.less" afterPath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.less" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -37,33 +27,23 @@
       <file leaf-file-name="wall-editor.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/wall-editor/js/wall-editor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="common.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/common/common.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="photo-editor.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/photo-editor/js/photo-editor.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="306">
+              <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
               <folding>
-                <element signature="e#359#674#0" expanded="false" />
-                <element signature="e#794#1060#0" expanded="false" />
-                <element signature="e#2932#3774#0" expanded="false" />
+                <element signature="e#177#1700#0" expanded="false" />
+                <element signature="e#1749#2426#0" expanded="false" />
+                <element signature="e#2456#3023#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wall-editor.less" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/wall-editor/less/wall-editor.less">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -85,7 +65,6 @@
       <find>drawCanvas</find>
       <find>draw</find>
       <find>item</find>
-      <find>scale</find>
       <find>can</find>
       <find>tool</find>
       <find>center</find>
@@ -111,6 +90,7 @@
       <find>anima</find>
       <find>imgBlobBuffer</find>
       <find>open</find>
+      <find>scale</find>
     </findStrings>
     <replaceStrings>
       <replace>borderPositionTop</replace>
@@ -135,12 +115,12 @@
         <option value="$PROJECT_DIR$/components/mobile-menu/less/mobile-menu.less" />
         <option value="$PROJECT_DIR$/components/cropper/cropper.js" />
         <option value="$PROJECT_DIR$/components/photo-editor/less/photo-editor.less" />
-        <option value="$PROJECT_DIR$/common/common.less" />
         <option value="$PROJECT_DIR$/wall-editor.html" />
-        <option value="$PROJECT_DIR$/components/wall-editor/less/wall-editor.less" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/components/photo-editor/js/photo-editor.js" />
         <option value="$PROJECT_DIR$/common/common.js" />
+        <option value="$PROJECT_DIR$/common/common.less" />
+        <option value="$PROJECT_DIR$/components/photo-editor/js/photo-editor.js" />
+        <option value="$PROJECT_DIR$/components/wall-editor/less/wall-editor.less" />
         <option value="$PROJECT_DIR$/components/wall-editor/js/wall-editor.js" />
       </list>
     </option>
@@ -158,7 +138,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -203,37 +183,91 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="wall-editor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wall-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="wall-editor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wall-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
               <item name="common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="wall-editor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wall-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="wall-editor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wall-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="photo-editor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="wall-editor" type="b2602c69:ProjectViewProjectNode" />
-              <item name="wall-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="photo-editor" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="photo-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="less" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="photo-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="less" type="462c0819:PsiDirectoryNode" />
+              <item name="photo-editor.less" type="620a8d5e:NestingTreeNode" />
+            </path>
+            <path>
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="wall-editor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="wall-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="wall-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="less" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="wall-editor" type="462c0819:PsiDirectoryNode" />
+              <item name="less" type="462c0819:PsiDirectoryNode" />
+              <item name="wall-editor.less" type="620a8d5e:NestingTreeNode" />
+            </path>
+            <path>
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -304,31 +338,32 @@
       <workItem from="1522576749876" duration="23021000" />
       <workItem from="1522610739134" duration="10114000" />
       <workItem from="1522688072343" duration="3335000" />
+      <workItem from="1522699305453" duration="8809000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="218089000" />
+    <option name="totallyTimeSpent" value="226898000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13995726" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06902002" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10064935" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -360,7 +395,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="10" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -524,11 +559,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/img/ui/photo_walls_editor_image.png" />
-    <entry file="file://$PROJECT_DIR$/img/ui/move.svg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/img/ui/preloader.svg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -560,17 +590,28 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/on-the-wall.html" />
-    <entry file="file://$PROJECT_DIR$/common/common.less">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="228" column="17" lean-forward="false" selection-start-line="228" selection-start-column="17" selection-end-line="228" selection-end-column="17" />
+        <state relative-caret-position="85">
+          <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/wall-editor/less/wall-editor.less">
+    <entry file="file://$PROJECT_DIR$/common/common.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="1" lean-forward="false" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+        <state relative-caret-position="-3271">
+          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="15" column="56" lean-forward="true" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
           <folding />
         </state>
       </provider>
@@ -583,41 +624,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding />
-        </state>
+    <entry file="file://$PROJECT_DIR$/img/ui/move.svg">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/photo-editor/js/photo-editor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state relative-caret-position="408">
+          <caret line="36" column="36" lean-forward="false" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
           <folding>
             <element signature="e#359#674#0" expanded="false" />
-            <element signature="e#794#1060#0" expanded="false" />
-            <element signature="e#2932#3774#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/wall-editor/less/wall-editor.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/wall-editor/js/wall-editor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="306">
+          <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+          <folding>
+            <element signature="e#177#1700#0" expanded="false" />
+            <element signature="e#1749#2426#0" expanded="false" />
+            <element signature="e#2456#3023#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

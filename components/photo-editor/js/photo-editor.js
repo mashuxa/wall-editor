@@ -34,6 +34,7 @@
             this.y1 = 0;
             this.x2 = this.x1 + img.width;
             this.y2 = this.y1 + img.height;
+            this.width = img.width;
         }
     }
     openDB(DB_NAME, DB_VERSION, STORE_NAME);

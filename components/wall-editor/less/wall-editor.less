@@ -5,8 +5,45 @@
 @white-color: #ffffff;
 @main-color: #006464;
 
-
 .wall {
-    border: 1px dotted @darkgray-color ;
+    border: 1px dotted @darkgray-color;
     flex-grow: 1;
+    .img-wrapper {
+        cursor: url("../../../img/ui/move.svg"), pointer;
+        border: 1px dotted @darkgray-color;
+        position: relative;
+        display: inline-block;
+        max-width: 100%;
+        &__btn {
+            position: absolute;
+            cursor: pointer;
+            background-color: #ffffff;
+            float: right;
+            font-size: 20px;
+            line-height: 40px;
+            width: 40px;
+            font-weight: bold;
+            text-align: center;
+            top: 5px;
+            right: 5px;
+            border-radius: 8px;
+            opacity: 0.5;
+            transition-duration: 0.3s;
+            &:hover {
+                opacity: 1;
+            }
+
+            &_plus {
+                right: 50px;
+            }
+            &_minus {
+            }
+        }
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
 }

@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="887c85cd-a9ec-4b19-9acc-363f613d5e3c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/common/common.css" afterPath="$PROJECT_DIR$/common/common.css" />
-      <change beforePath="$PROJECT_DIR$/common/common.less" afterPath="$PROJECT_DIR$/common/common.less" />
-      <change beforePath="$PROJECT_DIR$/components/mobile-menu/less/mobile-menu.css" afterPath="$PROJECT_DIR$/components/mobile-menu/less/mobile-menu.css" />
-      <change beforePath="$PROJECT_DIR$/components/photo-editor/js/photo-editor.js" afterPath="$PROJECT_DIR$/components/photo-editor/js/photo-editor.js" />
-      <change beforePath="$PROJECT_DIR$/components/photo-editor/less/photo-editor.css" afterPath="$PROJECT_DIR$/components/photo-editor/less/photo-editor.css" />
       <change beforePath="$PROJECT_DIR$/components/wall-editor/js/wall-editor.js" afterPath="$PROJECT_DIR$/components/wall-editor/js/wall-editor.js" />
       <change beforePath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.css" afterPath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.css" />
       <change beforePath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.less" afterPath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.less" />
@@ -27,12 +22,12 @@
       <file leaf-file-name="wall-editor.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/wall-editor/js/wall-editor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+            <state relative-caret-position="697">
+              <caret line="107" column="7" lean-forward="false" selection-start-line="107" selection-start-column="7" selection-end-line="107" selection-end-column="7" />
               <folding>
-                <element signature="e#177#1700#0" expanded="false" />
-                <element signature="e#1749#2426#0" expanded="false" />
-                <element signature="e#2456#3023#0" expanded="false" />
+                <element signature="e#177#1801#0" expanded="false" />
+                <element signature="e#1850#2527#0" expanded="false" />
+                <element signature="e#2558#3125#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -41,8 +36,8 @@
       <file leaf-file-name="wall-editor.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/wall-editor/less/wall-editor.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+            <state relative-caret-position="391">
+              <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -338,12 +333,12 @@
       <workItem from="1522576749876" duration="23021000" />
       <workItem from="1522610739134" duration="10114000" />
       <workItem from="1522688072343" duration="3335000" />
-      <workItem from="1522699305453" duration="8809000" />
+      <workItem from="1522699305453" duration="13208000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="226898000" />
+    <option name="totallyTimeSpent" value="231297000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -641,20 +636,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/components/wall-editor/less/wall-editor.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="30" lean-forward="true" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+        <state relative-caret-position="391">
+          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/wall-editor/js/wall-editor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="82" column="5" lean-forward="true" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+        <state relative-caret-position="697">
+          <caret line="107" column="7" lean-forward="false" selection-start-line="107" selection-start-column="7" selection-end-line="107" selection-end-column="7" />
           <folding>
-            <element signature="e#177#1700#0" expanded="false" />
-            <element signature="e#1749#2426#0" expanded="false" />
-            <element signature="e#2456#3023#0" expanded="false" />
+            <element signature="e#177#1801#0" expanded="false" />
+            <element signature="e#1850#2527#0" expanded="false" />
+            <element signature="e#2558#3125#0" expanded="false" />
           </folding>
         </state>
       </provider>

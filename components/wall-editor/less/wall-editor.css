@@ -1,11 +1,12 @@
 .wall {
   border: 1px dotted #272727;
   flex-grow: 1;
+  position: relative;
 }
 .wall .img-wrapper {
+  position: absolute;
   cursor: url("../../../img/ui/move.svg"), pointer;
   border: 1px dotted #272727;
-  position: relative;
   display: inline-block;
   max-width: 100%;
 }
@@ -13,7 +14,6 @@
   position: absolute;
   cursor: pointer;
   background-color: #ffffff;
-  float: right;
   font-size: 20px;
   line-height: 40px;
   width: 40px;

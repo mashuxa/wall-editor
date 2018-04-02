@@ -17,15 +17,17 @@
             myGallary.forEach((el) => {
                 let wrapper = document.createElement("div");
                 let btnPlus = document.createElement("div");
+                let btnMinus = document.createElement("div");
                 btnPlus.classList.add("img-wrapper__btn");
                 btnPlus.classList.add("img-wrapper__btn_plus");
-                btnPlus.innerHTML = "+";
-                let btnMinus = document.createElement("div");
                 btnMinus.classList.add("img-wrapper__btn");
                 btnMinus.classList.add("img-wrapper__btn_minus");
+                btnPlus.innerHTML = "+";
                 btnMinus.innerHTML = "-";
                 wrapper.appendChild(btnPlus);
                 wrapper.appendChild(btnMinus);
+                wrapper.style.left = el.x1 + "px";
+                wrapper.style.top = el.y1 + "px";
                 new Promise(resolve => {
                     wrapper.id = el.id;
                     wrapper.classList.add("img-wrapper");
@@ -60,6 +62,7 @@
             }, 30);
         }
     }
+
     function photoScaleUp(e) {
         clearInterval(plusIntervalId);
         clearInterval(minusIntervalId);
@@ -75,9 +78,34 @@
             };
         }
     }
+
     document.body.addEventListener("mousedown", photoScaleDown);
     document.body.addEventListener("touchstart", photoScaleDown);
     document.addEventListener("mouseup", photoScaleUp);
     document.addEventListener("touchend", photoScaleUp);
+
+
+    ////////////////////MOVE
+
+
+    function movePhoto(wrapper, event) {
+        wrapper.style.left = wrapper.offsetLeft + event.movementX + "px";
+        wrapper.style.top = wrapper.offsetTop + event.movementY + "px";
+    }
+
+    document.addEventListener("mouseup", (e) => {
+        console.log("поднято");
+    });
+    document.addEventListener("mousedown", (e) => {
+        console.log("нажато");
+        if (e.target.classList.contains("photo")) {
+            let wrapper = e.target.parentElement;
+            chagedPhotoId = wrapper.id;
+            document.addEventListener("mousemove", (event) => {
+                movePhoto(wrapper, event);
+            });
+        }
+    });
+
 
 }());

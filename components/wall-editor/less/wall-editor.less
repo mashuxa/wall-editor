@@ -8,17 +8,17 @@
 .wall {
     border: 1px dotted @darkgray-color;
     flex-grow: 1;
+    position: relative;
     .img-wrapper {
+        position: absolute;
         cursor: url("../../../img/ui/move.svg"), pointer;
         border: 1px dotted @darkgray-color;
-        position: relative;
         display: inline-block;
         max-width: 100%;
         &__btn {
             position: absolute;
             cursor: pointer;
             background-color: #ffffff;
-            float: right;
             font-size: 20px;
             line-height: 40px;
             width: 40px;

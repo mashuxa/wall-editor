@@ -22,10 +22,9 @@
         y1: POSITION_START_BORDERS
     };
     let plusIntervalId, minusIntervalId;
-
-
     let imgBlobBuffer;
     let imgDataUrl;
+
     //<<<<<<< MAIN >>>>>>>//
     class Photo {
         constructor(img) {
@@ -37,17 +36,7 @@
             this.y2 = this.y1 + img.height;
         }
     }
-
-    function showPreloader() {
-        let preloader = document.createElement("img");
-        preloader.id = "preloader";
-        preloader.src = "img/ui/preloader.svg";
-        document.querySelector(".canvas-wrapper").appendChild(preloader);
-    }
-
-    function hidePreloader() {
-        document.getElementById("preloader").remove();
-    }
+    openDB(DB_NAME, DB_VERSION, STORE_NAME);
     //загрузить картинку
     function loadImg() {
         let isContinueChange = true;
@@ -449,12 +438,15 @@
     document.getElementById("btnSaveImg").addEventListener("click", () => {
         if (canvasImg) {
             let photo = new Photo(canvasImg);
-            let transaction = db.transaction([STORE_NAME], "readwrite");
-            let objectStore = transaction.objectStore(STORE_NAME);
-            objectStore.add(photo);
-            if (confirm("Photo added in your gallary. Do you want to go to Wall editor?")) {
-                document.getElementById("wallEditor").dispatchEvent(new MouseEvent("click"));
-            }
+            console.log(db);
+
+
+                let transaction = db.transaction([STORE_NAME], "readwrite");
+                let objectStore = transaction.objectStore(STORE_NAME);
+                objectStore.add(photo);
+                if (confirm("Photo added in your gallary. Do you want to go to Wall editor?")) {
+                    document.getElementById("wallEditor").dispatchEvent(new MouseEvent("click"));
+                }
         }
     });
 

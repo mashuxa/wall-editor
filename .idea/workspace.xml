@@ -3,9 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="887c85cd-a9ec-4b19-9acc-363f613d5e3c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/common/common.less" afterPath="$PROJECT_DIR$/common/common.less" />
+      <change beforePath="$PROJECT_DIR$/components/mobile-menu/js/mobile-menu.js" afterPath="$PROJECT_DIR$/components/mobile-menu/js/mobile-menu.js" />
+      <change beforePath="$PROJECT_DIR$/components/photo-editor/js/photo-editor.js" afterPath="$PROJECT_DIR$/components/photo-editor/js/photo-editor.js" />
       <change beforePath="$PROJECT_DIR$/components/wall-editor/js/wall-editor.js" afterPath="$PROJECT_DIR$/components/wall-editor/js/wall-editor.js" />
       <change beforePath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.css" afterPath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.css" />
       <change beforePath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.less" afterPath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.less" />
+      <change beforePath="$PROJECT_DIR$/fonts/font-icon/icon.css" afterPath="$PROJECT_DIR$/fonts/font-icon/icon.css" />
+      <change beforePath="$PROJECT_DIR$/fonts/font-icon/icon.eot" afterPath="$PROJECT_DIR$/fonts/font-icon/icon.eot" />
+      <change beforePath="$PROJECT_DIR$/fonts/font-icon/icon.svg" afterPath="$PROJECT_DIR$/fonts/font-icon/icon.svg" />
+      <change beforePath="$PROJECT_DIR$/fonts/font-icon/icon.ttf" afterPath="$PROJECT_DIR$/fonts/font-icon/icon.ttf" />
+      <change beforePath="$PROJECT_DIR$/fonts/font-icon/icon.woff" afterPath="$PROJECT_DIR$/fonts/font-icon/icon.woff" />
+      <change beforePath="$PROJECT_DIR$/fonts/font-icon/icon.woff2" afterPath="$PROJECT_DIR$/fonts/font-icon/icon.woff2" />
+      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change beforePath="$PROJECT_DIR$/wall-editor.html" afterPath="$PROJECT_DIR$/wall-editor.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,12 +33,11 @@
       <file leaf-file-name="wall-editor.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/wall-editor/js/wall-editor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="107" column="7" lean-forward="false" selection-start-line="107" selection-start-column="7" selection-end-line="107" selection-end-column="7" />
+            <state relative-caret-position="720">
+              <caret line="172" column="0" lean-forward="true" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
               <folding>
-                <element signature="e#177#1801#0" expanded="false" />
-                <element signature="e#1850#2527#0" expanded="false" />
-                <element signature="e#2558#3125#0" expanded="false" />
+                <element signature="e#2114#2791#0" expanded="false" />
+                <element signature="e#2821#3388#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -36,9 +46,21 @@
       <file leaf-file-name="wall-editor.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/wall-editor/less/wall-editor.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+            <state relative-caret-position="782">
+              <caret line="46" column="35" lean-forward="false" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="photo-editor.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/photo-editor/js/photo-editor.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1451">
+              <caret line="454" column="0" lean-forward="true" selection-start-line="454" selection-start-column="0" selection-end-line="454" selection-end-column="0" />
+              <folding>
+                <element signature="e#359#674#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -56,7 +78,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cancelAnimation</find>
       <find>drawCanvas</find>
       <find>draw</find>
       <find>item</find>
@@ -86,6 +107,7 @@
       <find>imgBlobBuffer</find>
       <find>open</find>
       <find>scale</find>
+      <find>wid</find>
     </findStrings>
     <replaceStrings>
       <replace>borderPositionTop</replace>
@@ -105,14 +127,14 @@
         <option value="$PROJECT_DIR$/main.js" />
         <option value="$PROJECT_DIR$/components/cropper/cropper — копия.js" />
         <option value="$PROJECT_DIR$/fonts/font-icon/icon.css" />
-        <option value="$PROJECT_DIR$/components/mobile-menu/js/mobile-menu.js" />
         <option value="$PROJECT_DIR$/components/mobile-menu/less/mobile-menu.css" />
         <option value="$PROJECT_DIR$/components/mobile-menu/less/mobile-menu.less" />
         <option value="$PROJECT_DIR$/components/cropper/cropper.js" />
         <option value="$PROJECT_DIR$/components/photo-editor/less/photo-editor.less" />
-        <option value="$PROJECT_DIR$/wall-editor.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/common/common.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/wall-editor.html" />
+        <option value="$PROJECT_DIR$/components/mobile-menu/js/mobile-menu.js" />
         <option value="$PROJECT_DIR$/common/common.less" />
         <option value="$PROJECT_DIR$/components/photo-editor/js/photo-editor.js" />
         <option value="$PROJECT_DIR$/components/wall-editor/less/wall-editor.less" />
@@ -178,8 +200,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -201,6 +223,19 @@
               <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
               <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="mobile-menu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="mobile-menu" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
+              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="photo-editor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -209,21 +244,6 @@
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="photo-editor" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="photo-editor" type="462c0819:PsiDirectoryNode" />
-              <item name="less" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
-              <item name="myProjectHTML" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="photo-editor" type="462c0819:PsiDirectoryNode" />
-              <item name="less" type="462c0819:PsiDirectoryNode" />
-              <item name="photo-editor.less" type="620a8d5e:NestingTreeNode" />
             </path>
             <path>
               <item name="myProjectHTML" type="b2602c69:ProjectViewProjectNode" />
@@ -334,17 +354,18 @@
       <workItem from="1522610739134" duration="10114000" />
       <workItem from="1522688072343" duration="3335000" />
       <workItem from="1522699305453" duration="13208000" />
+      <workItem from="1522784728168" duration="10027000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="231297000" />
+    <option name="totallyTimeSpent" value="241324000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06902002" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10695469" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -538,13 +559,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/cropper/cropper — копия.js" />
-    <entry file="file://$PROJECT_DIR$/components/mobile-menu/js/mobile-menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/cropper/cropper.js" />
     <entry file="file://$PROJECT_DIR$/components/photo-editor/less/photo-editor.less">
       <provider selected="true" editor-type-id="text-editor">
@@ -585,36 +599,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/on-the-wall.html" />
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="31" lean-forward="true" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/common.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3271">
-          <caret line="3" column="10" lean-forward="false" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common/common.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
           <caret line="15" column="56" lean-forward="true" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wall-editor.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="50" lean-forward="true" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -624,32 +612,65 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/components/mobile-menu/js/mobile-menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="22" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="33" lean-forward="true" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+          <folding>
+            <element signature="n#div#1;n#div#0;n#form#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wall-editor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="14" lean-forward="true" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/common.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/wall-editor/less/wall-editor.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="46" column="35" lean-forward="false" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/photo-editor/js/photo-editor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="36" column="36" lean-forward="false" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+        <state relative-caret-position="1451">
+          <caret line="454" column="0" lean-forward="true" selection-start-line="454" selection-start-column="0" selection-end-line="454" selection-end-column="0" />
           <folding>
             <element signature="e#359#674#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/wall-editor/less/wall-editor.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="24" lean-forward="true" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/wall-editor/js/wall-editor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="107" column="7" lean-forward="false" selection-start-line="107" selection-start-column="7" selection-end-line="107" selection-end-column="7" />
+        <state relative-caret-position="720">
+          <caret line="172" column="0" lean-forward="true" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
           <folding>
-            <element signature="e#177#1801#0" expanded="false" />
-            <element signature="e#1850#2527#0" expanded="false" />
-            <element signature="e#2558#3125#0" expanded="false" />
+            <element signature="e#2114#2791#0" expanded="false" />
+            <element signature="e#2821#3388#0" expanded="false" />
           </folding>
         </state>
       </provider>

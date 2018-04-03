@@ -1,6 +1,7 @@
 (function(){
     "use strict";
 function initializeMobileMenu() {
+    let touchstartX, touchendX;
     document.body.addEventListener("mouseup", function (e) {
         if (
             !e.target.classList.contains("js-mobile-menu") && 

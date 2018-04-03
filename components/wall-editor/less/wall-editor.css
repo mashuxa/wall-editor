@@ -22,7 +22,7 @@
   top: 5px;
   right: 5px;
   border-radius: 8px;
-  opacity: 0.5;
+  opacity: 0.3;
   transition-duration: 0.3s;
 }
 .wall .img-wrapper__btn:hover {
@@ -30,6 +30,18 @@
 }
 .wall .img-wrapper__btn_plus {
   right: 50px;
+}
+.wall .img-wrapper__btn_remove-only-now {
+  opacity: 0.5;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  font-size: 10px;
+  color: #ffffff;
+}
+.wall .img-wrapper__btn_remove-only-now:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 .wall img {
   max-width: 100%;

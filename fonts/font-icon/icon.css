@@ -26,8 +26,10 @@
   -moz-osx-font-smoothing: grayscale; 
 }
  
-.icon-logo:before { content: '\e800'; } /* '' */
-.icon-menu:before { content: '\e801'; } /* '' */
+.icon-upload:before { content: '\e800'; } /* '' */
+.icon-logo:before { content: '\e801'; } /* '' */
+.icon-menu:before { content: '\e802'; } /* '' */
+.icon-videocam-outline:before { content: '\e803'; } /* '' */
 .icon-reset:before { content: '\e804'; } /* '' */
 .icon-top-left-point:before { content: '\e805'; } /* '' */
 .icon-top-right-point:before { content: '\e806'; } /* '' */
@@ -38,3 +40,4 @@
 .icon-cursor-move:before { content: '\e80b'; } /* '' */
 .icon-download:before { content: '\e80c'; } /* '' */
 .icon-filter:before { content: '\e80d'; } /* '' */
+.icon-spin4:before { content: '\e834'; } /* '' */

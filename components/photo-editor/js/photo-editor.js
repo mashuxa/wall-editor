@@ -32,8 +32,6 @@
             this.blob = imgBlobBuffer;
             this.x1 = 0;
             this.y1 = 0;
-            this.x2 = this.x1 + img.width;
-            this.y2 = this.y1 + img.height;
             this.width = img.width;
         }
     }
@@ -439,15 +437,19 @@
     document.getElementById("btnSaveImg").addEventListener("click", () => {
         if (canvasImg) {
             let photo = new Photo(canvasImg);
-            console.log(db);
-
-
                 let transaction = db.transaction([STORE_NAME], "readwrite");
                 let objectStore = transaction.objectStore(STORE_NAME);
-                objectStore.add(photo);
-                if (confirm("Photo added in your gallary. Do you want to go to Wall editor?")) {
-                    document.getElementById("wallEditor").dispatchEvent(new MouseEvent("click"));
-                }
+                let request = objectStore.add(photo);
+                request.onsuccess = function(){
+                    alert("Done!");
+                    // if (confirm("Photo added in your gallary. Do you want to go to Wall editor?")) {
+                    //     document.getElementById("wallEditor").dispatchEvent(new MouseEvent("click"));
+                    // }
+
+                };
+
+
+
         }
     });
 

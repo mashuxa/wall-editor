@@ -150,6 +150,23 @@ h6 {
 
     }
 
+    &_play,
+    &_pause,
+    &_cancel {
+        padding: 10px;
+        opacity: 0.3;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 100;
+        margin: 10px;
+        &:hover {
+            opacity: 1;
+        }
+    }
+    &_pause {top: 50px;}
+    &_play {top: 100px;}
+
 }
 
 //GRID

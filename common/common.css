@@ -138,6 +138,28 @@ h6 {
   background-color: #006464;
   color: #ffffff;
 }
+.btn_play,
+.btn_pause,
+.btn_cancel {
+  padding: 10px;
+  opacity: 0.3;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  margin: 10px;
+}
+.btn_play:hover,
+.btn_pause:hover,
+.btn_cancel:hover {
+  opacity: 1;
+}
+.btn_pause {
+  top: 50px;
+}
+.btn_play {
+  top: 100px;
+}
 body {
   margin: 0;
   padding: 0;

@@ -3,19 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="887c85cd-a9ec-4b19-9acc-363f613d5e3c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/common/common.css" afterPath="$PROJECT_DIR$/common/common.css" />
+      <change beforePath="$PROJECT_DIR$/common/common.js" afterPath="$PROJECT_DIR$/common/common.js" />
       <change beforePath="$PROJECT_DIR$/common/common.less" afterPath="$PROJECT_DIR$/common/common.less" />
-      <change beforePath="$PROJECT_DIR$/components/mobile-menu/js/mobile-menu.js" afterPath="$PROJECT_DIR$/components/mobile-menu/js/mobile-menu.js" />
       <change beforePath="$PROJECT_DIR$/components/photo-editor/js/photo-editor.js" afterPath="$PROJECT_DIR$/components/photo-editor/js/photo-editor.js" />
       <change beforePath="$PROJECT_DIR$/components/wall-editor/js/wall-editor.js" afterPath="$PROJECT_DIR$/components/wall-editor/js/wall-editor.js" />
       <change beforePath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.css" afterPath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.css" />
       <change beforePath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.less" afterPath="$PROJECT_DIR$/components/wall-editor/less/wall-editor.less" />
-      <change beforePath="$PROJECT_DIR$/fonts/font-icon/icon.css" afterPath="$PROJECT_DIR$/fonts/font-icon/icon.css" />
-      <change beforePath="$PROJECT_DIR$/fonts/font-icon/icon.eot" afterPath="$PROJECT_DIR$/fonts/font-icon/icon.eot" />
-      <change beforePath="$PROJECT_DIR$/fonts/font-icon/icon.svg" afterPath="$PROJECT_DIR$/fonts/font-icon/icon.svg" />
-      <change beforePath="$PROJECT_DIR$/fonts/font-icon/icon.ttf" afterPath="$PROJECT_DIR$/fonts/font-icon/icon.ttf" />
-      <change beforePath="$PROJECT_DIR$/fonts/font-icon/icon.woff" afterPath="$PROJECT_DIR$/fonts/font-icon/icon.woff" />
-      <change beforePath="$PROJECT_DIR$/fonts/font-icon/icon.woff2" afterPath="$PROJECT_DIR$/fonts/font-icon/icon.woff2" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change beforePath="$PROJECT_DIR$/wall-editor.html" afterPath="$PROJECT_DIR$/wall-editor.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -30,36 +24,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="wall-editor.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="wall-editor.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/wall-editor/js/wall-editor.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="172" column="0" lean-forward="true" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
+            <state relative-caret-position="604">
+              <caret line="36" column="46" lean-forward="true" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
               <folding>
-                <element signature="e#2114#2791#0" expanded="false" />
-                <element signature="e#2821#3388#0" expanded="false" />
+                <element signature="e#1920#2777#0" expanded="false" />
+                <element signature="e#2829#3534#0" expanded="false" />
+                <element signature="e#3564#4131#0" expanded="false" />
+                <element signature="e#4455#4484#0" expanded="false" />
+                <element signature="e#4523#4552#0" expanded="false" />
+                <element signature="e#4590#4743#0" expanded="false" />
+                <element signature="e#4779#4952#0" expanded="false" />
+                <element signature="e#5000#5856#0" expanded="false" />
+                <element signature="e#5906#6125#0" expanded="false" />
+                <element signature="e#6172#6667#0" expanded="false" />
+                <element signature="e#6928#7605#0" expanded="false" />
+                <element signature="e#7644#8326#0" expanded="false" />
+                <element signature="e#8359#9024#0" expanded="false" />
+                <element signature="e#9095#9139#0" expanded="false" />
+                <element signature="e#9199#9677#0" expanded="false" />
+                <element signature="e#9758#10128#0" expanded="false" />
+                <element signature="e#10182#11064#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wall-editor.less" pinned="false" current-in-tab="false">
+      <file leaf-file-name="wall-editor.less" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/components/wall-editor/less/wall-editor.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="46" column="35" lean-forward="false" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
+            <state relative-caret-position="754">
+              <caret line="64" column="5" lean-forward="true" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="photo-editor.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/photo-editor/js/photo-editor.js">
+      <file leaf-file-name="common.less" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/common.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1451">
-              <caret line="454" column="0" lean-forward="true" selection-start-line="454" selection-start-column="0" selection-end-line="454" selection-end-column="0" />
+            <state relative-caret-position="497">
+              <caret line="165" column="5" lean-forward="true" selection-start-line="165" selection-start-column="5" selection-end-line="165" selection-end-column="5" />
               <folding>
-                <element signature="e#359#674#0" expanded="false" />
+                <element signature="e#4706#5014#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -78,14 +87,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>drawCanvas</find>
-      <find>draw</find>
-      <find>item</find>
-      <find>can</find>
-      <find>tool</find>
-      <find>center</find>
-      <find>loadIm</find>
-      <find>inner</find>
       <find>uplo</find>
       <find>+</find>
       <find>blu</find>
@@ -108,6 +109,14 @@
       <find>open</find>
       <find>scale</find>
       <find>wid</find>
+      <find>disp</find>
+      <find>chang</find>
+      <find>fileInput</find>
+      <find>removeOnlyNow</find>
+      <find>btnRemoveTemporary</find>
+      <find>temp</find>
+      <find>parentElement</find>
+      <find>perm</find>
     </findStrings>
     <replaceStrings>
       <replace>borderPositionTop</replace>
@@ -115,6 +124,10 @@
       <replace>LIMIT_VAR</replace>
       <replace>editor-preview__canvas</replace>
       <replace>&lt;label&gt;</replace>
+      <replace>removeTemporary</replace>
+      <replace>btnRemoveTemporarily</replace>
+      <replace>parentElement.parentElement</replace>
+      <replace>parentElement.parentElement</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -131,14 +144,14 @@
         <option value="$PROJECT_DIR$/components/mobile-menu/less/mobile-menu.less" />
         <option value="$PROJECT_DIR$/components/cropper/cropper.js" />
         <option value="$PROJECT_DIR$/components/photo-editor/less/photo-editor.less" />
-        <option value="$PROJECT_DIR$/common/common.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/wall-editor.html" />
         <option value="$PROJECT_DIR$/components/mobile-menu/js/mobile-menu.js" />
-        <option value="$PROJECT_DIR$/common/common.less" />
+        <option value="$PROJECT_DIR$/wall-editor.html" />
+        <option value="$PROJECT_DIR$/common/common.js" />
         <option value="$PROJECT_DIR$/components/photo-editor/js/photo-editor.js" />
-        <option value="$PROJECT_DIR$/components/wall-editor/less/wall-editor.less" />
+        <option value="$PROJECT_DIR$/common/common.less" />
         <option value="$PROJECT_DIR$/components/wall-editor/js/wall-editor.js" />
+        <option value="$PROJECT_DIR$/components/wall-editor/less/wall-editor.less" />
       </list>
     </option>
   </component>
@@ -155,10 +168,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="132" />
+    <option name="y" value="348" />
     <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="height" value="830" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -355,18 +369,20 @@
       <workItem from="1522688072343" duration="3335000" />
       <workItem from="1522699305453" duration="13208000" />
       <workItem from="1522784728168" duration="10027000" />
+      <workItem from="1522861190837" duration="13121000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="241324000" />
+    <option name="totallyTimeSpent" value="254445000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10695469" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.108208954" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -379,7 +395,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -599,14 +614,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/on-the-wall.html" />
-    <entry file="file://$PROJECT_DIR$/common/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="15" column="56" lean-forward="true" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/img/ui/move.svg">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -616,7 +623,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="22" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -632,46 +638,74 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wall-editor.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="14" lean-forward="true" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
-          <folding />
+        <state relative-caret-position="669">
+          <caret line="57" column="7" lean-forward="true" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#1;n#main#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/common.less">
+    <entry file="file://$PROJECT_DIR$/common/common.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/wall-editor/less/wall-editor.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="46" column="35" lean-forward="false" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
+        <state relative-caret-position="731">
+          <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/components/photo-editor/js/photo-editor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1451">
-          <caret line="454" column="0" lean-forward="true" selection-start-line="454" selection-start-column="0" selection-end-line="454" selection-end-column="0" />
+        <state relative-caret-position="238">
+          <caret line="357" column="0" lean-forward="true" selection-start-line="357" selection-start-column="0" selection-end-line="357" selection-end-column="0" />
           <folding>
             <element signature="e#359#674#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/common/common.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="165" column="5" lean-forward="true" selection-start-line="165" selection-start-column="5" selection-end-line="165" selection-end-column="5" />
+          <folding>
+            <element signature="e#4706#5014#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/wall-editor/js/wall-editor.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="172" column="0" lean-forward="true" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
+        <state relative-caret-position="604">
+          <caret line="36" column="46" lean-forward="true" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
           <folding>
-            <element signature="e#2114#2791#0" expanded="false" />
-            <element signature="e#2821#3388#0" expanded="false" />
+            <element signature="e#1920#2777#0" expanded="false" />
+            <element signature="e#2829#3534#0" expanded="false" />
+            <element signature="e#3564#4131#0" expanded="false" />
+            <element signature="e#4455#4484#0" expanded="false" />
+            <element signature="e#4523#4552#0" expanded="false" />
+            <element signature="e#4590#4743#0" expanded="false" />
+            <element signature="e#4779#4952#0" expanded="false" />
+            <element signature="e#5000#5856#0" expanded="false" />
+            <element signature="e#5906#6125#0" expanded="false" />
+            <element signature="e#6172#6667#0" expanded="false" />
+            <element signature="e#6928#7605#0" expanded="false" />
+            <element signature="e#7644#8326#0" expanded="false" />
+            <element signature="e#8359#9024#0" expanded="false" />
+            <element signature="e#9095#9139#0" expanded="false" />
+            <element signature="e#9199#9677#0" expanded="false" />
+            <element signature="e#9758#10128#0" expanded="false" />
+            <element signature="e#10182#11064#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/wall-editor/less/wall-editor.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="754">
+          <caret line="64" column="5" lean-forward="true" selection-start-line="64" selection-start-column="5" selection-end-line="64" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>

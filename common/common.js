@@ -35,11 +35,12 @@ function openDB(dbName, dbVersion, objectStoreName) {
 
 
 
-function showPreloader() {
+function showPreloader(wrapper) {
+    wrapper = wrapper || document.body;
     let preloader = document.createElement("img");
     preloader.id = "preloader";
     preloader.src = "img/ui/preloader.svg";
-    document.querySelector(".canvas-wrapper").appendChild(preloader);
+    wrapper.appendChild(preloader);
 }
 
 function hidePreloader() {

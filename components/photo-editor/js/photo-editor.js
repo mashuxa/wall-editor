@@ -43,7 +43,7 @@
             isContinueChange = confirm("The current image will be overwritten. Are you sure you want to continue?");
         }
         if (isContinueChange && fileInput.files[0]) {
-            showPreloader();
+            showPreloader(document.querySelector(".canvas-wrapper"));
             // вызываем функццию для получения img и передаем blob объект полученный из fileInput.
             blobToImg(fileInput.files[0]).then(img => {
                 canvasImg = img;
@@ -357,7 +357,7 @@
     }
 
     function applyAll() {
-        showPreloader();
+        showPreloader(document.querySelector(".canvas-wrapper"));
         new Promise(resolve => {
             canvasImgWidth = imgSettings.x2 - imgSettings.x1;
             canvasImgHeight = imgSettings.y2 - imgSettings.y1;

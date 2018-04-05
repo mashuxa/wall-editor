@@ -8,13 +8,14 @@
 
     <link rel="stylesheet" href="common/common.css">
     <link rel="stylesheet" href="components/photo-editor/less/photo-editor.css">
+    <link rel="stylesheet" href="components/wall-editor/less/wall-editor.css">
     <link rel="stylesheet" href="fonts/font-icon/icon.css">
     <link rel="stylesheet" href="components/mobile-menu/less/mobile-menu.css">
-
-
-    <script defer src="common/common.js"></script>
-    <script defer src="components/photo-editor/js/photo-editor.js"></script>
+    <script defer src="common/main.js"></script>
     <script defer src="components/mobile-menu/js/mobile-menu.js"></script>
+    <script defer src="components/photo-editor/js/photo-editor.js"></script>
+    <script defer src="components/wall-editor/js/wall-editor.js"></script>
+
 
 </head>
 <body>
@@ -27,134 +28,24 @@
     <label class="js-mobile-menu-toggle" for="js-mobile-menu-toggle"><i class="icon-menu"></i><span>Menu</span></label>
 </header>
 <nav class="nav js-mobile-menu">
-    <a href="index.html" class="nav__item nav__item_active" id="photoEditor">Photo Editor</a>
+    <a href="templates/photo-editor.html" class="nav__item nav__item_active" id="photoEditor">Photo Editor</a>
     <!--<a class="nav__item" id="myGallary">My Gallary</a>-->
-    <a href="wall-editor.html" class="nav__item" id="wallEditor">Wall Preview</a>
-    <!--<a class="nav__item" id="feedback">Feedback</a>-->
+    <a href="templates/wall-editor.html" class="nav__item" id="wallEditor">Wall Preview</a>
+    <a href="templates/bug-report.html" class="nav__item" id="bugReport">Bug Report</a>
 </nav>
-<main class="main">
-    <div class="status-bar flex">
-       <span class="status-bar__info">
-                Photo Editor
-        </span>
-        <div class="flex">
-            <label class="btn" for="fileInput"><i class="icon-upload"></i>Upload new</label>
-            <a class="btn btn_download" download="photo_walls_editor_image.png"><i class="icon-download"></i>Downlod this</a>
-            <input type="file" id="fileInput" accept="image/jpeg,image/png">
-        </div>
-    </div>
-    <div class="main__content flex">
-        <input type="checkbox" id="toolsToggle">
-        <label class="btn" for="toolsToggle">
-            <span class="show">Hide tools</span>
-            <span class="hide">Show tools</span>
-        </label>
 
-        <form class="tools flex flex_column" name="tools">
-            <div class="tools-wrapper">
-                <div class="tools__zoom">
-                    <h6>
-                        <i class="icon-zoom"></i> Zoom
-                    </h6>
-                    <div class="flex">
-                        <button class="btn btn_zoom" id="btnPlus" type="button">
-                            +
-                        </button>
-                        <button class="btn btn_zoom" id="btnMinus" type="button">
-                            -
-                        </button>
-                        <button class="btn btn_zoom" id="btnReset" type="button">
-                            <i class="icon-reset"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="tools__crop">
 
-                    <h6>
-                        <i class="icon-crop"></i> Crop
-                    </h6>
+<main class="main" id="main">
 
-                    <div class="flex">
-                        <button class="btn btn_crop" id="btn1x1" type="button">
-                            1:1
-                        </button>
-                        <button class="btn btn_crop" id="btn4x3" type="button">
-                            4:3
-                        </button>
-                        <button class="btn btn_crop" id="btn16x9" type="button">
-                            16:9
-                        </button>
-                    </div>
-                    <small>Proportions:</small>
-                    <div class="flex">
-                        <input id="proportionsWidth" type="number" min="0">
-                        <span>:</span>
-                        <input id="proportionsHeight" type="number" min="0">
-                    </div>
-                </div>
-                <div class="tools__filter">
-                    <h6>
-                        <i class="icon-filter"></i> Filter
-                    </h6>
-                    <div class="filters">
-                        <label>
-                            <span class="filter-name">Brightness, %</span>
-                            <input id="filterBrightness" type="range" min="0" max="5" step="0.01" value="1" disabled>
-                        </label>
-                        <label class="flex">
-                            <span class="filter-name">Contrast, %</span>
-                            <input id="filterContrast" type="range" min="0" max="5" step="0.01" value="1" disabled>
-                        </label>
-                        <label class="flex">
-                            <span class="filter-name">Saturate, %</span>
-                            <input id="filterSaturate" type="range" min="0" max="5" step="0.01" value="1" disabled>
-                        </label>
-                        <label class="flex">
-                            <span class="filter-name">Hue-rotate, °</span>
-                            <input id="filterHueRotate" type="range" min="0" max="359" step="1" value="0" disabled>
-                        </label>
-                        <label class="flex">
-                            <span class="filter-name">Grayscale, %</span>
-                            <input id="filterGrayscale" type="range" min="0" max="1" step="0.01" value="0" disabled>
-                        </label>
-                        <label class="flex">
-                            <span class="filter-name">Sepia, %</span>
-                            <input id="filterSepia" type="range" min="0" max="1" step="0.01" value="0" disabled>
-                        </label>
-                        <label class="flex">
-                            <span class="filter-name">Invert, %</span>
-                            <input id="filterInvert" type="range" min="0" max="1" step="0.01" value="0" disabled>
-                        </label>
-                        <label class="flex">
-                            <span class="filter-name">Blur, px</span>
-                            <input id="filterBlur" type="range" min="0" max="50" step="0.1" value="0" disabled>
-                        </label>
-                        <label class="flex">
-                            <span class="filter-name">Opacity, px</span>
-                            <input id="filterOpacity" type="range" min="0" max="1" step="0.01" value="1" disabled>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="tools__btns-wrapper flex">
-                <button class="btn btn_inv btn_reset" type="reset">Reset</button>
-                <button class="btn btn_apply" type="button">Apply</button>
-            </div>
-        </form>
-        <div class="editor-preview flex flex_column">
-            <div class="canvas-wrapper">
-                <canvas class="editor-preview__canvas" id="canvas" width="100" height="100">
-                </canvas>
-            </div>
-            <div class="editor-preview__btns-wrapper">
-                <button class="btn btn_save" type="button" id="btnSaveImg">+ Add to wall</button>
-            </div>
-        </div>
-    </div>
+
 
 </main>
 
-<div id="wrap"></div>
+
+
+
+
+
 </body>
 
 </html>

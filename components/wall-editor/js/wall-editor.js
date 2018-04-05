@@ -5,51 +5,43 @@
     let chagedPhotoId;
     let wall = document.querySelector(".wall");
     let wrapper;
+
+    function createContextMenuBtns(wrapper){
+        let btnPlus = document.createElement("div");
+        let btnMinus = document.createElement("div");
+        let btnRemoveTemporarily = document.createElement("div");
+        let btnRemovePermanently = document.createElement("div");
+        let contextMenu = document.createElement("div");
+        contextMenu.classList.add("context-menu");
+        btnPlus.classList.add("img-wrapper__btn");
+        btnPlus.classList.add("img-wrapper__btn_plus");
+        btnMinus.classList.add("img-wrapper__btn");
+        btnMinus.classList.add("img-wrapper__btn_minus");
+        btnRemoveTemporarily.classList.add("img-wrapper__btn");
+        btnRemoveTemporarily.classList.add("img-wrapper__btn_remove-temporarily");
+        btnRemovePermanently.classList.add("img-wrapper__btn");
+        btnRemovePermanently.classList.add("img-wrapper__btn_remove-permanently");
+        btnPlus.innerHTML = "Scale Up +";
+        btnMinus.innerHTML = "Scale Down -";
+        btnRemoveTemporarily.innerHTML = "Remove temporarily ×";
+        btnRemovePermanently.innerHTML = "Remove permanently ×";
+        contextMenu.appendChild(btnPlus);
+        contextMenu.appendChild(btnMinus);
+        contextMenu.appendChild(btnRemoveTemporarily);
+        contextMenu.appendChild(btnRemovePermanently);
+        wrapper.appendChild(contextMenu);
+    }
 // Запрос всех файлов из галереи
     openDB(DB_NAME, DB_VERSION, STORE_NAME).then(db => {
-
         let transaction = db.transaction([STORE_NAME], "readonly");
         let objectStore = transaction.objectStore(STORE_NAME);
         let request = objectStore.getAll();
-        function createContextMenuBtns(wrapper){
-            let btnPlus = document.createElement("div");
-            let btnMinus = document.createElement("div");
-            let btnRemoveTemporarily = document.createElement("div");
-            let btnRemovePermanently = document.createElement("div");
-            let contextMenu = document.createElement("div");
-
-            contextMenu.classList.add("context-menu");
-            btnPlus.classList.add("img-wrapper__btn");
-            btnPlus.classList.add("img-wrapper__btn_plus");
-            btnMinus.classList.add("img-wrapper__btn");
-            btnMinus.classList.add("img-wrapper__btn_minus");
-            btnRemoveTemporarily.classList.add("img-wrapper__btn");
-            btnRemoveTemporarily.classList.add("img-wrapper__btn_remove-temporarily");
-            btnRemovePermanently.classList.add("img-wrapper__btn");
-            btnRemovePermanently.classList.add("img-wrapper__btn_remove-permanently");
-
-            btnPlus.innerHTML = "Scale Up +";
-            btnMinus.innerHTML = "Scale Down -";
-            btnRemoveTemporarily.innerHTML = "Remove temporarily ×";
-            btnRemovePermanently.innerHTML = "Remove permanently ×";
-
-            contextMenu.appendChild(btnPlus);
-            contextMenu.appendChild(btnMinus);
-            contextMenu.appendChild(btnRemoveTemporarily);
-            contextMenu.appendChild(btnRemovePermanently);
-            wrapper.appendChild(contextMenu);
-        }
 
         request.onsuccess = () => {
             let myGallary = request.result;
             myGallary.forEach((el) => {
                 let wrapper = document.createElement("div");
-
                 createContextMenuBtns(wrapper);
-
-
-
-
                 wrapper.style.left = el.x1 + "px";
                 wrapper.style.top = el.y1 + "px";
                 new Promise(resolve => {
@@ -89,7 +81,6 @@
     function photoScaleUp(e) {
         clearInterval(plusIntervalId);
         clearInterval(minusIntervalId);
-
         if (chagedPhotoId) {
             let transaction = db.transaction([STORE_NAME], "readwrite");
             let objectStore = transaction.objectStore(STORE_NAME);
@@ -101,8 +92,6 @@
             };
         }
     }
-
-
     document.body.addEventListener("mousedown", photoScaleDown);
     document.body.addEventListener("touchstart", photoScaleDown);
     document.addEventListener("mouseup", photoScaleUp);
@@ -110,15 +99,13 @@
 
 
 //MOVE
-
 // отмена стандартного действия
-    wall.ondragstart = function () {
+    wall.ondragstart = () => {
         return false;
     };
-    wall.onselectstart = function () {
+    wall.onselectstart = ()=> {
         return false;
     };
-
     function mouseMovePhoto(event) {
         wrapper.style.left = wrapper.offsetLeft + event.movementX + "px";
         wrapper.style.top = wrapper.offsetTop + event.movementY + "px";
@@ -127,7 +114,6 @@
         wrapper.style.left = event.touches[0].pageX - event.target.width / 2 + "px";
         wrapper.style.top = event.touches[0].pageY - event.target.height + "px";
     }
-
     wall.addEventListener("mousedown", (e) => {
         if (e.target.classList.contains("photo")) {
             wrapper = e.target.parentElement;
@@ -172,12 +158,10 @@
 
 
 //LIVE preview
-
     let media = navigator.mediaDevices.getUserMedia;
     let photoBackgroundInput = document.getElementById("getLocalPhoto");
     let video;
     photoBackgroundInput.addEventListener("change", setBackground);
-
     function setBackground() {
         if (photoBackgroundInput.files[0]) {
             new Promise(resolve => {
@@ -235,7 +219,6 @@
     }
 
 // For older browsers
-
     if (navigator.mediaDevices === undefined) {
         navigator.mediaDevices = {};
     }
@@ -269,7 +252,6 @@
             let objectStore = transaction.objectStore(STORE_NAME);
             objectStore.delete(Number(e.target.parentElement.parentElement.id));
             e.target.parentElement.parentElement.remove();
-
         } else if (e.target.classList.contains("btn_cancel")) {
             video.srcObject.getTracks()[0].stop();
             document.getElementById("videoStream").remove();
@@ -279,6 +261,4 @@
             video.play();
         }
     });
-
-
 }());

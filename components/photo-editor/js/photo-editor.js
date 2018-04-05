@@ -1,8 +1,8 @@
 (function () {
     "use strict";
-    let canvas = document.getElementById("canvas");
-    let ctx = canvas.getContext("2d");
-    let fileInput = document.getElementById("fileInput");
+    let canvas;
+    let ctx;
+    let fileInput;
     let canvasImg, canvasImgWidth, canvasImgHeight;
     let cursorPositionX, cursorPositionY;
     let animationId;
@@ -35,15 +35,19 @@
             this.width = img.width;
         }
     }
-    openDB(DB_NAME, DB_VERSION, STORE_NAME);
+
     //загрузить картинку
     function loadImg() {
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+        fileInput = document.getElementById("fileInput");
         let isContinueChange = true;
         if (canvasImg) {
             isContinueChange = confirm("The current image will be overwritten. Are you sure you want to continue?");
         }
         if (isContinueChange && fileInput.files[0]) {
             showPreloader(document.querySelector(".canvas-wrapper"));
+
             // вызываем функццию для получения img и передаем blob объект полученный из fileInput.
             blobToImg(fileInput.files[0]).then(img => {
                 canvasImg = img;
@@ -65,6 +69,7 @@
             });
         }
     }
+
     // Получаем ссылку из blob объекта для картинки и загружаем её
     function blobToImg(blob) {
         imgBlobBuffer = blob;
@@ -76,6 +81,7 @@
             alert("Error!");
         });
     }
+
     // перерисовка канваса
     function drawCanvas() {
         ctx.clearRect(0, 0, canvasImgWidth, canvasImgHeight);
@@ -98,86 +104,107 @@
         ctx.lineWidth = 5;
         ctx.strokeRect(imgSettings.x1, imgSettings.y1, imgSettings.x2 - imgSettings.x1, imgSettings.y2 - imgSettings.y1);
     }
+
     // вызов плавной анимации
     function animation() {
         animationId = requestAnimationFrame(animation);
         drawCanvas();
     }
+
     //скачать картинку
     function downloadImg() {
         this.href = URL.createObjectURL(imgBlobBuffer);
     }
 
-    fileInput.addEventListener("change", loadImg);
+    document.addEventListener("change", (e) => {
+        if (e.target.id === "fileInput") {
+            loadImg();
+        }
+    });
     //<<<<<<< end MAIN >>>>>>>/
 
 
     //<<<<<<< ZOOM >>>>>>>/
-
     function scalePlus() {
-        if (canvasImg) {
             canvas.style.width = canvas.offsetWidth + 5 + "px";
             canvas.style.maxWidth = "none";
             plusIntervalId = setInterval(function () {
                 canvas.style.width = canvas.offsetWidth + 5 + "px";
             }, 20);
-        }
     }
 
     function scaleMinus() {
-        if (canvasImg) {
             canvas.style.width = canvas.offsetWidth - 5 + "px";
             minusIntervalId = setInterval(function () {
                 canvas.style.width = canvas.offsetWidth - 5 + "px";
             }, 20);
-        }
     }
 
     function scaleReset() {
-        if (canvasImg) {
             canvas.style.maxWidth = "100%";
             canvas.style.width = canvasImgWidth + "px";
-        }
     }
 
-    document.forms.tools.btnPlus.addEventListener("mousedown", scalePlus);
-    document.forms.tools.btnPlus.addEventListener("touchstart", scalePlus);
-    document.forms.tools.btnPlus.addEventListener("mouseup", () => {
-        clearInterval(plusIntervalId);
+    document.addEventListener("mousedown", (e) => {
+        if (canvasImg && e.target.id === "btnPlus") {
+            scalePlus();
+        } else if (canvasImg && e.target.id === "btnMinus") {
+            scaleMinus();
+        } else if (canvasImg && e.target.id === "btnReset" || canvasImg && e.target.classList.contains("icon-reset")) {
+            scaleReset();
+        }
     });
-    document.forms.tools.btnPlus.addEventListener("touchend", () => {
-        clearInterval(plusIntervalId);
+    document.addEventListener("mouseup", (e) => {
+        if (canvasImg && e.target.id === "btnPlus") {
+            clearInterval(plusIntervalId);
+        } else if (canvasImg && e.target.id === "btnMinus") {
+            clearInterval(minusIntervalId);
+        }
     });
-
-    document.forms.tools.btnMinus.addEventListener("mousedown", scaleMinus);
-    document.forms.tools.btnMinus.addEventListener("touchstart", scaleMinus);
-    document.forms.tools.btnMinus.addEventListener("mouseup", () => {
-        clearInterval(minusIntervalId);
+    document.addEventListener("mouseout", (e) => {
+        if (canvasImg && e.target.id === "btnPlus") {
+            clearInterval(plusIntervalId);
+        } else if (canvasImg && e.target.id === "btnMinus") {
+            clearInterval(minusIntervalId);
+        }
     });
-    document.forms.tools.btnMinus.addEventListener("touchend", () => {
-        clearInterval(minusIntervalId);
+    document.addEventListener("touchstart", (e) => {
+        if (canvasImg && e.target.id === "btnPlus") {
+            scalePlus();
+        } else if (canvasImg && e.target.id === "btnMinus") {
+            scaleMinus();
+        } else if (canvasImg && e.target.id === "btnReset" || canvasImg && e.target.classList.contains("icon-reset")) {
+            scaleReset();
+        }
     });
-
-    document.forms.tools.btnReset.addEventListener("mousedown", scaleReset);
-    document.forms.tools.btnReset.addEventListener("touchstart", scaleReset);
-
+    document.addEventListener("touchend", (e) => {
+        if (canvasImg && e.target.id === "btnPlus") {
+            clearInterval(plusIntervalId);
+        } else if (canvasImg && e.target.id === "btnMinus") {
+            clearInterval(minusIntervalId);
+        }
+    });
+    document.addEventListener("touchcancel", (e) => {
+        if (canvasImg && e.target.id === "btnPlus") {
+            clearInterval(plusIntervalId);
+        } else if (canvasImg && e.target.id === "btnMinus") {
+            clearInterval(minusIntervalId);
+        }
+    });
     //<<<<<<< end ZOOM >>>>>>>/
 
-    //<<<<<<<BORDERS & PROPORTIONS for crop >>>>>>>/
 
+    //<<<<<<<BORDERS & PROPORTIONS for crop >>>>>>>/
     // Определяем куда был клик и какие стороны меняем
     function defineSide(e) {
         scaleK = canvas.width / canvas.offsetWidth;
-
         if (e.type === "touchstart") {
             cursorPositionX = (e.changedTouches[0].pageX - canvas.getBoundingClientRect().left - pageXOffset) * scaleK;
             cursorPositionY = (e.changedTouches[0].pageY - canvas.getBoundingClientRect().top - pageYOffset) * scaleK;
         } else {
-
             cursorPositionX = e.offsetX * scaleK;
             cursorPositionY = e.offsetY * scaleK;
         }
-
         if (cursorPositionX < imgSettings.x1 + LIMIT_VAR && cursorPositionX > imgSettings.x1 - LIMIT_VAR && cursorPositionY < imgSettings.y1 + LIMIT_VAR && cursorPositionY > imgSettings.y1 - LIMIT_VAR) {
             x1 = y1 = true;
         } else if (cursorPositionX < imgSettings.x2 + LIMIT_VAR && cursorPositionX > imgSettings.x2 - LIMIT_VAR && cursorPositionY < imgSettings.y1 + LIMIT_VAR && cursorPositionY > imgSettings.y1 - LIMIT_VAR) {
@@ -212,6 +239,7 @@
             document.getElementById("fileInput").dispatchEvent(new MouseEvent("click"));
         }
     }
+
     //меняем координаты при движении мышки
     function borderResize(e) {
         if (e.type === "touchmove") {
@@ -257,72 +285,83 @@
         drawCanvas();
     }
 
-    canvas.addEventListener("mousedown", (e) => {
-        startDraw(e);
+
+    document.addEventListener("mousedown", (e) => {
+        if (e.target.id === "canvas") {
+            startDraw(e);
+        }
     });
-    canvas.addEventListener("touchstart", (e) => {
-        startDraw(e);
+    document.addEventListener("mouseup", (e) => {
+        if (e.target.id === "canvas") {
+            cancelAnimationFrame(animationId);
+            canvas.removeEventListener("mousemove", borderResize);
+            x1 = x2 = y1 = y2 = false;
+        }
     });
-    canvas.addEventListener("mouseup", (e) => {
-        cancelAnimationFrame(animationId);
-        canvas.removeEventListener("mousemove", borderResize);
-        x1 = x2 = y1 = y2 = false;
-    });
-    canvas.addEventListener("touchend", (e) => {
-        cancelAnimationFrame(animationId);
-        canvas.removeEventListener("touchmove", borderResize);
-        x1 = x2 = y1 = y2 = false;
-    });
-    canvas.addEventListener("mouseout", (e) => {
-        cancelAnimationFrame(animationId);
-        canvas.removeEventListener("mousemove", borderResize);
-        x1 = x2 = y1 = y2 = false;
-    });
-    canvas.addEventListener("touchcancel", (e) => {
-        cancelAnimationFrame(animationId);
-        canvas.removeEventListener("touchmove", borderResize);
-        x1 = x2 = y1 = y2 = false;
+    document.addEventListener("mouseout", (e) => {
+        if (e.target.id === "canvas") {
+            cancelAnimationFrame(animationId);
+            document.removeEventListener("mousemove", borderResize);
+            x1 = x2 = y1 = y2 = false;
+        }
     });
 
-    document.forms.tools.btn1x1.addEventListener("click", () => {
-        if(canvasImg){
-            drawByProportions(1, 1);
+    document.addEventListener("touchstart", (e) => {
+        if (e.target.id === "canvas") {
+            startDraw(e);
         }
     });
-    document.forms.tools.btn4x3.addEventListener("click", () => {
-        if(canvasImg){
-            drawByProportions(4, 3);
+    document.addEventListener("touchend", (e) => {
+        if (e.target.id === "canvas") {
+            cancelAnimationFrame(animationId);
+            canvas.removeEventListener("touchmove", borderResize);
+            x1 = x2 = y1 = y2 = false;
         }
     });
-    document.forms.tools.btn16x9.addEventListener("click", () => {
-        if(canvasImg){
-            drawByProportions(16, 9);
+    document.addEventListener("touchcancel", (e) => {
+        if (e.target.id === "canvas") {
+            cancelAnimationFrame(animationId);
+            canvas.removeEventListener("touchmove", borderResize);
+            x1 = x2 = y1 = y2 = false;
         }
+    });
 
+    document.addEventListener("click", (e) => {
+        if (canvasImg) {
+            if (e.target.id === "btn1x1") {
+
+                drawByProportions(1, 1);
+
+            } else if (e.target.id === "btn4x3") {
+                drawByProportions(4, 3);
+            } else if (e.target.id === "btn16x9") {
+                drawByProportions(16, 9);
+            }
+        }
     });
-    document.forms.tools.proportionsWidth.addEventListener("keyup", () => {
-       if(canvasImg){
-           let valWidth = document.forms.tools.proportionsWidth.value;
-           let valHeight = document.forms.tools.proportionsHeight.value;
-           if (valWidth && valHeight) {
-               drawByProportions(valWidth, valHeight);
-           }
-       }
-    });
-    document.forms.tools.proportionsHeight.addEventListener("keyup", () => {
-        if(canvasImg){
-            let valWidth = document.forms.tools.proportionsWidth.value;
-            let valHeight = document.forms.tools.proportionsHeight.value;
-            if (valWidth && valHeight) {
-                drawByProportions(valWidth, valHeight);
+    document.addEventListener("keyup", (e) => {
+        if (canvasImg) {
+            if (e.target.id === "proportionsWidth") {
+                let valWidth = document.forms.tools.proportionsWidth.value;
+                let valHeight = document.forms.tools.proportionsHeight.value;
+                if (valWidth && valHeight) {
+                    drawByProportions(valWidth, valHeight);
+                }
+            } else if (e.target.id === "proportionsHeight") {
+                let valWidth = document.forms.tools.proportionsWidth.value;
+                let valHeight = document.forms.tools.proportionsHeight.value;
+                if (valWidth && valHeight) {
+                    drawByProportions(valWidth, valHeight);
+                }
             }
         }
     });
 
+
     //<<<<<<< end PROPORTIONS for crop >>>>>>>/
 
-    //<<<<<<< FILTERS >>>>>>>/
 
+    //<<<<<<< FILTERS >>>>>>>/
     function applyCssFilters() {
         canvas.style.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")";
     }
@@ -347,6 +386,7 @@
         document.getElementById("filterBlur").value = 0;
         document.getElementById("filterOpacity").value = 1;
     }
+
     //применяем фильтры
     function applyJsFilters() {
         ctx.filter = "brightness(" + imgSettings.filterBrightness + ")" + " contrast(" + imgSettings.filterContrast + ")" + " hue-rotate(" + imgSettings.filterHueRotate + "deg)" + " saturate(" + imgSettings.filterSaturate + ")" + " grayscale(" + imgSettings.filterGrayscale + ")" + " sepia(" + imgSettings.filterSepia + ")" + " invert(" + imgSettings.filterInvert + ")" + " blur(" + imgSettings.filterBlur + "px)" + " opacity(" + imgSettings.filterOpacity + ")";
@@ -390,68 +430,69 @@
 
         });
     }
-    document.forms.tools.querySelectorAll("input[type='range']").forEach((el) => {
-        el.addEventListener("click", () => {
-            imgSettings[el.id] = Number(el.value);
-            drawCanvas();
-        });
-        el.addEventListener("mousedown", () => {
-            if (canvasImg) {
-                animationId = requestAnimationFrame(animation);
-            }
-        });
-        el.addEventListener("touchstart", () => {
-            if (canvasImg) {
-                animationId = requestAnimationFrame(animation);
-            }
-        });
 
-        el.addEventListener("mousemove", () => {
-            if (canvasImg) {
-                imgSettings[el.id] = Number(el.value);
-            }
-        });
-        el.addEventListener("touchmove", () => {
-            if (canvasImg) {
-                imgSettings[el.id] = Number(el.value);
-            }
-        });
-        el.addEventListener("mouseup", () => {
+    document.addEventListener("click", (e)=>{
+        if (canvasImg && e.target.classList.contains("filter")) {
+            imgSettings[e.target.id] = Number(e.target.value);
+            drawCanvas();
+        } else if(canvasImg && e.target.classList.contains("btn_reset")){
+            resetCssFilters();
+            drawCanvas();
+        }
+    });
+    document.addEventListener("mousedown", (e)=>{
+        if (canvasImg && e.target.classList.contains("filter")) {
+
+                animationId = requestAnimationFrame(animation);
+
+        }
+    });
+    document.addEventListener("mouseup", (e)=>{
+        if (canvasImg && e.target.classList.contains("filter")) {
             drawCanvas();
             cancelAnimationFrame(animationId);
-        });
-        el.addEventListener("touchend", () => {
+        }
+    });
+    document.addEventListener("mousemove", (e)=>{
+        if (canvasImg && e.target.classList.contains("filter")) {
+            imgSettings[e.target.id] = Number(e.target.value);
+        }
+    });
+    document.addEventListener("touchstart", (e)=>{
+        if (canvasImg && e.target.classList.contains("filter")) {
+            animationId = requestAnimationFrame(animation);
+        }
+    });
+    document.addEventListener("touchend", (e)=>{
+        if (canvasImg && e.target.classList.contains("filter")) {
             drawCanvas();
             cancelAnimationFrame(animationId);
-        });
+        }
     });
-    document.querySelector(".btn_reset").addEventListener("click", () => {
-        resetCssFilters();
-        drawCanvas();
+    document.addEventListener("touchmove", (e)=>{
+        if (canvasImg && e.target.classList.contains("filter")) {
+            imgSettings[e.target.id] = Number(e.target.value);
+        }
     });
+
     //<<<<<<< end FILTERS >>>>>>>/
 
 
     //<<<<<<< IndexedDB >>>>>>>/
     // Пуш картинки в db
-    document.getElementById("btnSaveImg").addEventListener("click", () => {
-        if (canvasImg) {
+    document.addEventListener("click", (e)=>{
+        if (canvasImg && e.target.id==="btnSaveImg") {
             let photo = new Photo(canvasImg);
-                let transaction = db.transaction([STORE_NAME], "readwrite");
-                let objectStore = transaction.objectStore(STORE_NAME);
-                let request = objectStore.add(photo);
-                request.onsuccess = function(){
-                    alert("Done!");
-                    // if (confirm("Photo added in your gallary. Do you want to go to Wall editor?")) {
-                    //     document.getElementById("wallEditor").dispatchEvent(new MouseEvent("click"));
-                    // }
-
-                };
-
-
-
+            let transaction = db.transaction([STORE_NAME], "readwrite");
+            let objectStore = transaction.objectStore(STORE_NAME);
+            let request = objectStore.add(photo);
+            request.onsuccess = function () {
+                alert("Done!");
+            };
         }
     });
+
+
 
     //<<<<<<< end IndexedDB >>>>>>>/
 }());

@@ -1,14 +1,15 @@
-<form action="#" class="#" name="bugReport">
+<form action="#" class="bug-report" name="bugReport">
     <label>
         Your name:
-        <input type="text" id="userName">
+        <input type="text" id="userName" autocomplete="true" required>
     </label>
     <label>
         Your email:
-        <input type="email" id="userEmail">
+        <input type="email" id="userEmail" autocomplete="true" required>
     </label>
     <label>
-        <textarea id="reportContent" cols="30" rows="10"></textarea>
+        Your feedback:
+        <textarea id="reportContent" cols="30" rows="10" required></textarea>
     </label>
-    <button class="btn" type="button">Send!</button>
+    <div class="btn" id="sendReport">Send!</div>
 </form>

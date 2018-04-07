@@ -7,7 +7,7 @@
     let cursorPositionX, cursorPositionY;
     let animationId;
     let scaleK;
-    let x1, x2, y1, y2;
+    let isLeft, isRight, isTop, isBottom;
     let imgSettings = {
         filterBrightness: 1,
         filterContrast: 1,
@@ -25,7 +25,10 @@
     let imgBlobBuffer;
     let imgDataUrl;
 
+    openDB(DB_NAME, DB_VERSION, STORE_NAME);
+
     //<<<<<<< MAIN >>>>>>>//
+
     class Photo {
         constructor(img) {
             this.id = Date.now();
@@ -126,23 +129,23 @@
 
     //<<<<<<< ZOOM >>>>>>>/
     function scalePlus() {
+        canvas.style.width = canvas.offsetWidth + 5 + "px";
+        canvas.style.maxWidth = "none";
+        plusIntervalId = setInterval(function () {
             canvas.style.width = canvas.offsetWidth + 5 + "px";
-            canvas.style.maxWidth = "none";
-            plusIntervalId = setInterval(function () {
-                canvas.style.width = canvas.offsetWidth + 5 + "px";
-            }, 20);
+        }, 20);
     }
 
     function scaleMinus() {
+        canvas.style.width = canvas.offsetWidth - 5 + "px";
+        minusIntervalId = setInterval(function () {
             canvas.style.width = canvas.offsetWidth - 5 + "px";
-            minusIntervalId = setInterval(function () {
-                canvas.style.width = canvas.offsetWidth - 5 + "px";
-            }, 20);
+        }, 20);
     }
 
     function scaleReset() {
-            canvas.style.maxWidth = "100%";
-            canvas.style.width = canvasImgWidth + "px";
+        canvas.style.maxWidth = "100%";
+        canvas.style.width = canvasImgWidth + "px";
     }
 
     document.addEventListener("mousedown", (e) => {
@@ -206,23 +209,23 @@
             cursorPositionY = e.offsetY * scaleK;
         }
         if (cursorPositionX < imgSettings.x1 + LIMIT_VAR && cursorPositionX > imgSettings.x1 - LIMIT_VAR && cursorPositionY < imgSettings.y1 + LIMIT_VAR && cursorPositionY > imgSettings.y1 - LIMIT_VAR) {
-            x1 = y1 = true;
+            isLeft = isTop = true;
         } else if (cursorPositionX < imgSettings.x2 + LIMIT_VAR && cursorPositionX > imgSettings.x2 - LIMIT_VAR && cursorPositionY < imgSettings.y1 + LIMIT_VAR && cursorPositionY > imgSettings.y1 - LIMIT_VAR) {
-            x2 = y1 = true;
+            isRight = isTop = true;
         } else if (cursorPositionX < imgSettings.x2 + LIMIT_VAR && cursorPositionX > imgSettings.x2 - LIMIT_VAR && cursorPositionY < imgSettings.y2 + LIMIT_VAR && cursorPositionY > imgSettings.y2 - LIMIT_VAR) {
-            x2 = y2 = true;
+            isRight = isBottom = true;
         } else if (cursorPositionX < imgSettings.x1 + LIMIT_VAR && cursorPositionX > imgSettings.x1 - LIMIT_VAR && cursorPositionY < imgSettings.y2 + LIMIT_VAR && cursorPositionY > imgSettings.y2 - LIMIT_VAR) {
-            x1 = y2 = true;
+            isLeft = isBottom = true;
         } else if (cursorPositionX < imgSettings.x1 + LIMIT_VAR && cursorPositionX > imgSettings.x1 - LIMIT_VAR && cursorPositionY > imgSettings.y1 + LIMIT_VAR && cursorPositionY < imgSettings.y2 - LIMIT_VAR) {
-            x1 = true;
+            isLeft = true;
         } else if (cursorPositionX < imgSettings.x2 + LIMIT_VAR && cursorPositionX > imgSettings.x2 - LIMIT_VAR && cursorPositionY > imgSettings.y1 + LIMIT_VAR && cursorPositionY < imgSettings.y2 - LIMIT_VAR) {
-            x2 = true;
+            isRight = true;
         } else if (cursorPositionY < imgSettings.y1 + LIMIT_VAR && cursorPositionY > imgSettings.y1 - LIMIT_VAR && cursorPositionX > imgSettings.x1 + LIMIT_VAR && cursorPositionX < imgSettings.x2 - LIMIT_VAR) {
-            y1 = true;
+            isTop = true;
         } else if (cursorPositionY < imgSettings.y2 + LIMIT_VAR && cursorPositionY > imgSettings.y2 - LIMIT_VAR && cursorPositionX > imgSettings.x1 + LIMIT_VAR && cursorPositionX < imgSettings.x2 - LIMIT_VAR) {
-            y2 = true;
+            isBottom = true;
         } else if (cursorPositionX > imgSettings.x1 + LIMIT_VAR && cursorPositionX < imgSettings.x2 - LIMIT_VAR && cursorPositionY > imgSettings.y1 + LIMIT_VAR && cursorPositionY < imgSettings.y2 - LIMIT_VAR) {
-            x1 = y1 = x2 = y2 = true;
+            isLeft = isTop = isRight = isBottom = true;
         }
     }
 
@@ -249,26 +252,32 @@
             cursorPositionX = e.offsetX * scaleK;
             cursorPositionY = e.offsetY * scaleK;
         }
-        if (x1 && x2 && y1 && y2) {
+        if (e.type === "mousemove" && isLeft && isRight && isTop && isBottom) {
             imgSettings.x1 = Math.max((imgSettings.x1 + e.movementX), 0);
             imgSettings.x2 = Math.min((imgSettings.x2 + e.movementX), canvasImgWidth);
             imgSettings.y1 = Math.max((imgSettings.y1 + e.movementY), 0);
             imgSettings.y2 = Math.min((imgSettings.y2 + e.movementY), canvasImgHeight);
-            return;
-        }
-        if (y1) {
-            imgSettings.y1 = Math.max(cursorPositionY, 0);
-        }
-        if (y2) {
-            imgSettings.y2 = Math.min(cursorPositionY, canvasImgHeight);
-        }
-        if (x1) {
-            imgSettings.x1 = Math.max(cursorPositionX, 0);
-        }
-        if (x2) {
-            imgSettings.x2 = Math.min(cursorPositionX, canvasImgWidth);
-        }
+        } else if (e.type === "touchmove" && isLeft && isRight && isTop && isBottom) {
 
+
+
+//<<<функция для перемещения на выделенной области на тач устройствах>>>
+
+
+        } else {
+            if (isTop) {
+                imgSettings.y1 = Math.max(cursorPositionY, 0);
+            }
+            if (isBottom) {
+                imgSettings.y2 = Math.min(cursorPositionY, canvasImgHeight);
+            }
+            if (isLeft) {
+                imgSettings.x1 = Math.max(cursorPositionX, 0);
+            }
+            if (isRight) {
+                imgSettings.x2 = Math.min(cursorPositionX, canvasImgWidth);
+            }
+        }
     }
 
     function drawByProportions(propWidth, propHeight) {
@@ -292,17 +301,17 @@
         }
     });
     document.addEventListener("mouseup", (e) => {
-        if (e.target.id === "canvas") {
+        if (canvas && e.target.id === "canvas") {
             cancelAnimationFrame(animationId);
             canvas.removeEventListener("mousemove", borderResize);
-            x1 = x2 = y1 = y2 = false;
+            isLeft = isRight = isTop = isBottom = false;
         }
     });
     document.addEventListener("mouseout", (e) => {
         if (e.target.id === "canvas") {
             cancelAnimationFrame(animationId);
             document.removeEventListener("mousemove", borderResize);
-            x1 = x2 = y1 = y2 = false;
+            isLeft = isRight = isTop = isBottom = false;
         }
     });
 
@@ -312,17 +321,17 @@
         }
     });
     document.addEventListener("touchend", (e) => {
-        if (e.target.id === "canvas") {
+        if (canvas && e.target.id === "canvas") {
             cancelAnimationFrame(animationId);
             canvas.removeEventListener("touchmove", borderResize);
-            x1 = x2 = y1 = y2 = false;
+            isLeft = isRight = isTop = isBottom = false;
         }
     });
     document.addEventListener("touchcancel", (e) => {
         if (e.target.id === "canvas") {
             cancelAnimationFrame(animationId);
             canvas.removeEventListener("touchmove", borderResize);
-            x1 = x2 = y1 = y2 = false;
+            isLeft = isRight = isTop = isBottom = false;
         }
     });
 
@@ -429,47 +438,48 @@
             hidePreloader();
 
         });
+        showNotice("Done!", 500);
     }
 
-    document.addEventListener("click", (e)=>{
+    document.addEventListener("click", (e) => {
         if (canvasImg && e.target.classList.contains("filter")) {
             imgSettings[e.target.id] = Number(e.target.value);
             drawCanvas();
-        } else if(canvasImg && e.target.classList.contains("btn_reset")){
+        } else if (canvasImg && e.target.classList.contains("btn_reset")) {
             resetCssFilters();
             drawCanvas();
         }
     });
-    document.addEventListener("mousedown", (e)=>{
+    document.addEventListener("mousedown", (e) => {
         if (canvasImg && e.target.classList.contains("filter")) {
 
-                animationId = requestAnimationFrame(animation);
+            animationId = requestAnimationFrame(animation);
 
         }
     });
-    document.addEventListener("mouseup", (e)=>{
+    document.addEventListener("mouseup", (e) => {
         if (canvasImg && e.target.classList.contains("filter")) {
             drawCanvas();
             cancelAnimationFrame(animationId);
         }
     });
-    document.addEventListener("mousemove", (e)=>{
+    document.addEventListener("mousemove", (e) => {
         if (canvasImg && e.target.classList.contains("filter")) {
             imgSettings[e.target.id] = Number(e.target.value);
         }
     });
-    document.addEventListener("touchstart", (e)=>{
+    document.addEventListener("touchstart", (e) => {
         if (canvasImg && e.target.classList.contains("filter")) {
             animationId = requestAnimationFrame(animation);
         }
     });
-    document.addEventListener("touchend", (e)=>{
+    document.addEventListener("touchend", (e) => {
         if (canvasImg && e.target.classList.contains("filter")) {
             drawCanvas();
             cancelAnimationFrame(animationId);
         }
     });
-    document.addEventListener("touchmove", (e)=>{
+    document.addEventListener("touchmove", (e) => {
         if (canvasImg && e.target.classList.contains("filter")) {
             imgSettings[e.target.id] = Number(e.target.value);
         }
@@ -480,18 +490,17 @@
 
     //<<<<<<< IndexedDB >>>>>>>/
     // Пуш картинки в db
-    document.addEventListener("click", (e)=>{
-        if (canvasImg && e.target.id==="btnSaveImg") {
+    document.addEventListener("click", (e) => {
+        if (canvasImg && e.target.id === "btnSaveImg") {
             let photo = new Photo(canvasImg);
             let transaction = db.transaction([STORE_NAME], "readwrite");
             let objectStore = transaction.objectStore(STORE_NAME);
             let request = objectStore.add(photo);
             request.onsuccess = function () {
-                alert("Done!");
+                showNotice("Done!", 500);
             };
         }
     });
-
 
 
     //<<<<<<< end IndexedDB >>>>>>>/

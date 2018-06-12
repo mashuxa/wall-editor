@@ -15,23 +15,59 @@
     <script defer src="components/mobile-menu/js/mobile-menu.js"></script>
     <script defer src="components/photo-editor/js/photo-editor.js"></script>
     <script defer src="components/wall-editor/js/wall-editor.js"></script>
+    <!-- Yandex.Metrika counter -->
+    <script defer type="text/javascript">
+        (function(d, w, c) {
+            (w[c] = w[c] || []).push(function() {
+                try {
+                    w.yaCounter49146415 = new Ya.Metrika2({
+                        id: 49146415,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true,
+                        webvisor: true
+                    });
+                } catch (e) {}
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function() {
+                    n.parentNode.insertBefore(s, n);
+                };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else {
+                f();
+            }
+        })(document, window, "yandex_metrika_callbacks2");
+
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/49146415" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
 </head>
+
 <body>
-<input type="checkbox" id="js-mobile-menu-toggle">
-<header class="header flex">
-    <a class="logo">
-        <i class="icon-logo"></i>
-        <span>Photo Walls</span>
-    </a>
-    <label class="js-mobile-menu-toggle" for="js-mobile-menu-toggle"><i class="icon-menu"></i><span>Menu</span></label>
-</header>
-<nav class="nav js-mobile-menu">
-    <a href="templates/photo-editor.html" class="nav__item nav__item_active" id="photoEditor">Photo Editor</a>
-    <!--<a class="nav__item" id="myGallary">My Gallary</a>-->
-    <a href="templates/wall-editor.html" class="nav__item" id="wallEditor">Wall Preview</a>
-    <a href="templates/bug-report.html" class="nav__item" id="bugReport">Bug Report</a>
-</nav>
-<main class="main" id="main">
-</main>
+    <input type="checkbox" id="js-mobile-menu-toggle">
+    <header class="header flex">
+        <a class="logo">
+            <i class="icon-logo"></i>
+            <span>Photo Walls</span>
+        </a>
+        <label class="js-mobile-menu-toggle" for="js-mobile-menu-toggle"><i class="icon-menu"></i><span>Menu</span></label>
+    </header>
+    <nav class="nav js-mobile-menu">
+        <a href="templates/photo-editor.html" class="nav__item nav__item_active" id="photoEditor">Photo Editor</a> 
+        <a href="templates/wall-editor.html" class="nav__item" id="wallEditor">Wall Preview</a>
+        <a href="/blog/" class="nav__item">Bug Report</a> 
+    </nav>
+    <main class="main" id="main">
+    </main>
 </body>
+
 </html>

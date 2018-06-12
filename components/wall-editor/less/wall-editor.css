@@ -73,7 +73,9 @@
 .editor-preview__btns-wrapper .btn {
   margin: 10px;
 }
-@media all and (max-width: 680px) {
-  display: block;
-  margin: 10px auto;
+@media all and (max-width: 768px) {
+  .editor-preview__btns-wrapper .btn {
+    display: block;
+    margin: 10px auto;
+  }
 }
